@@ -2,6 +2,9 @@
 <html lang="en">
 @include ('layouts.partials.metadata')
 <body>
+    <div class="loading">
+        <div class="loader"></div>
+    </div>
     <div id="page-wrapper" class="four-columns-wide feed-view mt-0">
         @include ('layouts.partials.header')
 

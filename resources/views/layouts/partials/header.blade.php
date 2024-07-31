@@ -21,9 +21,41 @@
                 </li>
 
                 <li class="nav-item">
-                    <a href="{{ url('/') }}" class="nav-link">Log In</a>
+                    @if (Auth::guard('cms')->user())
+                    <a href="{{ route('logout') }}" class="nav-link">Log Out ({{ Auth::guard('cms')->user()->name }})</a>
+                    @else
+                    <a href="{{ url('/') }}" data-toggle="modal" data-target="#login-modal" class="nav-link">Log In</a>
+                    @endif
                 </li>
             </ul>
         </div>
     </div>
 </nav><!-- .navbar end-->
+
+<div class="modal fade" id="login-modal">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Login ke Akun Anda</h5>
+                <button aria-label="Close" class="close" data-dismiss="modal" type="button">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="{{ route('login') }}" method="post" class="login-form">
+                    @csrf
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" name="email" id="email" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" name="password" id="password" class="form-control" required>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary my-3">Log In</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

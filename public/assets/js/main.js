@@ -1,5 +1,45 @@
+
+function showLoading() {
+    $('.loading').show();
+}
+
+function hideLoading() {
+    $('.loading').hide();
+}
+
+function errorHandling(resp){
+    if(resp.responseJSON){ //kalo berbentuk xhr object, translate ke json dulu
+      resp = resp.responseJSON;
+    }
+  
+    if(resp.errors){
+      $.each(resp.errors, function(k, v){
+        toastr.error(v[0]);
+      });
+    }
+    else if(resp.error){
+      if(typeof resp.error == 'string'){
+        toastr.error(resp.error);
+      }
+      else{
+        $.each(resp.error, function(k, v){
+          toastr.error(v);
+        });
+      }
+    }
+    else if(resp.type && resp.message){
+      toastr.error(resp.message);
+    }
+    else{
+      toastr.error('Sorry, we cannot process your last request');
+    }
+    hideLoading();
+}
+  
 (function ($) {
     "use strict";
+
+    hideLoading();
 
     var minimumWidth;
     if (Modernizr.mq('(min-width: 0px)')) {
