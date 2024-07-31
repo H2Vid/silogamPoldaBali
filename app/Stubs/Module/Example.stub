@@ -1,0 +1,11 @@
+<?php
+namespace App\Modules\Example;
+
+// Example is a public class that can be accessed in all modules
+class Example
+{
+    public function __construct()
+    {
+        
+    }
+}

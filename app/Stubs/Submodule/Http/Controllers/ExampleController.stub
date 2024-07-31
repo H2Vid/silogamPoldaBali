@@ -1,0 +1,70 @@
+<?php
+namespace [NAMESPACE]\Http\Controllers;
+
+use App\Http\Controllers\Controller;
+use [NAMESPACE]\Http\Generator\ExampleDatatableGenerator;
+use [NAMESPACE]\Http\Generator\ExampleFormGenerator;
+use App\Base\Requests\BaseDatatableRequest;
+use [NAMESPACE]\Http\Services\ExampleCrudService;
+use [NAMESPACE]\Http\Services\ExampleDeleteService;
+use [NAMESPACE]\Models\Example;
+use Illuminate\Http\Request;
+
+class ExampleController extends Controller
+{
+    public function index(ExampleDatatableGenerator $generator)
+    {
+        $datatable = $generator->getStructure();
+        return view('[OLD_LOWER]::[OLD_LOWER].index', [
+            'title' => 'Example Data Management',
+            'datatable' => $datatable,
+            'create_route' => 'cms.example.create',
+        ]);
+    }
+
+    public function datatable(BaseDatatableRequest $request, ExampleDatatableGenerator $generator)
+    {
+        $datatable = $generator->getStructure();
+        return $datatable->datatableResponse($request);
+    }
+
+    public function create(ExampleFormGenerator $generator)
+    {
+        $form = $generator->getStructure();
+        return view('[OLD_LOWER]::[OLD_LOWER].crud', [
+            'title' => 'Create New Example Data',
+            'route' => route('cms.example.store'),
+            'back_url' => route('cms.example.index'),
+            'form' => $form,
+        ]);
+    }
+    
+    public function store(Request $request, ExampleCrudService $service)
+    {
+        return $this->handleService($request, $service);
+    }
+    
+    public function edit($id, ExampleFormGenerator $generator)
+    {
+        $form = $generator->getStructure();
+        $form->setData(Example::find($id));
+
+        return view('[OLD_LOWER]::[OLD_LOWER].crud', [
+            'title' => 'Update Example',
+            'route' => route('cms.example.update', ['id' => $id]),
+            'back_url' => route('cms.example.index'),
+            'form' => $form,
+        ]);
+    }
+
+    public function update(Request $request, ExampleCrudService $service, $id=null)
+    {
+        return $this->handleService($request, $service, $id);
+    }
+    
+    public function delete(Request $request, ExampleDeleteService $service, $id=null)
+    {
+        return $this->handleService($request, $service, $id);
+    }
+
+}

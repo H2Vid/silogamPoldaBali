@@ -1,0 +1,12 @@
+<?php
+namespace App\Modules\Example\Models;
+
+use App\Base\Models\BaseModel;
+
+class ExampleTranslator extends BaseModel
+{
+    protected $fillable = [
+        'title',
+        'description',
+    ];
+}

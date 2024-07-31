@@ -1,0 +1,46 @@
+<?php
+
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        // example schema
+        /**
+         * Dont forget to register this fields to its model $fillable too. (Mandatory)
+         */
+        Schema::create('example_translators', function (Blueprint $table) {
+            $table->id();
+
+            // translator mandatory fields
+            $table->string('lang', 10);
+            $table->unsignedInteger('main_id');
+
+            // translator data fields (only need to set the field that need to be translated)
+            $table->string('title')->nullable();
+            $table->text('description')->nullable();
+
+            $table->timestamps();
+
+            $table->index(['main_id', 'lang']);
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('example_translators');
+    }
+};

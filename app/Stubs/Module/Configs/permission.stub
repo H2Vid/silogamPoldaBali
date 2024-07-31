@@ -1,0 +1,11 @@
+<?php
+return [
+    'Example' => [
+        'Example' => [
+            'cms.example.index',
+            'cms.example.create',
+            'cms.example.edit',
+            'cms.example.delete',
+        ],
+    ],
+];

@@ -1,0 +1,14 @@
+<?php
+use App\Modules\Example\Http\Controllers\ExampleController;
+
+Route::group([
+    'prefix' => 'example'
+], function($route) {
+    $route->get('/', [ExampleController::class, 'index'])->name('cms.example.index');
+    $route->post('/datatable', [ExampleController::class, 'datatable'])->name('cms.example.datatable');
+    $route->get('/create', [ExampleController::class, 'create'])->name('cms.example.create');
+    $route->post('/create', [ExampleController::class, 'store'])->name('cms.example.store');
+    $route->get('/edit/{id}', [ExampleController::class, 'edit'])->name('cms.example.edit');
+    $route->post('/edit/{id}', [ExampleController::class, 'update'])->name('cms.example.update');
+    $route->post('/delete/{id?}', [ExampleController::class, 'delete'])->name('cms.example.delete');
+});

@@ -1,0 +1,11 @@
+<?php
+return [
+    'example' => [
+        'sort' => 20,
+        'title' => 'Example',
+        'icon' => 'arrow-right',
+        'route' => 'cms.example.index',
+        'active_key' => ['example'],
+    ],
+    
+];

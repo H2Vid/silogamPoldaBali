@@ -1,0 +1,37 @@
+<?php
+namespace [NAMESPACE]\Http\Services;
+
+use App\Base\Services\BaseDeleteService;
+use Illuminate\Http\Request;
+use [NAMESPACE]\Models\Example;
+use CMS;
+use Exception;
+
+class ExampleDeleteService extends BaseDeleteService
+{
+    public function model()
+    {
+        // set the base model query here
+        return Example::query();
+    }
+
+    /**
+     * @param $dataToBeDeleted Collection of datas to be deleted
+     */
+    public function verifyBeforeDelete($dataToBeDeleted)
+    {
+        // if ("something") {
+        //     return 'Cannot delete data, some error occured example';
+        // }
+        return null;
+    }
+
+    /**
+     * @param $deleted_ids IDs of deleted datas
+     */
+    public function afterDelete($deleted_ids=[]) 
+    {
+        // hook after data deleted
+    }
+
+}
