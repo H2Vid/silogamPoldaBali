@@ -3,16 +3,21 @@ namespace App\Modules\Article\Models;
 
 use App\Base\Models\BaseModel;
 use App\Base\Shared\Sluggable;
-// use App\Base\Shared\Translateable;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Article extends BaseModel
 {
-    use Sluggable;
-    // use Translateable;
+    use Sluggable, HasFactory;
+
+    protected static function newFactory()
+    {
+        return \Database\Factories\ArticleFactory::new();
+    }
 
     protected $fillable = [
         'title',
         'slug',
+        'category_id',
         'description',
         'excerpt',
         'image',
@@ -21,7 +26,10 @@ class Article extends BaseModel
         'sort_no',
     ];
 
-    // public $translate_model = ArticleTranslator::class;
+    public function category()
+    {
+        return $this->belongsTo('App\Modules\Category\Models\Category');
+    }
 
     public function slugTarget()
     {

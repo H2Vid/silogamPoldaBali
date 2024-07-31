@@ -5,6 +5,7 @@ use App\Components\Form\FormRenderer;
 use App\Components\Form\FormField;
 use App\Contracts\FormGenerator;
 use App\Modules\Article\Models\Article;
+use App\Modules\Category\Models\Category;
 
 class ArticleFormGenerator extends FormGenerator
 {
@@ -33,6 +34,15 @@ class ArticleFormGenerator extends FormGenerator
                     'label' => 'Description',
                     'type' => 'richtext',
                 ])->use(),
+                (new FormField)->with([
+                    'field' => 'category_id',
+                    'label' => 'Category',
+                    'type' => 'select',
+                    'validation' => 'required',
+                    'lists' => function() {
+                        return Category::where('is_active', true)->get(['id', 'title'])->pluck('title', 'id')->toArray();
+                    }
+                ]),
                 (new FormField)->with([
                     'field' => 'image',
                     'label' => 'Image',

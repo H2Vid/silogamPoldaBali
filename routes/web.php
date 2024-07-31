@@ -14,5 +14,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('pages.home.index');
 });
+
+Route::get('/category/{slug}', function() {
+
+})->name('category');
+
+Route::get('/post/{slug}', function() {
+    
+})->name('post');

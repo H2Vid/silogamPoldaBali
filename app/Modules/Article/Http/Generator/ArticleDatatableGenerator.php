@@ -18,12 +18,14 @@ class ArticleDatatableGenerator extends DatatableGenerator
             'title' => 'article',
             'route' => route('cms.article.datatable'),
             'batch_delete_route' => route('cms.article.delete'),
-            'model' => Article::query(),
+            'model' => Article::with('category'),
             'default_sort_by' => 'id',
             'default_sort_dir' => 'DESC',
             'config' => [
                 (new DatatableField)->setField('title')
                     ->setLabel('Title'),
+                (new DatatableField)->setField('category_id')
+                    ->setLabel('Category'),
                 (new DatatableField)->setField('image')
                     ->setLabel('Image')
                     ->setSearchable(false)
@@ -49,6 +51,7 @@ class ArticleDatatableGenerator extends DatatableGenerator
             return [
                 'title' => $row->title,
                 'description' => $row->description,
+                'category_id' => $row->category->title ?? '-',
                 'image' => $row->image ? '<img src="'.Storage::url($row->image).'" style="height:30px;">' : '-',
                 'is_active' => $row->is_active ? '<span class="badge badge-success">Active</span>' : '<span class="badge badge-danger">Not Active</span>',
                 'is_limited' => $row->is_limited ? '<span class="badge badge-info">LIMITED</span>' : '-',
