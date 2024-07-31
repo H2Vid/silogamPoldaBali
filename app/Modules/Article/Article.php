@@ -19,6 +19,6 @@ class Article
             $qry->where('category_id', $category);
         })->when($keyword, function($qry) use($keyword) {
             $qry->where('title', 'like', "%".str_replace(' ', '%', $keyword)."%");
-        });
+        })->where('is_active', true);
     }
 }
