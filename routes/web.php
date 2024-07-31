@@ -3,8 +3,10 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\CMS\AuthLoginRequest;
+use App\Modules\Article\Models\Article;
+use App\Modules\Category\Models\Category;
 use App\Models\User;
-use CMS;
+use App\Libraries\CMS;
 
 /*
 |--------------------------------------------------------------------------
@@ -45,10 +47,35 @@ Route::get('/logout', function() {
     return redirect('/');
 })->name('logout');
 
-Route::get('/category/{slug}', function() {
+Route::get('/category/{slug}', function($slug) {
+    $keyword = request()->keyword;
+    if (!is_string($keyword)) {
+        $keyword = '';
+    }
+    $keyword = preg_replace('/[^a-zA-Z0-9 ]/', '', $keyword);
 
+    $current_category = null;
+    if ($slug <> 'all') {
+        $current_category = Category::where('slug', $slug)
+            ->where('is_active', true)
+            ->firstOrFail();
+    }
+
+    return view('pages.category.index', [
+        'title' => $current_category ? $current_category->title : 'All Categories',
+        'slug' => $slug,
+        'keyword' => $keyword,
+        'current_category' => $current_category,
+    ]);
 })->name('category');
 
-Route::get('/post/{slug}', function() {
-    
+Route::get('/post/{slug}', function($slug) {
+    $article = Article::with('category')->where('slug', $slug)
+        ->where('is_active', true)
+        ->firstOrFail();
+
+    return view('pages.post.index', [
+        'title' => $article->title,
+        'article' => $article,
+    ]);
 })->name('post');

@@ -3912,16 +3912,46 @@ a.pinterest.fbt-pinterest {
   height: 100%;
 }
 
-.category-box:hover {
+.category-box:hover, .category-box.active {
   background: #4a42ec;
   color: #fff;
 }
-.category-box:hover * {
+.category-box:hover *, .category-box.active * {
   color: #fff;
+}
+
+.post-content {
+  font-size: 16px;
 }
 
 @media (max-width: 767px) {
   .category-lister {
     flex-flow: column;
   }
+
+  .category-box {
+    padding: .5rem 1rem;
+    margin: .25rem;
+  }
+  .category-box img {
+    width: 35px;
+    height: 35px;
+    float: left;
+    margin: 0;
+  }
+  .category-box h4 {
+    float:right;
+    line-height: 35px;
+    font-size: .9rem;
+  }
+}
+
+.form-search {
+  position: relative;
+}
+
+.form-search .btn {
+  position: absolute;
+  top: .25rem;
+  right: .5rem;
 }
