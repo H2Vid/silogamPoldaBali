@@ -21,6 +21,7 @@ class Article extends BaseModel
         'description',
         'excerpt',
         'image',
+        'pdf',
         'is_active',
         'is_limited',
         'sort_no',

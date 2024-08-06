@@ -38,6 +38,14 @@
             <div class="col-xl-8 col-lg-9">
                 <div class="mt-n5">
                     <div class="post-body post-content">
+                        @if ($article->pdf)
+                        <div class="my-4">
+                            <a href="{{ Storage::url($article->pdf) }}" class="btn btn-lg w-100 btn-light border shadow" target="_blank">
+                                <i data-feather="download"></i>
+                                <span class="filename">Download PDF</span>
+                            </a>
+                        </div>
+                        @endif
                         {!! $article->description !!}
                     </div>
                 </div>

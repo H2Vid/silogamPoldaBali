@@ -38,11 +38,22 @@ class ArticleFormGenerator extends FormGenerator
                     'field' => 'category_id',
                     'label' => 'Category',
                     'type' => 'select',
+                    'column' => 5,
                     'validation' => 'required',
                     'lists' => function() {
                         return Category::where('is_active', true)->get(['id', 'title'])->pluck('title', 'id')->toArray();
                     }
                 ]),
+                (new FormField)->with([
+                    'field' => 'pdf',
+                    'label' => 'PDF File',
+                    'type' => 'file',
+                    'attr' => [
+                        'accept' => '.pdf'
+                    ],
+                    'column' => 7,
+                    'notes' => 'Please upload with PDF file'
+                ])->use(),
                 (new FormField)->with([
                     'field' => 'image',
                     'label' => 'Image',
