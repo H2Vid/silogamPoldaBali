@@ -5,6 +5,7 @@ use App\Base\Services\BaseCrudService;
 use Illuminate\Http\Request;
 use App\Modules\Article\Http\Generator\ArticleFormGenerator;
 use App\Modules\Article\Models\Article;
+use Storage;
 
 class ArticleCrudService extends BaseCrudService
 {
@@ -21,6 +22,17 @@ class ArticleCrudService extends BaseCrudService
 
     public function beforeCrud(Request $request, $instance)
     {
+        $pdfs = [];
+        if ($request->pdfs && is_array($request->pdfs)) {
+            foreach ($request->pdfs as $pdf) {
+                if ($pdf && Storage::exists($pdf)) {
+                    $pdfs[] = $pdf;
+                }
+            }
+        }
+
+        $instance->pdfs = json_encode($pdfs);
+
         // return $this->error('can still return error and no data created/updated yet', null, 400);
         return $instance;
     }

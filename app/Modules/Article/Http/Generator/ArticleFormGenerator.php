@@ -45,12 +45,10 @@ class ArticleFormGenerator extends FormGenerator
                     }
                 ]),
                 (new FormField)->with([
-                    'field' => 'pdf',
+                    'field' => 'pdfs',
                     'label' => 'PDF File',
-                    'type' => 'file',
-                    'attr' => [
-                        'accept' => '.pdf'
-                    ],
+                    'type' => 'view',
+                    'view_source' => 'article::components.multiple-file',
                     'column' => 7,
                     'notes' => 'Please upload with PDF file'
                 ])->use(),

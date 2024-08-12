@@ -21,7 +21,8 @@ class Article extends BaseModel
         'description',
         'excerpt',
         'image',
-        'pdf',
+        'pdfs',
+        'viewer',
         'is_active',
         'is_limited',
         'sort_no',
@@ -40,6 +41,12 @@ class Article extends BaseModel
     public function slugUrl($path=null)
     {
         return config('app.url') . '/article' . (strlen($path) > 0 ? '/'. $path : '');
+    }
+
+    public function addViewer()
+    {
+        $this->viewer = intval($this->viewer) + 1;
+        $this->save();
     }
 
 }

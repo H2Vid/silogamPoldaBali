@@ -74,8 +74,17 @@ Route::get('/post/{slug}', function($slug) {
         ->where('is_active', true)
         ->firstOrFail();
 
+    $article->addViewer();
+
+    $other_articles = Article::with('category')->where('slug', '<>', $slug)
+        ->where('is_active', true)
+        ->inRandomOrder()
+        ->limit(5)
+        ->get();
+
     return view('pages.post.index', [
         'title' => $article->title,
         'article' => $article,
+        'other_articles' => $other_articles,
     ]);
 })->name('post');
