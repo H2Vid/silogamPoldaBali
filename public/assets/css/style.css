@@ -3955,3 +3955,16 @@ a.pinterest.fbt-pinterest {
   top: .25rem;
   right: .5rem;
 }
+
+.custom-navbar-brand img {
+  max-width: 400px; 
+  height: 150px; 
+  object-fit: contain;
+}
+
+@media (max-width: 767px) {
+  .custom-navbar-brand img {
+    width: auto;
+    height: 100px;
+  }
+}

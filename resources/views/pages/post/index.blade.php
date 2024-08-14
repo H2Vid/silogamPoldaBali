@@ -46,6 +46,8 @@
             <div class="col-xl-8">
                 <div class="">
                     <div class="post-body post-content">
+                        {!! $article->description !!}
+
                         <?php
                         $pdfs = [];
                         if ($article->pdfs) {
@@ -55,14 +57,13 @@
                         @if (count($pdfs) > 0)
                         <div class="my-4">
                             @foreach ($pdfs as $pdf)
-                            <a href="{{ Storage::url($pdf) }}" class="btn btn-lg w-100 btn-light border shadow" target="_blank">
+                            <a href="{{ Storage::url($pdf) }}" class="btn btn-sm w-100 btn-light border shadow" target="_blank">
                                 <span class="iconify" data-icon="line-md:download-loop"></span>
                                 <span class="filename">{{ filename($pdf) }}</span>
                             </a>
                             @endforeach
                         </div>
                         @endif
-                        {!! $article->description !!}
                     </div>
                 </div>
             </div>

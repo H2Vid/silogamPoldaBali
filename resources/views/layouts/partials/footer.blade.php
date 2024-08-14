@@ -17,15 +17,6 @@
                             <img alt="" src="{{ asset('assets/images/logo.png') }}" style="height:80px;">
                         </div>
                     </div>
-                    <div class="widget Text">
-                        <div class="widget-content">
-                            <p>
-                                Phasellus deserunt. Convallis perspiciatis fusce fermentum accumsan, arcu
-                                aliquam, velit venenatis augue proin, enim etiam dolor.
-                                Mi ac lectus vitae cum, fusce purus posuere.
-                            </p>
-                        </div>
-                    </div>
                 </div>
             </div>
 
@@ -56,29 +47,7 @@
                     </div>
                 </div>
                 <div class="col-lg-6">
-                    <div class="footer-menu section" id="footer-menu">
-                        <div class="widget socialList">
-                            <div class="widget-content">
-                                <ul class="nav">
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="#"><i class="fa fa-facebook"></i></a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="#"><i class="fa fa-twitter"></i></a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="#"><i class="fa fa-instagram"></i></a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="#"><i class="fa fa-linkedin"></i></a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="#"><i class="fa fa-youtube-play"></i></a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
+
                 </div>
             </div>
         </div>
