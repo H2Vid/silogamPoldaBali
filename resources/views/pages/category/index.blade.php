@@ -32,7 +32,7 @@ $per_page = 12;
                 <div class="article justify-content-center slider-width">
                     <div class="blog-posts fbt-index-post-wrap card-columns">
                         <?php
-                        $article_data = Article::getAllBuilder(Auth::guard('cms')->check(), $current_category->id ?? null, $keyword)->paginate($per_page);
+                        $article_data = Article::getAllBuilder(Auth::guard('cms')->check(), $current_category->id ?? null, $keyword)->orderBy('id', 'DESC')->paginate($per_page);
                         ?>
                         @foreach ($article_data as $article)
                         <div class="blog-post fbt-index-post card radius-10">

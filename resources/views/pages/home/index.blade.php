@@ -33,7 +33,7 @@
                 <div class="article justify-content-center slider-width">
                     <div class="blog-posts fbt-index-post-wrap card-columns">
 
-                        @foreach (Article::getAllBuilder(Auth::guard('cms')->check())->limit(8)->get() as $article)
+                        @foreach (Article::getAllBuilder(Auth::guard('cms')->check())->limit(8)->orderBy('id', 'DESC')->get() as $article)
                         <div class="blog-post fbt-index-post card radius-10">
                             <div class="fbt-post-thumbnail">
                                 <a href="{{ route('post', ['slug' => $article->slug]) }}">
