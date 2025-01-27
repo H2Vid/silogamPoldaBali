@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 @include ('layouts.partials.metadata')
-<body>
+<body class="bg-gradient-to-r from-black via-yellow-800 to-black">
     <div class="loading">
         <div class="loader"></div>
     </div>

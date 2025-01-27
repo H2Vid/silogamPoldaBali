@@ -88,3 +88,9 @@ Route::get('/post/{slug}', function($slug) {
         'other_articles' => $other_articles,
     ]);
 })->name('post');
+
+
+
+Route::get('/redesign', function () {
+    return view('pages.redesign.index');
+});

@@ -6,7 +6,21 @@
 
 @section ('content')
 <!-- Main Wrapper -->
-<div class="fbt-main-wrapper col-xl-12">
+
+<div class="flex justify-between mx-20 h-auto items-center">
+    <div class=" w-full flex flex-col">
+        <img class="h-[350px] w-[300px]" src="{{ asset('assets/images/LOGO SDM.png')}}" alt="LOGO SDM">
+        <h3 class="mt-10 font-extrabold text-6xl text-white">BIRO</h3>
+        <h3 class="font-extrabold text-6xl text-white">SDM POLDA BALI</h3>
+        <p class="mt-5 font-bold text-xl text-white">JL.WR SUPRATMAN NO.7, SUMERTA KAUH, KEC.DENPASAR TIM, KOTA DENPASAR, BALI 80236</p>
+    </div>
+    <div class="w-full flex justify-center items-end">
+        <img class="h-[80%]" src="{{ asset('assets/images/GARBHA 3D.PNG')}}" alt="maskot">
+    </div>
+</div>
+
+<!--
+<div class="fbt-main-wrapper col-xl-12 bg-fuchsia-500">
     <div id="main-wrapper">
         <div class="main-section" id="main_content">
             <div class="container-fluid">
@@ -28,7 +42,7 @@
                     @endforeach
                 </div>
             </div>
-            
+
             <div class="container-fluid fbt-four-grids">
                 <div class="article justify-content-center slider-width">
                     <div class="blog-posts fbt-index-post-wrap card-columns">
@@ -37,7 +51,7 @@
                         <div class="blog-post fbt-index-post card radius-10">
                             <div class="fbt-post-thumbnail">
                                 <a href="{{ route('post', ['slug' => $article->slug]) }}">
-                                    <img alt="{{ $article->title }}" class="post-thumbnail lazyloaded" data-src="{{ Storage::url($article->image) }}" 
+                                    <img alt="{{ $article->title }}" class="post-thumbnail lazyloaded" data-src="{{ Storage::url($article->image) }}"
                                         src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==">
                                 </a>
                             </div>
@@ -65,10 +79,11 @@
                         <span aria-hidden="true" class="fa fa-angle-down"></span>
                     </a>
                 </div>
-            </div><!-- #blog-pager -->
+            </div>
 
         </div>
-    </div><!-- #main-wrapper -->
+    </div>
+</div> -->
 
-</div><!-- .fbt-main-wrapper -->
+<!-- .fbt-main-wrapper -->
 @stop

@@ -4,6 +4,7 @@
 <script src="{{ asset('assets/js/plugins.js') }}"></script>
 <script src="{{ asset('assets/js/toastr.min.js') }}"></script>
 <script src="{{ asset('assets/js/main.js') }}"></script>
+
 <script>
 $(function() {
     $('.login-form').on('submit', function(e) {
@@ -13,7 +14,7 @@ $(function() {
             url: $(this).attr('action'),
             type: 'POST',
             data: $(this).serialize(),
-            dataType: 'json',            
+            dataType: 'json',
         }).done(resp => {
             window.location.reload();
         }).fail(err => {
@@ -24,3 +25,4 @@ $(function() {
 });
 </script>
 @stack ('script')
+<!-- @vite('resources/css/app.css') -->

@@ -10,5 +10,8 @@
     <link href="{{ asset('assets/css/fonts.css') }}" rel="stylesheet" media="screen">
     <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet" media="screen">
     <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet" media="screen">
+
     @stack ('style')
+    @vite(['resources/css/app.css','resources/js/app.js'])
+
 </head>
