@@ -54,3 +54,13 @@ function prettify($slug, $delimiter = '-')
 {
     return str_replace($delimiter, ' ', $slug);
 }
+
+function descriptionMaker($string, $word_limit = 30)
+{
+    $string = strip_tags($string);
+    $string = preg_replace('/\s+/', ' ', $string);
+    $string = explode(' ', $string);
+    $string = array_slice($string, 0, $word_limit);
+    $string = implode(' ', $string);
+    return $string;
+}

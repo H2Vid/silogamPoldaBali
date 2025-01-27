@@ -195,7 +195,9 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         App\Providers\CmsServiceProvider::class,
-        // App\Modules\Example\Providers\ExampleServiceProvider::class,
+        App\Modules\Banner\Providers\BannerServiceProvider::class,
+        App\Modules\Article\Providers\ArticleServiceProvider::class,
+        App\Modules\Category\Providers\CategoryServiceProvider::class,
 
     ],
 

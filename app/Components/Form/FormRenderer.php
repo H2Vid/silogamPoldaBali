@@ -30,7 +30,7 @@ class FormRenderer
             }
         }
 
-        if($this->model->getModel()->isSeoable()) {
+        if(method_exists($this->model->getModel(), 'isSeoable') && $this->model->getModel()->isSeoable()) {
             $tabs[] = 'seo';
             $this->config = array_merge($this->config, $this->model->getModel()->seoConfig());
         }
