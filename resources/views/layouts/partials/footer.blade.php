@@ -17,6 +17,8 @@
                             <img alt="" src="{{ asset('assets/images/logo.png') }}" style="height:80px;">
                         </div>
                     </div>
+                    
+                    <p class="text-white">Silogam (Sistem Informasi Logistik Dalam Genggaman) adalah media/aplikasi yang dikembangkan sebagai Knowledge Management System (KMS) berbasis website. SILOGAM salah satu wujud dan peran manajemen pengetahuan guna mendukung manajemen kinerja fungsi logistik.</p>
                 </div>
             </div>
 
