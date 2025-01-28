@@ -6,84 +6,61 @@
 
 @section ('content')
 <!-- Main Wrapper -->
-
-<div class="flex justify-between mx-20 h-auto items-center">
-    <div class=" w-full flex flex-col">
-        <img class="h-[350px] w-[300px]" src="{{ asset('assets/images/LOGO SDM.png')}}" alt="LOGO SDM">
-        <h3 class="mt-10 font-extrabold text-6xl text-white">BIRO</h3>
-        <h3 class="font-extrabold text-6xl text-white">SDM POLDA BALI</h3>
-        <p class="mt-5 font-bold text-xl text-white">JL.WR SUPRATMAN NO.7, SUMERTA KAUH, KEC.DENPASAR TIM, KOTA DENPASAR, BALI 80236</p>
+<div class="flex flex-col lg:flex-row justify-between mt-10 mx-5 lg:mx-20 h-auto space-y-10 lg:space-y-0" >
+    <!-- Bagian Logo dan Informasi -->
+    <div class="w-full h-[80%] lg:w-1/2 flex flex-col items-center md:items-start lg:text-left ">
+        <img class="h-56 w-48 lg:h-[250px] lg:w-[200px]" src="{{ asset('assets/images/LOGO SDM.png') }}" alt="LOGO SDM">
+        <h3 class="mt-5 lg:mt-10 font-extrabold text-4xl lg:text-6xl text-white">BIRO</h3>
+        <h3 class="font-extrabold text-start text-4xl lg:text-6xl text-white">SDM POLDA BALI</h3>
+        <p class="mt-3 lg:mt-5 font-bold text-base lg:text-xl text-white">
+            JL.WR SUPRATMAN NO.7, SUMERTA KAUH, KEC.DENPASAR TIM, KOTA DENPASAR, BALI 80236
+        </p>
     </div>
-    <div class="w-full flex justify-center items-end">
-        <img class="h-[80%]" src="{{ asset('assets/images/GARBHA 3D.PNG')}}" alt="maskot">
+
+    <!-- Bagian Maskot -->
+    <div class="w-full h-[80%] lg:w-1/2 flex justify-center md:justify-end">
+        <img class="h-[100%]" src="{{ asset('assets/images/GARBHA 3D.png') }}" alt="maskot">
     </div>
 </div>
 
-<!--
-<div class="fbt-main-wrapper col-xl-12 bg-fuchsia-500">
-    <div id="main-wrapper">
-        <div class="main-section" id="main_content">
-            <div class="container-fluid">
-                <form class="my-4 form-search" action="{{ route('category', ['slug' => 'all']) }}">
-                    <input type="search" name="keyword" class="form-control form-control-lg" placeholder="Cari Pengetahuan Disini">
-                    <button type="submit" class="btn btn-link text-dark">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 26 26"><path fill="currentColor" d="M10 .188A9.812 9.812 0 0 0 .187 10A9.812 9.812 0 0 0 10 19.813c2.29 0 4.393-.811 6.063-2.125l.875.875a1.845 1.845 0 0 0 .343 2.156l4.594 4.625c.713.714 1.88.714 2.594 0l.875-.875a1.84 1.84 0 0 0 0-2.594l-4.625-4.594a1.824 1.824 0 0 0-2.157-.312l-.875-.875A9.812 9.812 0 0 0 10 .188M10 2a8 8 0 1 1 0 16a8 8 0 0 1 0-16M4.937 7.469a5.446 5.446 0 0 0-.812 2.875a5.46 5.46 0 0 0 5.469 5.469a5.516 5.516 0 0 0 3.156-1a7.166 7.166 0 0 1-.75.03a7.045 7.045 0 0 1-7.063-7.062c0-.104-.005-.208 0-.312"/></svg>
-                    </button>
-                </form>
-                <div class="category-lister">
-                    @foreach (Category::getAll() as $category)
-                    <div class="category-box">
-                        @if ($category->image)
-                        <img src="{{ Storage::url($category->image) }}" alt="{{ $category->title }}">
-                        @endif
-                        <h4>{{ $category->title }}</h4>
-                        <a href="{{ route('category', ['slug' => $category->slug]) }}"></a>
-                    </div>
-                    @endforeach
+
+<section class="section-profile">
+<div class="h-auto bg-cover rounded-xl w-full bg-opacity-10 bg-center bg-no-repeat" style="background-image: url('{{ asset('assets/images/poldabali.jpg') }}');">
+        <div class="inset-0 bg-black/90 h-full w-full py-5 px-10">
+            <div class="h-full w-full text-white">
+                <h1 class="text-4xl lg:text-6xl font-bold text-white">PROFILE BIRO SDM</h1>
+                <div class="flex flex-col md:flex-row w-full h-full justify-between items-center">
+                        <img class="w-full h-full md:w-[50%] md:h-[50%]" src="{{ asset('assets/images/GARBHA 3D.PNG') }}" alt="maskot">
+                        <p class="w-full h-auto text-justify text-[16px] indent-10">
+                            Polisi Daerah (Polda) adalah lembaga kepolisian yang berperan penting dalam menjaga keamanan, ketertiban, dan penegakan hukum di wilayah tertentu. Sebagai garda terdepan pelayanan masyarakat, Polda berkomitmen untuk menciptakan lingkungan yang aman, harmonis, dan kondusif bagi seluruh warga.
+                            Didukung oleh personel yang profesional, berdedikasi tinggi, dan menjunjung tinggi nilai-nilai integritas, Polda menjalankan tugas-tugas meliputi perlindungan masyarakat, penanganan kasus kriminal, pengawasan lalu lintas, hingga pelaksanaan program-program kemasyarakatan yang bersifat preventif dan edukatif.
+
+                            Dengan semboyan **"Melindungi, Mengayomi, dan Melayani"**, Polisi Daerah senantiasa hadir untuk menjawab kebutuhan masyarakat dalam menjaga keamanan, ketertiban, serta mewujudkan keadilan di setiap lapisan kehidupan. Polda terus berinovasi dalam pelayanan publik, memastikan bahwa masyarakat merasa terlindungi dan percaya pada sistem hukum yang adil.
+
+                            Sebagai mitra masyarakat, Polda juga aktif membangun hubungan yang harmonis melalui kolaborasi dengan berbagai pihak, menciptakan sinergi demi mewujudkan wilayah yang damai, aman, dan sejahtera.
+                        </p>
                 </div>
             </div>
-
-            <div class="container-fluid fbt-four-grids">
-                <div class="article justify-content-center slider-width">
-                    <div class="blog-posts fbt-index-post-wrap card-columns">
-
-                        @foreach (Article::getAllBuilder(Auth::guard('cms')->check())->limit(8)->orderBy('id', 'DESC')->get() as $article)
-                        <div class="blog-post fbt-index-post card radius-10">
-                            <div class="fbt-post-thumbnail">
-                                <a href="{{ route('post', ['slug' => $article->slug]) }}">
-                                    <img alt="{{ $article->title }}" class="post-thumbnail lazyloaded" data-src="{{ Storage::url($article->image) }}"
-                                        src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==">
-                                </a>
-                            </div>
-                            <div class="fbt-post-caption card-body">
-                                <h3 class="post-title h4 card-title">
-                                    <a href="{{ route('post', ['slug' => $article->slug]) }}">
-                                        {{ $article->title }}
-                                    </a>
-                                </h3>
-                                <div class="post-meta">
-                                    <span class="post-date published">{{ date('d M Y H:i', strtotime($article->created_at)) }}</span>
-                                </div>
-                                <p class="post-excerpt card-text">{{ descriptionMaker($article->excerpt) }}</p>
-                            </div>
-                        </div>
-                        @endforeach
-
-                    </div>
-                </div>
-            </div>
-            <div class="blog-pager" id="blog-pager">
-                <div class="list-inline">
-                    <a class="blog-pager-older-link list-inline-item" href="{{ route('category', ['slug' => 'all']) }}" title="More posts">
-                        <div class="fbt-bp-message text-uppercase font-weight-bold">More posts</div>
-                        <span aria-hidden="true" class="fa fa-angle-down"></span>
-                    </a>
-                </div>
-            </div>
-
         </div>
-    </div>
-</div> -->
+</div>
+</section>
+
+
+
+<section class="section-profile p-10">
+<div class="h-auto bg-cover rounded-xl w-full ">
+            <div class="h-full w-full text-white">
+                <h1 class="text-4xl lg:text-6xl font-bold text-white">PROFILE BIRO SDM</h1>
+                <div class="flex flex-col md:flex-row w-full h-full justify-between items-center">
+                        <img class="w-full h-full md:w-[50%] md:h-[50%]" src="{{ asset('assets/images/polisisdm.png') }}" alt="maskot">
+                        <div >
+                            <h1 class="text-white p-2 h-20 text-center text-2xl  flex items-center justify-center  bg-red-600">KOMBES POL.TRI BISONO SOEMIHARSO,S.I.K,M.H. KARO SDM POLDA BALI</h1>
+                            <h1 class="text-black h-20  text-center text-2xl p-2 flex items-center justify-center bg-white">KEPALA BIRO SUMBER DAYA MANUSIA POLDA BALI</h1>
+                        </div>
+                </div>
+            </div>
+</div>
+</section>
 
 <!-- .fbt-main-wrapper -->
 @stop
