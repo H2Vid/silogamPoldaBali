@@ -25,7 +25,7 @@
 
 
 <section class="section-profile">
-<div class="h-auto bg-cover rounded-xl w-full bg-opacity-10 bg-center bg-no-repeat" style="background-image: url('{{ asset('assets/images/poldabali.jpg') }}');">
+<div class="h-auto bg-cover rounded-xl w-full bg-center bg-no-repeat" style="background-image: url('{{ asset('assets/images/poldabali.jpg') }}');">
         <div class="inset-0 bg-black/90 h-full w-full py-5 px-10">
             <div class="h-full w-full text-white">
                 <h1 class="text-4xl lg:text-6xl font-bold text-white">PROFILE BIRO SDM</h1>

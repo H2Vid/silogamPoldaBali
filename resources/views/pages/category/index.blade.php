@@ -6,11 +6,37 @@
 $per_page = 12;
 ?>
 
-<div class="article my-10">
+    <div class="bg-[url('/public/assets/images/LOGO_SDM.png')] bg-no-repeat bg-center mt-10 w-full h-[400px] py-10">
+        <div class="bg-black/50 backdrop-filter backdrop-blur-lg w-full h-full  rounded-3xl drop-shadow-2xl shadow-2xl  flex flex-col justify-center items-center space-y-6">
+            <div class="flex flex-col justify-center items-center space-y-8 ">
+                <p class="text-white font-black text-2xl md:text-[40px]">SELAMAT DATANG DI WEBSITE RESMI</p>
+                <p class="text-white font-black text-2xl md:text-[40px]">BIRO SUMBER DAYA MANUSIA DAERAH BALI</p>
+            </div>
+            <div class="flex justify-center items-center space-x-6">
+                <p class="text-white font-black text-[16px] border p-2 rounded-3xl drop-shadow-2xl">Melindungi</p>
+                <p class="text-white font-black text-[16px] border p-2 rounded-3xl drop-shadow-2xl">Mengayomi</p>
+                <p class="text-white font-black text-[16px] border p-2 rounded-3xl drop-shadow-2xl">Melayani</p>
+            </div>
+
+        </div>
+        </div>
+
+
+<div class="article my-5 mx-10 ">
+<div class="">
+    @foreach (Category::getAll() as $category)
+    @if (request()->slug === $category->slug)
+        <div class="text-white text-2xl md:w-[500px] font-bold mb-10 uppercase">
+          ARTIKEL TENTANG  {{ $category->title }}
+        </div>
+        @endif
+    </div>
      <?php
        $article_data = Article::getAllBuilder(Auth::guard('cms')->check(), $current_category->id ?? null, $keyword)->orderBy('id', 'DESC')->paginate($per_page);
      ?>
     <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-3 mx-4">
+
+@endforeach
     @foreach ($article_data as $article)
             <div class="p-3 bg-white/5 h-[480px] backdrop-filter backdrop-blur-3xl border border-gray-900 rounded-lg shadow-sm ">
                 <a href="{{ route('post', ['slug' => $article->slug]) }}">

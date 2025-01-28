@@ -1,9 +1,7 @@
 <header class="header-top">
     <nav class="navbar navbar-light">
         <div class="navbar-left">
-            <a href="" class="sidebar-toggle">
-                <img class="svg" src="{{ asset('img/svg/bars.svg') }}" alt="img">
-            </a>
+
             <a class="navbar-brand" href="#">
                 @if (Setting::get('general.logo_wide'))
                     <img class="dark" src="{{ Setting::getURL('general.logo_wide') }}" alt="black">
@@ -121,7 +119,7 @@
                     </div>
                 </li>
                 @endif
-                
+
                 @if (config('cms.feature.enable_language'))
                 <li class="nav-flag-select">
                     <div class="dropdown-custom">

@@ -18,7 +18,7 @@
             </div>
         </div>
 
-
+        
         @include ('layouts.partials.footer')
     </div><!-- #page-wrapper end -->
     @include ('layouts.partials.script')

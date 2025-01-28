@@ -3,13 +3,12 @@
 @section ('content')
 <div class="blog-posts fbt-item-post-wrap" style="max-width:90%">
     <div class="blog-post fbt-item-post">
-
         <div class="slider-container">
             <div class="row align-items-center slider-width">
                 <div class="col-lg-7">
                     <div class="fbt-shape-container">
                         <div class="fbt-item-thumbnail radius-10">
-                            <img alt="{{ $article->title }}" class="post-thumbnail lazyloaded" 
+                            <img alt="{{ $article->title }}" class="post-thumbnail lazyloaded"
                                 data-src="{{ Storage::url($article->image) }}"
                                 src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==">
                         </div>
@@ -17,26 +16,26 @@
                 </div>
                 <div class="col-lg-5 mt-4 mt-lg-0">
                     <div class="fbt-shape-title pl-xl-5 pl-lg-4">
-                        <h1 class="post-title display-4">
+                        <h1 class="post-title display-4 text-white">
                             {{ $article->title }}
                         </h1>
                         <div class="item-post-meta mt-4">
-                            <div class="post-meta">
+                            <div class="post-meta text-white">
                                 @if (isset($article->category->title))
-                                <span class="post-author"><a href="{{ route('category', ['slug' => $article->category->slug]) }}" target="_blank" title="fbtemplates">{{ $article->category->title }}</a></span>
+                                <span class="post-author text-white"><a class="text-white" href="{{ route('category', ['slug' => $article->category->slug]) }}" target="_blank" title="fbtemplates">{{ $article->category->title }}</a></span>
                                 @endif
-                                <span class="post-date published">{{ date('d M Y', strtotime($article->created_at)) }}</span>
+                                <span class="post-date published text-white">{{ date('d M Y', strtotime($article->created_at)) }}</span>
                             </div>
                             <div class="post-meta mb-4">
                                 <span>
                                     <i class="iconify" data-icon="emojione-v1:eye"></i>
-                                    <span>{{ number_format($article->viewer) }}</span>
+                                    <span class="text-white">{{ number_format($article->viewer) }}</span>
                                 </span>
                             </div>
 
                             @include ('components.sharer', ['data' => $article])
                         </div>
-                        
+
                     </div>
                 </div>
             </div>
@@ -44,10 +43,11 @@
 
         <div class="row justify-content-center">
             <div class="col-xl-8">
-                <div class="">
-                    <div class="post-body post-content">
-                        {!! $article->description !!}
-
+                <div class="text-white">
+                    <div class="post-body post-content text-white">
+                        <span class="text-white">
+                            {!! $article->description !!}
+                        </span>
                         <?php
                         $pdfs = [];
                         if ($article->pdfs) {
@@ -67,27 +67,27 @@
                     </div>
                 </div>
             </div>
-            <div class="col-xl-4">
-                <h3>Artikel Lainnya</h3>
-                <div class="my-4">
+            <div class="col-xl-4 text-white">
+                <h3 class="text-white">Artikel Lainnya</h3>
+                <div class="my-4 text-white">
                     @foreach ($other_articles as $other_article)
                     <div class="d-flex align-items-center mb-3">
                         <div class="fbt-item-thumbnail radius-10">
                             <a href="{{ route('post', ['slug' => $other_article->slug]) }}">
-                                <img alt="{{ $other_article->title }}" class="post-thumbnail lazyloaded" 
+                                <img alt="{{ $other_article->title }}" class="post-thumbnail lazyloaded"
                                 data-src="{{ Storage::url($other_article->image) }}" style="width: 50px; height: 50px;"
                                 src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==">
                             </a>
                         </div>
                         <div class="ml-3">
                             <a href="{{ route('post', ['slug' => $other_article->slug]) }}" class="text-dark">
-                                <h6 class="mb-0">{{ $other_article->title }}</h6>
+                                <h6 class="mb-0 text-white">{{ $other_article->title }}</h6>
                             </a>
                             <div>
-                                <small class="text-muted"><a href="{{ route('category', ['slug' => $other_article->category->slug]) }}" target="_blank" title="fbtemplates">{{ $other_article->category->title }}</a></small>
+                                <small class="text-white"><a href="{{ route('category', ['slug' => $other_article->category->slug]) }}" target="_blank" title="fbtemplates">{{ $other_article->category->title }}</a></small>
                             </div>
                             <div>
-                                <small class="text-muted">{{ date('d M Y', strtotime($other_article->created_at)) }}</small>
+                                <small class="text-white">{{ date('d M Y', strtotime($other_article->created_at)) }}</small>
                             </div>
                         </div>
                     </div>
