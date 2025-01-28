@@ -5,15 +5,21 @@
       <div class="flex items-center space-x-4 text-white">
         <a class="flex items-center justify-between" href="{{ url('/') }}">
           <img class="w-20 h-10 mr-2" alt="Logo" src="{{ asset('assets/images/indonesia.jpg') }}">
-          Beranda
         </a>
         <div class="hidden md:flex space-x-4">
+        <a class="flex items-center justify-between" href="{{ url('/') }}">
+          Beranda
+        </a>
           @foreach (Category::getAll() as $category)
             <a href="{{ route('category', ['slug' => $category->slug]) }}" class="hover:text-blue-500">
               {{ $category->title }}
             </a>
           @endforeach
+          <a href="{{ url('/article') }}" class="block py-2 px-3 text-white bg-blue-700 rounded-sm md:bg-transparent md:text-blue-700 md:p-0 md:dark:text-blue-500 dark:bg-blue-600 md:dark:bg-transparent">
+            Article
+                   </a>
         </div>
+
       </div>
 
       <!-- Tombol Hamburger untuk Mobile -->
@@ -40,6 +46,11 @@
             </a>
           </li>
         @endforeach
+        <li>
+          <a href="{{ url('/article') }}" class="block py-2 px-3 text-white bg-blue-700 rounded-sm md:bg-transparent md:text-blue-700 md:p-0 md:dark:text-blue-500 dark:bg-blue-600 md:dark:bg-transparent">
+            Article
+          </a>
+        </li>
       </ul>
     </div>
   </div>

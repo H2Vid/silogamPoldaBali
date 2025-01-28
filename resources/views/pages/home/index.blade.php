@@ -30,7 +30,7 @@
             <div class="h-full w-full text-white">
                 <h1 class="text-4xl lg:text-6xl font-bold text-white">PROFILE BIRO SDM</h1>
                 <div class="flex flex-col md:flex-row w-full h-full justify-between items-center">
-                        <img class="w-full h-full md:w-[50%] md:h-[50%]" src="{{ asset('assets/images/GARBHA 3D.PNG') }}" alt="maskot">
+                        <img class="w-full h-full md:w-[50%] md:h-[50%]" src="{{ asset('assets/images/GARBHA 3D.png') }}" alt="maskot">
                         <p class="w-full h-auto text-justify text-[16px] indent-10">
                             Polisi Daerah (Polda) adalah lembaga kepolisian yang berperan penting dalam menjaga keamanan, ketertiban, dan penegakan hukum di wilayah tertentu. Sebagai garda terdepan pelayanan masyarakat, Polda berkomitmen untuk menciptakan lingkungan yang aman, harmonis, dan kondusif bagi seluruh warga.
                             Didukung oleh personel yang profesional, berdedikasi tinggi, dan menjunjung tinggi nilai-nilai integritas, Polda menjalankan tugas-tugas meliputi perlindungan masyarakat, penanganan kasus kriminal, pengawasan lalu lintas, hingga pelaksanaan program-program kemasyarakatan yang bersifat preventif dan edukatif.
