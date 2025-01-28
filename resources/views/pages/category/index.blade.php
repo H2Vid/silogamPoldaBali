@@ -5,58 +5,47 @@
 <?php
 $per_page = 12;
 ?>
-<div class="fbt-main-wrapper col-xl-12">
-    <div id="main-wrapper">
-        <div class="main-section" id="main_content">
-            <div class="container-fluid">
-                <form class="my-4 form-search" action="{{ route('category', ['slug' => 'all']) }}">
-                    <input type="search" name="keyword" class="form-control form-control-lg" placeholder="Cari Pengetahuan Disini" value="{{ $keyword }}">
-                    <button type="submit" class="btn btn-link text-dark">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 26 26"><path fill="currentColor" d="M10 .188A9.812 9.812 0 0 0 .187 10A9.812 9.812 0 0 0 10 19.813c2.29 0 4.393-.811 6.063-2.125l.875.875a1.845 1.845 0 0 0 .343 2.156l4.594 4.625c.713.714 1.88.714 2.594 0l.875-.875a1.84 1.84 0 0 0 0-2.594l-4.625-4.594a1.824 1.824 0 0 0-2.157-.312l-.875-.875A9.812 9.812 0 0 0 10 .188M10 2a8 8 0 1 1 0 16a8 8 0 0 1 0-16M4.937 7.469a5.446 5.446 0 0 0-.812 2.875a5.46 5.46 0 0 0 5.469 5.469a5.516 5.516 0 0 0 3.156-1a7.166 7.166 0 0 1-.75.03a7.045 7.045 0 0 1-7.063-7.062c0-.104-.005-.208 0-.312"/></svg>
-                    </button>
-                </form>
-                <div class="category-lister">
-                    @foreach (Category::getAll() as $category)
-                    <div class="category-box {{ $slug == $category->slug ? 'active' : '' }}">
-                        @if ($category->image)
-                        <img src="{{ Storage::url($category->image) }}" alt="{{ $category->title }}">
-                        @endif
-                        <h4>{{ $category->title }}</h4>
-                        <a href="{{ route('category', ['slug' => $category->slug]) }}"></a>
+
+<div class="article my-10">
+     <?php
+       $article_data = Article::getAllBuilder(Auth::guard('cms')->check(), $current_category->id ?? null, $keyword)->orderBy('id', 'DESC')->paginate($per_page);
+     ?>
+    <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-3 mx-4">
+    @foreach ($article_data as $article)
+            <div class="p-3 bg-white/5 h-[480px] backdrop-filter backdrop-blur-3xl border border-gray-900 rounded-lg shadow-sm ">
+                <a href="{{ route('post', ['slug' => $article->slug]) }}">
+                    <img class="h-[220px] w-full rounded-lg" src="{{ Storage::url($article->image) }}" alt="{{ $article->title }}" />
+                </a>
+                <div class="">
+                    <a href="{{ route('post', ['slug' => $article->slug]) }}">
+                        <h5 class="mb-2 text-2xl font-bold tracking-tight text-white line-clamp-2">{{ $article->title }}</h5>
+                    </a>
+                    <p class="mb-3 font-normal text-white line-clamp-4">{{ descriptionMaker($article->excerpt) }}
+                    </p>
+                    <div class="absolute bottom-2 ">
+                    <a href="{{ route('post', ['slug' => $article->slug]) }}"
+                        class="inline-flex items-center px-4 py-2 text-sm lg:text-base font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                        Baca Selengkapnya
+                    <svg class="rtl:rotate-180 w-4 h-4 ms-2 lg:w-5 lg:h-5"
+                     aria-hidden="true"
+                   xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 14 10">
+                        <path stroke="currentColor"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M1 5h12m0 0L9 1m4 4L9 9"/>
+                    </svg>
+</a>
                     </div>
-                    @endforeach
+
+
                 </div>
             </div>
-            
-            <div class="container-fluid fbt-four-grids">
-                <div class="article justify-content-center slider-width">
-                    <div class="blog-posts fbt-index-post-wrap card-columns">
-                        <?php
-                        $article_data = Article::getAllBuilder(Auth::guard('cms')->check(), $current_category->id ?? null, $keyword)->orderBy('id', 'DESC')->paginate($per_page);
-                        ?>
-                        @foreach ($article_data as $article)
-                        <div class="blog-post fbt-index-post card radius-10">
-                            <div class="fbt-post-thumbnail">
-                                <a href="{{ route('post', ['slug' => $article->slug]) }}">
-                                    <img alt="{{ $article->title }}" class="post-thumbnail lazyloaded" data-src="{{ Storage::url($article->image) }}" 
-                                        src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==">
-                                </a>
-                            </div>
-                            <div class="fbt-post-caption card-body">
-                                <h3 class="post-title h4 card-title">
-                                    <a href="{{ route('post', ['slug' => $article->slug]) }}">
-                                        {{ $article->title }}
-                                    </a>
-                                </h3>
-                                <div class="post-meta">
-                                    <span class="post-date published">{{ date('d M Y H:i', strtotime($article->created_at)) }}</span>
-                                </div>
-                                <p class="post-excerpt card-text">{{ descriptionMaker($article->excerpt) }}</p>
-                            </div>
-                        </div>
-                        @endforeach
-                    </div>
-                </div>
+        @endforeach
+    </div>
+
 
                 <div class="d-flex {{ $article_data->currentPage() > 1 && $article_data->hasMorePages() ? 'justify-content-between' : 'justify-content-center' }}">
                     @if ($article_data->currentPage() > 1)
