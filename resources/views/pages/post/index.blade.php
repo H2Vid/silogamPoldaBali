@@ -71,17 +71,17 @@
                 <h3 class="text-white">Artikel Lainnya</h3>
                 <div class="my-4 text-white">
                     @foreach ($other_articles as $other_article)
-                    <div class="d-flex align-items-center mb-3">
-                        <div class="fbt-item-thumbnail radius-10">
+                    <div class="flex justify-between items-center w-full space-x-4 space-y-4">
+                        <div  class="w-auto">
                             <a href="{{ route('post', ['slug' => $other_article->slug]) }}">
-                                <img alt="{{ $other_article->title }}" class="post-thumbnail lazyloaded"
-                                data-src="{{ Storage::url($other_article->image) }}" style="width: 50px; height: 50px;"
-                                src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==">
+                                <img alt="{{ $other_article->title }}" class="w-16 h-16 lazyloaded"
+                                src="{{ Storage::url($other_article->image) }}"
+                             >
                             </a>
                         </div>
-                        <div class="ml-3">
+                        <div class="w-full">
                             <a href="{{ route('post', ['slug' => $other_article->slug]) }}" class="text-dark">
-                                <h6 class="mb-0 text-white">{{ $other_article->title }}</h6>
+                                <h6 class="mb-0 text-white ">{{ $other_article->title }}</h6>
                             </a>
                             <div>
                                 <small class="text-white"><a href="{{ route('category', ['slug' => $other_article->category->slug]) }}" target="_blank" title="fbtemplates">{{ $other_article->category->title }}</a></small>
