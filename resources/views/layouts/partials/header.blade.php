@@ -4,7 +4,7 @@
       <!-- Logo dan Menu untuk Desktop -->
       <div class="flex items-center space-x-4 text-white">
         <a class="flex items-center justify-between" href="{{ url('/') }}">
-          <img class="w-20 h-10 mr-2" alt="Logo" src="{{ asset('assets/images/indonesia.jpg') }}">
+          <img class="w-20 h-10 mr-2" alt="Logo" src="{{ asset('assets/images/Indonesia.jpg') }}">
         </a>
         <div class="hidden md:flex space-x-4">
         <a href="{{ url('/') }}" class="flex items-center {{ request()->is('/') ? 'bg-blue-500 text-white' : 'text-white hover:bg-blue-500' }} block py-2 px-3 rounded-sm">

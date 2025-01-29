@@ -24,7 +24,7 @@
 </div>
 
 
-<section class="section-profile">
+<section class="section-profile overflow-hidden">
 <div class="h-auto bg-cover rounded-xl w-full bg-center bg-no-repeat" style="background-image: url('{{ asset('assets/images/poldabali.jpg') }}');">
         <div class="inset-0 bg-black/90 h-full w-full py-5 px-10">
             <div class="h-full w-full text-white">
