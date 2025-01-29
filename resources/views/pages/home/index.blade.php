@@ -49,7 +49,7 @@
 
 <section class="section-profile p-10">
 <div class="h-auto bg-cover rounded-xl w-full ">
-            <div class="h-full w-full text-white" data-aos="zoom-out-down">
+            <div class="h-full w-full text-white" data-aos="fade-down" data-aos-delay="1000">
                 <h1 class="text-4xl lg:text-6xl font-bold text-white">PROFILE BIRO SDM</h1>
                 <div class="flex flex-col md:flex-row w-full h-full space-y-10 md:space-y-0 justify-between items-center">
                         <img class="w-full h-full md:w-[50%] md:h-[50%]" src="{{ asset('assets/images/polisisdm.png') }}" alt="Kapolda Bali">

@@ -7,17 +7,21 @@
           <img class="w-20 h-10 mr-2" alt="Logo" src="{{ asset('assets/images/indonesia.jpg') }}">
         </a>
         <div class="hidden md:flex space-x-4">
-        <a class="flex items-center justify-between" href="{{ url('/') }}">
-          Beranda
-        </a>
+        <a href="{{ url('/') }}" class="flex items-center {{ request()->is('/') ? 'bg-blue-500 text-white' : 'text-white hover:bg-blue-500' }} block py-2 px-3 rounded-sm">
+  Beranda
+</a>
+
           @foreach (Category::getAll() as $category)
-            <a href="{{ route('category', ['slug' => $category->slug]) }}" class="hover:text-blue-500">
-              {{ $category->title }}
-            </a>
+          <a href="{{ route('category', ['slug' => $category->slug]) }}" class="{{ request()->is('category/'.$category->slug) ? 'bg-blue-500 text-white' : 'text-white hover:bg-blue-500' }} block py-2 px-3 rounded-sm">
+  {{ $category->title }}
+</a>
+
           @endforeach
-          <a href="{{ route('category', ['slug' => 'all']) }}" class="block py-2 px-3 text-white bg-blue-700 rounded-sm md:bg-transparent md:text-blue-700 md:p-0 md:dark:text-blue-500 dark:bg-blue-600 md:dark:bg-transparent">
-            Article
-             </a>
+          <a href="{{ route('category', ['slug' => 'all']) }}"
+   class="flex items-center {{ request()->is('category/all') ? 'bg-blue-500 text-white' : 'text-white hover:bg-blue-500 ' }} block py-2 px-3 rounded-sm">
+  Article
+</a>
+
         </div>
 
       </div>
