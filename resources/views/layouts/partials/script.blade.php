@@ -24,5 +24,9 @@ $(function() {
     });
 });
 </script>
+
+<script>
+  AOS.init();
+</script>
 @stack ('script')
 <!-- @vite('resources/css/app.css') -->

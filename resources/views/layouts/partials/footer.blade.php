@@ -5,7 +5,7 @@
             <div class="col-lg-9">
                 <div class="footer-1" id="footer-1">
                     <div class="logoImage">
-                        <div class="widget-content">
+                        <div class="widget-content mb-3">
                             <img alt="" src="{{ asset('assets/images/LOGO SDM.png') }}" style="height:80px;">
                         </div>
                     </div>

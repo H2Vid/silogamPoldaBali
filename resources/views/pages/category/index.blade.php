@@ -34,11 +34,11 @@ $per_page = 12;
      <?php
        $article_data = Article::getAllBuilder(Auth::guard('cms')->check(), $current_category->id ?? null, $keyword)->orderBy('id', 'DESC')->paginate($per_page);
      ?>
-    <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-3 mx-4">
+    <div data-aos="fade-up-right" class=" grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-3 mx-4">
 
 @endforeach
     @foreach ($article_data as $article)
-            <div class="p-3 bg-white/5 h-[480px] backdrop-filter backdrop-blur-3xl border border-gray-900 rounded-lg shadow-sm ">
+            <div  class="p-3 bg-white/5 h-[480px] backdrop-filter backdrop-blur-3xl border border-gray-900 rounded-lg shadow-sm ">
                 <a href="{{ route('post', ['slug' => $article->slug]) }}">
                     <img class="h-[220px] w-full rounded-lg" src="{{ Storage::url($article->image) }}" alt="{{ $article->title }}" />
                 </a>
@@ -73,12 +73,12 @@ $per_page = 12;
     </div>
 
 
-                <div class="d-flex {{ $article_data->currentPage() > 1 && $article_data->hasMorePages() ? 'justify-content-between' : 'justify-content-center' }}">
+                <div class="d-flex  w-[30%] mt-10 mx-auto {{ $article_data->currentPage() > 1 && $article_data->hasMorePages() ? 'justify-content-between' : 'justify-content-center' }}">
                     @if ($article_data->currentPage() > 1)
                     <div class="blog-pager" id="blog-pager">
                         <div class="list-inline">
                             <a class="blog-pager-older-link list-inline-item" href="{{ $article_data->previousPageUrl() }}" title="More posts">
-                                <div class="fbt-bp-message text-uppercase font-weight-bold"><span aria-hidden="true" class="fa fa-angle-left"></span> Prev</div>
+                                <div class="text-white fbt-bp-message text-uppercase font-weight-bold"><span aria-hidden="true" class="fa fa-angle-left"></span> Prev</div>
                             </a>
                         </div>
                     </div>
@@ -87,7 +87,7 @@ $per_page = 12;
                     <div class="blog-pager" id="blog-pager">
                         <div class="list-inline">
                             <a class="blog-pager-older-link list-inline-item" href="{{ $article_data->nextPageUrl() }}" title="More posts">
-                                <div class="fbt-bp-message text-uppercase font-weight-bold">Next Page <span aria-hidden="true" class="fa fa-angle-right"></span></div>
+                                <div class="text-white fbt-bp-message text-uppercase font-weight-bold">Next Page <span aria-hidden="true" class="fa fa-angle-right"></span></div>
                             </a>
                         </div>
                     </div>

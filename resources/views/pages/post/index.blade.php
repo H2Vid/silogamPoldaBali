@@ -43,7 +43,7 @@
 
         <div class="row justify-content-center">
             <div class="col-xl-8">
-                <div class="text-white">
+                <div class="text-white"  data-aos="flip-right">
                     <div class="post-body post-content text-white">
                         <span class="text-white">
                             {!! $article->description !!}
@@ -67,7 +67,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-xl-4 text-white">
+            <div class="col-xl-4 text-white" data-aos="flip-left">
                 <h3 class="text-white">Artikel Lainnya</h3>
                 <div class="my-4 text-white">
                     @foreach ($other_articles as $other_article)

@@ -11,6 +11,10 @@
     <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet" media="screen">
     <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet" media="screen">
 
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+
     @stack ('style')
     @vite(['resources/css/app.css','resources/js/app.js'])
 
