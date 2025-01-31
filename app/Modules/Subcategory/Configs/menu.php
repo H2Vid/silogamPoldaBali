@@ -2,10 +2,9 @@
 return [
     'subcategory' => [
         'sort' => 20,
-        'title' => 'Sub Category',
+        'title' => 'Subcategory',
         'icon' => 'arrow-right',
         'route' => 'cms.subcategory.index',
         'active_key' => ['subcategory'],
     ],
-
 ];

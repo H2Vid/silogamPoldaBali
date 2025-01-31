@@ -1,13 +1,13 @@
 <?php
-namespace App\Modules\Category\Providers;
+namespace App\Modules\Subcategory\Providers;
 
 use App\Base\Providers\BaseServiceProvider;
 use Illuminate\Foundation\AliasLoader;
 use Illuminate\Routing\Router;
 
-class CategoryServiceProvider extends BaseServiceProvider
+class SubcategoryServiceProvider extends BaseServiceProvider
 {
-    protected $namespace = 'App\Modules\Category\Http\Controllers';
+    protected $namespace = 'App\Modules\Subcategory\Http\Controllers';
 
     public function boot()
     {
@@ -18,7 +18,7 @@ class CategoryServiceProvider extends BaseServiceProvider
     {
         $this->loadHelpers(__DIR__ . '/..');
         $this->mapping($this->app->router);
-        $this->loadViewsFrom(realpath(__DIR__ . "/../Resources/views"), 'category');
+        $this->loadViewsFrom(realpath(__DIR__ . "/../Resources/views"), 'subcategory');
         $this->mergeMainConfig();
         $this->registerAlias();
     }
@@ -29,7 +29,7 @@ class CategoryServiceProvider extends BaseServiceProvider
         foreach ($configs as $cfg) {
             $this->mergeConfigFrom(
                 __DIR__ . '/../Configs/'.$cfg.'.php', $cfg
-            );    
+            );
         }
     }
 
@@ -51,7 +51,7 @@ class CategoryServiceProvider extends BaseServiceProvider
     {
         //automatically load alias
         $aliasData = [
-            'Category' => \App\Modules\Category\Facades\Category::class,
+            'Subcategory' => \App\Modules\Subcategory\Facades\Subcategory::class,
         ];
 
         foreach ($aliasData as $al => $src) {

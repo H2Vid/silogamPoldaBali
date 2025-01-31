@@ -1,5 +1,5 @@
 <?php
-namespace App\Modules\SubCategory\Facades;
+namespace App\Modules\Subcategory\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
@@ -7,6 +7,6 @@ class Subcategory extends Facade
 {
     protected static function getFacadeAccessor()
     {
-        return \App\Modules\SubCategory\Subcategory::class;
+        return \App\Modules\Subcategory\Subcategory::class;
     }
 }

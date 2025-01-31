@@ -1,18 +1,18 @@
 <?php
-namespace App\Modules\SubCategory;
+namespace App\Modules\Subcategory;
 
-use App\Modules\SubCategory\Models\Subcategory as Model;
+use App\Modules\Subcategory\Models\Subcategory as Model;
 
 // Subcategory is a public class that can be accessed in all modules
 class Subcategory
 {
     public function __construct()
     {
-        // Konstruktor kosong (bisa dihapus jika tidak digunakan)
+
     }
 
     public function getAll()
     {
-        return Model::all();
+        return Model::where('is_active', true)->get();
     }
 }

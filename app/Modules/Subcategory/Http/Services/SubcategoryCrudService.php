@@ -1,27 +1,26 @@
 <?php
-namespace App\Modules\Category\Http\Services;
+namespace App\Modules\Subcategory\Http\Services;
 
 use App\Base\Services\BaseCrudService;
 use Illuminate\Http\Request;
-use App\Modules\Category\Http\Generator\CategoryFormGenerator;
-use App\Modules\Category\Models\Category;
+use App\Modules\Subcategory\Http\Generator\SubcategoryFormGenerator;
+use App\Modules\Subcategory\Models\Subcategory;
 
-class CategoryCrudService extends BaseCrudService
+class SubcategoryCrudService extends BaseCrudService
 {
     public function structure($id=null)
     {
-        $form = (new CategoryFormGenerator)->getStructure();
+        $form = (new SubcategoryFormGenerator)->getStructure();
         if ($id) {
-            $form->setData(Category::findOrFail($id));
+            $form->setData(Subcategory::findOrFail($id));
         } else {
-            $form->setData(new Category);
+            $form->setData(new Subcategory);
         }
         return $form;
     }
 
     public function beforeCrud(Request $request, $instance)
     {
-        // return $this->error('can still return error and no data created/updated yet', null, 400);
         return $instance;
     }
 
@@ -32,12 +31,11 @@ class CategoryCrudService extends BaseCrudService
 
     public function successRedirectTarget()
     {
-        return route('cms.category.index');
+        return route('cms.subcategory.index');
     }
 
     public function successRedirectMessage()
     {
         return 'Data has been saved successfully';
     }
-
 }

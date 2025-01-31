@@ -1,10 +1,10 @@
 <?php
-namespace App\Modules\Category\Models;
+namespace App\Modules\Subcategory\Models;
 
 use App\Base\Models\BaseModel;
 use App\Base\Shared\Sluggable;
 
-class Category extends BaseModel
+class Subcategory extends BaseModel
 {
     use Sluggable;
 
@@ -24,7 +24,6 @@ class Category extends BaseModel
 
     public function slugUrl($path=null)
     {
-        return config('app.url') . '/category' . (strlen($path) > 0 ? '/'. $path : '');
+        return config('app.url') . '/subcategory' . (strlen($path) > 0 ? '/'. $path : '');
     }
-
 }

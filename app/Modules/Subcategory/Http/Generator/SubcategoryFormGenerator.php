@@ -1,30 +1,28 @@
 <?php
-namespace App\Modules\Category\Http\Generator;
+namespace App\Modules\Subcategory\Http\Generator;
 
 use App\Components\Form\FormRenderer;
 use App\Components\Form\FormField;
 use App\Contracts\FormGenerator;
-use App\Modules\Category\Models\Category;
+use App\Modules\Subcategory\Models\Subcategory;
 
-class CategoryFormGenerator extends FormGenerator
+class SubcategoryFormGenerator extends FormGenerator
 {
     public function structure(): FormRenderer
     {
         $structure = (new FormRenderer)->with([
-            'title' => 'category',
-            'model' => Category::query(),
+            'title' => 'subcategory',
+            'model' => Subcategory::query(),
             'config' => [
                 (new FormField)->setField('title')
                     ->setLabel('Title')
                     ->setType('text')
                     ->setColumn(12)
-                    // ->setTranslateable(true)                    
                     ->setValidation('required')
                     ->use(),
                 (new FormField)->with([
                     'field' => 'description',
                     'label' => 'Description',
-                    // 'translateable' => true,
                     'type' => 'richtext',
                 ])->use(),
                 (new FormField)->with([
@@ -45,5 +43,4 @@ class CategoryFormGenerator extends FormGenerator
 
         return $structure;
     }
-
 }

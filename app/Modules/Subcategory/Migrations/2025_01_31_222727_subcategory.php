@@ -13,12 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        // category schema
+        // subcategory schema
         /**
          * Dont forget to register this fields to its model $fillable too. (Mandatory)
          */
-        Schema::create('categories', function (Blueprint $table) {
+        Schema::create('subcategories', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('category_id')->constrained()->onDelete('cascade'); // Relasi ke categories
             $table->boolean('is_active')->nullable();
             $table->unsignedInteger('sort_no')->nullable();
             $table->timestamps();
@@ -37,6 +38,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('categories');
+        Schema::dropIfExists('subcategories');
     }
 };

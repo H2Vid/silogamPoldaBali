@@ -1,5 +1,5 @@
 <?php
-use App\Modules\SubCategory\Http\Controllers\SubcategoryController;
+use App\Modules\Subcategory\Http\Controllers\SubcategoryController;
 
 Route::group([
     'prefix' => 'subcategory'

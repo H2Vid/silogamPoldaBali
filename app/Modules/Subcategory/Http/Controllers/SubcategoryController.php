@@ -1,68 +1,68 @@
 <?php
-namespace App\Modules\SubCategory\Http\Controllers;
+namespace App\Modules\Subcategory\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Modules\SubCategory\Http\Generator\SubCategoryDatatableGenerator;
-use App\Modules\SubCategory\Http\Generator\SubCategoryFormGenerator;
+use App\Modules\Subcategory\Http\Generator\SubcategoryDatatableGenerator;
+use App\Modules\Subcategory\Http\Generator\SubcategoryFormGenerator;
 use App\Base\Requests\BaseDatatableRequest;
-use App\Modules\SubCategory\Http\Services\SubCategoryCrudService;
-use App\Modules\SubCategory\Http\Services\SubCategoryDeleteService;
-use App\Modules\SubCategory\Models\SubCategory;
+use App\Modules\Subcategory\Http\Services\SubcategoryCrudService;
+use App\Modules\Subcategory\Http\Services\SubcategoryDeleteService;
+use App\Modules\Subcategory\Models\Subcategory;
 use Illuminate\Http\Request;
 
-class SubCategoryController extends Controller
+class SubcategoryController extends Controller
 {
-    public function index(SubCategoryDatatableGenerator $generator)
+    public function index(SubcategoryDatatableGenerator $generator)
     {
         $datatable = $generator->getStructure();
         return view('subcategory::subcategory.index', [
-            'title' => 'SubCategory Management',
+            'title' => 'Subcategory Management',
             'datatable' => $datatable,
             'create_route' => 'cms.subcategory.create',
         ]);
     }
 
-    public function datatable(BaseDatatableRequest $request, SubCategoryDatatableGenerator $generator)
+    public function datatable(BaseDatatableRequest $request, SubcategoryDatatableGenerator $generator)
     {
         $datatable = $generator->getStructure();
         return $datatable->datatableResponse($request);
     }
 
-    public function create(SubCategoryFormGenerator $generator)
+    public function create(SubcategoryFormGenerator $generator)
     {
         $form = $generator->getStructure();
         return view('subcategory::subcategory.crud', [
-            'title' => 'Create New SubCategory',
+            'title' => 'Create New Subcategory',
             'route' => route('cms.subcategory.store'),
             'back_url' => route('cms.subcategory.index'),
             'form' => $form,
         ]);
     }
 
-    public function store(Request $request, SubCategoryCrudService $service)
+    public function store(Request $request, SubcategoryCrudService $service)
     {
         return $this->handleService($request, $service);
     }
 
-    public function edit($id, SubCategoryFormGenerator $generator)
+    public function edit($id, SubcategoryFormGenerator $generator)
     {
         $form = $generator->getStructure();
-        $form->setData(SubCategory::find($id));
+        $form->setData(Subcategory::find($id));
 
         return view('subcategory::subcategory.crud', [
-            'title' => 'Update SubCategory',
+            'title' => 'Update Subcategory',
             'route' => route('cms.subcategory.update', ['id' => $id]),
             'back_url' => route('cms.subcategory.index'),
             'form' => $form,
         ]);
     }
 
-    public function update(Request $request, SubCategoryCrudService $service, $id=null)
+    public function update(Request $request, SubcategoryCrudService $service, $id=null)
     {
         return $this->handleService($request, $service, $id);
     }
 
-    public function delete(Request $request, SubCategoryDeleteService $service, $id=null)
+    public function delete(Request $request, SubcategoryDeleteService $service, $id=null)
     {
         return $this->handleService($request, $service, $id);
     }

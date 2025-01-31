@@ -1,24 +1,24 @@
 <?php
-namespace App\Modules\Category\Http\Generator;
+namespace App\Modules\Subcategory\Http\Generator;
 
 use App\Components\Datatable\DatatableRenderer;
 use App\Components\Datatable\DatatableField;
 use App\Contracts\DatatableGenerator;
-use App\Modules\Category\Models\Category;
+use App\Modules\Subcategory\Models\Subcategory;
 use Illuminate\Http\Request;
 use Storage;
 use CMS;
 use Setting;
 
-class CategoryDatatableGenerator extends DatatableGenerator
+class SubcategoryDatatableGenerator extends DatatableGenerator
 {
     public function structure(): DatatableRenderer
     {
         $structure = (new DatatableRenderer)->with([
-            'title' => 'category',
-            'route' => route('cms.category.datatable'),
-            'batch_delete_route' => route('cms.category.delete'),
-            'model' => Category::query(),
+            'title' => 'subcategory',
+            'route' => route('cms.subcategory.datatable'),
+            'batch_delete_route' => route('cms.subcategory.delete'),
+            'model' => Subcategory::query(),
             'default_sort_by' => 'id',
             'default_sort_dir' => 'DESC',
             'config' => [
@@ -51,24 +51,23 @@ class CategoryDatatableGenerator extends DatatableGenerator
                 'is_active' => $row->is_active ? '<span class="badge badge-success">Active</span>' : '<span class="badge badge-danger">Not Active</span>',
                 'action' => CMS::actionButton([
                     [
-                        'auth' => 'cms.category.edit',
-                        'html' => '<a href="'.route('cms.category.edit', ['id' => $row->id]).'" class="dropdown-item ajax-priority">
+                        'auth' => 'cms.subcategory.edit',
+                        'html' => '<a href="'.route('cms.subcategory.edit', ['id' => $row->id]).'" class="dropdown-item ajax-priority">
                             <i data-feather="edit-3" class="text-primary"></i>
-                            <span>Edit</span>    
+                            <span>Edit</span>
                         </a>',
                     ],
                     [
-                        'auth' => 'cms.category.delete',
-                        'html' => '<a href="#" data-target="'.route('cms.category.delete', ['id' => $row->id]).'" class="dropdown-item '.(Setting::get('general.ask_delete') ? 'delete-button' : 'btn-trigger-delete').'">
+                        'auth' => 'cms.subcategory.delete',
+                        'html' => '<a href="#" data-target="'.route('cms.subcategory.delete', ['id' => $row->id]).'" class="dropdown-item '.(Setting::get('general.ask_delete') ? 'delete-button' : 'btn-trigger-delete').'">
                             <i data-feather="x" class="text-danger"></i>
-                            <span>Delete</span>    
+                            <span>Delete</span>
                         </a>',
-                    ],                        
+                    ],
                 ]),
-            ];        
+            ];
         });
 
         return $structure;
     }
-
 }
