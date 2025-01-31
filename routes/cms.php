@@ -1,12 +1,13 @@
 <?php
+use App\Http\Controllers\CMS\LogController;
 use App\Http\Controllers\CMS\AuthController;
 use App\Http\Controllers\CMS\HomeController;
-use App\Http\Controllers\CMS\SettingController;
-use App\Http\Controllers\CMS\ProfileController;
-use App\Http\Controllers\CMS\PermissionController;
-use App\Http\Controllers\CMS\UploadController;
 use App\Http\Controllers\CMS\UserController;
-use App\Http\Controllers\CMS\LogController;
+use App\Http\Controllers\CMS\UploadController;
+use App\Http\Controllers\CMS\ProfileController;
+use App\Http\Controllers\CMS\SettingController;
+use App\Http\Controllers\CMS\PermissionController;
+use App\Http\Controllers\CMS\SubcategoryController;
 
 
 Route::get('/reset-password', [AuthController::class, 'resetPassword'])->name('cms.auth.reset-password');
@@ -17,6 +18,7 @@ Route::group([
     'middleware' => 'cmsauth:cms'
 ], function() {
     Route::get('/', [HomeController::class, 'index'])->name('cms.index');
+    Route::get('/subcategory', [SubcategoryController::class, 'index'])->name('cms.subcategory.index');
     Route::get('/setting', [SettingController::class, 'setting'])->name('cms.setting');
     Route::post('/setting', [SettingController::class, 'doSetting'])->name('cms.do-setting');
     Route::get('/profile', [ProfileController::class, 'index'])->name('cms.profile');
@@ -31,7 +33,7 @@ Route::group([
     Route::get('/permission/manage/{id}', [PermissionController::class, 'manage'])->name('cms.manage-permission');
     Route::post('/permission/manage/{id}', [PermissionController::class, 'storeManage'])->name('cms.store-manage-permission');
     Route::post('/permission/delete/{id}', [PermissionController::class, 'delete'])->name('cms.delete-permission');
-    
+
     Route::get('/user', [UserController::class, 'index'])->name('cms.user.index');
     Route::post('/user/datatable', [UserController::class, 'datatable'])->name('cms.user.datatable');
     Route::get('/user/create', [UserController::class, 'create'])->name('cms.user.create');
@@ -41,11 +43,11 @@ Route::group([
     Route::post('/user/delete/{id?}', [UserController::class, 'delete'])->name('cms.user.delete');
 
     Route::get('log', [LogController::class, 'index'])->name('cms.log.index');
-    Route::get('log/export', [LogController::class, 'export'])->name('cms.log.export');        
+    Route::get('log/export', [LogController::class, 'export'])->name('cms.log.export');
 
     Route::post('/api/upload-image', [UploadController::class, 'image'])->name('cms.api.upload-image');
     Route::post('/api/upload-file', [UploadController::class, 'file'])->name('cms.api.upload-file');
-    
+
 });
 
 Route::group([
