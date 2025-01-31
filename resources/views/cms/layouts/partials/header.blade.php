@@ -1,14 +1,12 @@
 <header class="header-top">
-    <nav class="navbar navbar-light">
+    <nav class="navbar navbar-light pb-2">
         <div class="navbar-left">
 
-            <a class="navbar-brand" href="#">
+            <a class="" href="#">
                 @if (Setting::get('general.logo_wide'))
-                    <img class="dark" src="{{ Setting::getURL('general.logo_wide') }}" alt="black">
-                    <img class="light" src="{{ Setting::getURL('general.logo_wide') }}" alt="light">
+                    <img class="" style="height: 80px; margin-left:50px;" src="{{ Setting::getURL('general.logo_wide') }}" alt="black">
                 @else
-                    <img class="dark" src="{{ asset('img/logo-wide.png') }}" alt="black">
-                    <img class="light" src="{{ asset('img/logo-wide.png') }}" alt="light">
+                    <img class="" style="height: 80px; margin-left:50px;" src="{{ asset('img/logo-wide.png') }}" alt="black">
                 @endif
             </a>
             @if (config('cms.feature.enable_global_search'))
