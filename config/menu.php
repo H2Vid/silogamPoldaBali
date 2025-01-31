@@ -8,6 +8,12 @@ return [
         'active_key' => ['homepage'],
     ],
 
+    'subcategory' => [
+        'title' => 'Subcategory',
+        'icon' => 'layers', // Sesuaikan dengan ikon yang diinginkan (pakai Feather Icons)
+        'route' => 'cms.subcategory.index', // Pastikan nama route sesuai
+        'sort' => 20, // Atur posisi menu dalam urutan
+    ],
     // 'example' => [
     //     'sort' => 5,
     //     'title' => 'Example Menu',
@@ -49,7 +55,7 @@ return [
                 'title' => 'Setting',
                 'icon' => 'settings',
                 'route' => 'cms.setting',
-                'active_key' => ['setting'],        
+                'active_key' => ['setting'],
             ],
             'user' => [
                 'sort' => 99,
@@ -58,7 +64,7 @@ return [
                 'route' => 'cms.user.index',
                 'active_key' => ['user'],
             ],
-        
+
             'permission' => [
                 'sort' => 199,
                 'title' => 'Permission Management',
@@ -73,7 +79,7 @@ return [
                 'route' => 'cms.log.index',
                 'active_key' => 'log'
             ],
-        
+
         ]
     ],
 
