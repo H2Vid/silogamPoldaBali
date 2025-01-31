@@ -89,8 +89,3 @@ Route::get('/post/{slug}', function($slug) {
     ]);
 })->name('post');
 
-
-
-Route::get('/redesign', function () {
-    return view('pages.redesign.index');
-});
