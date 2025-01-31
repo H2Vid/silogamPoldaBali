@@ -10,7 +10,7 @@
                         </div>
                     </div>
 
-                    <p class="text-white">Silogam (Sistem Informasi Sumber Daya Manusia Dalam Genggaman) adalah media/aplikasi yang dikembangkan sebagai Knowledge Management System (KMS) berbasis website. SILOGAM merupakan salah satu wujud dan peran manajemen pengetahuan guna mendukung manajemen kinerja fungsi sumber daya manusia.</p>
+                    <p class="text-white"></p>
                 </div>
             </div>
 
