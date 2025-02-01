@@ -11,4 +11,9 @@ class SubcategoryController extends Controller
     {
         return view('cms.pages.subcategory.index');
     }
+    public function crud()
+    {
+        // Menampilkan halaman create (crud)
+        return view('cms.pages.subcategory.crud');
+    }
 }
