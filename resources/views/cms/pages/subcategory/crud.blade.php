@@ -1,7 +1,7 @@
 @extends (request()->ajax() ? 'cms.layouts.blank' : 'cms.layouts.master')
 
 @section ('content')
-<div class="card ">
+<div class="card mt-5">
     <div class="card-body">
         <p class="float-left color-dark fw-500 fs-20 mb-0">Create New Sub Category</p>
         <div class="float-right">
@@ -10,7 +10,7 @@
         <div class="clearfix"></div>
     </div>
 </div>
-<div class="card-body bg-white mt-10 rounded mb-10">
+<div class="card-body bg-white mt-3 rounded mb-10">
     <form action="http://silogam.birologistik-poldabali.id.test/cms/category/create" method="POST" class="ajax-form">
         <input type="hidden" name="_token" value="W2QshMgBa7v4heqtfPRqYtJWq9u4hq2Y09FdFVlG">
         <div class="mb-3">
@@ -44,44 +44,7 @@
                         <div class="form-group custom-form-group " data-crud="description">
                             <label class="">Description</label>
                             <div>
-                                <div id="mceu_19" class="mce-tinymce mce-container mce-panel" hidefocus="1" tabindex="-1" role="application" style="visibility: hidden; border-width: 1px; width: 100%;">
-                                    <div id="mceu_19-body" class="mce-container-body mce-stack-layout">
-                                        <div id="mceu_20" class="mce-top-part mce-container mce-stack-layout-item mce-first">
-                                            <div id="mceu_20-body" class="mce-container-body">
-                                                <div id="mceu_21" class="mce-container mce-menubar mce-toolbar mce-first" role="menubar" style="border-width: 0px 0px 1px;">
-                                                    <div id="mceu_21-body" class="mce-container-body mce-flow-layout">
-                                                        <div id="mceu_22" class="mce-widget mce-btn mce-menubtn mce-flow-layout-item mce-first mce-btn-has-text" tabindex="-1" aria-labelledby="mceu_22" role="menuitem" aria-haspopup="true">
-                                                            <button id="mceu_22-open" role="presentation" type="button" tabindex="-1">
-                                                                <span class="mce-txt">Edit</span> <i class="mce-caret"></i>
-                                                            </button>
-                                                        </div>
-                                                        <div id="mceu_23" class="mce-widget mce-btn mce-menubtn mce-flow-layout-item mce-btn-has-text" tabindex="-1" aria-labelledby="mceu_23" role="menuitem" aria-haspopup="true">
-                                                            <button id="mceu_23-open" role="presentation" type="button" tabindex="-1">
-                                                                <span class="mce-txt">Insert</span> <i class="mce-caret"></i>
-                                                            </button>
-                                                        </div>
-                                                        <div id="mceu_24" class="mce-widget mce-btn mce-menubtn mce-flow-layout-item mce-btn-has-text" tabindex="-1" aria-labelledby="mceu_24" role="menuitem" aria-haspopup="true">
-                                                            <button id="mceu_24-open" role="presentation" type="button" tabindex="-1">
-                                                                <span class="mce-txt">View</span> <i class="mce-caret"></i>
-                                                            </button>
-                                                        </div>
-                                                        <div id="mceu_25" class="mce-widget mce-btn mce-menubtn mce-flow-layout-item mce-btn-has-text" tabindex="-1" aria-labelledby="mceu_25" role="menuitem" aria-haspopup="true">
-                                                            <button id="mceu_25-open" role="presentation" type="button" tabindex="-1">
-                                                                <span class="mce-txt">Format</span> <i class="mce-caret"></i>
-                                                            </button>
-                                                        </div>
-                                                        <div id="mceu_26" class="mce-widget mce-btn mce-menubtn mce-flow-layout-item mce-last mce-btn-has-text" tabindex="-1" aria-labelledby="mceu_26" role="menuitem" aria-haspopup="true">
-                                                            <button id="mceu_26-open" role="presentation" type="button" tabindex="-1">
-                                                                <span class="mce-txt">Table</span> <i class="mce-caret"></i>
-                                                            </button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <textarea name="description" data-richtext="1" class="form-control" data-name="description" id="description" aria-hidden="true" style="display: none;"></textarea>
+                              <textarea class="w-full form-control" rows="10" name="" id=""></textarea>
                             </div>
                         </div>
                     </div>
