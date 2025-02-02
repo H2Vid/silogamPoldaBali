@@ -21,6 +21,12 @@ Route::group([
     Route::get('/subcategory', [SubcategoryController::class, 'index'])->name('cms.subcategory.index');
     Route::get('/subcategory/create', [SubcategoryController::class, 'crud'])->name('cms.subcategory.crud');
     Route::post('/subcategory/store', [SubcategoryController::class, 'store'])->name('subcategory.store');
+    Route::get('/subcategory/edit/{id}', [SubcategoryController::class, 'edit'])->name('cms.subcategory.edit');
+    Route::put('/subcategory/update/{id}', [SubcategoryController::class, 'update'])->name('cms.subcategory.update');
+
+    Route::post('/subcategory/delete/{id}', [SubcategoryController::class, 'destroy'])->name('cms.subcategory.delete');
+
+
 
     Route::get('/setting', [SettingController::class, 'setting'])->name('cms.setting');
     Route::post('/setting', [SettingController::class, 'doSetting'])->name('cms.do-setting');
