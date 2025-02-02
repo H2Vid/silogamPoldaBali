@@ -20,6 +20,8 @@ Route::group([
     Route::get('/', [HomeController::class, 'index'])->name('cms.index');
     Route::get('/subcategory', [SubcategoryController::class, 'index'])->name('cms.subcategory.index');
     Route::get('/subcategory/create', [SubcategoryController::class, 'crud'])->name('cms.subcategory.crud');
+    Route::post('/subcategory/store', [SubcategoryController::class, 'store'])->name('subcategory.store');
+
     Route::get('/setting', [SettingController::class, 'setting'])->name('cms.setting');
     Route::post('/setting', [SettingController::class, 'doSetting'])->name('cms.do-setting');
     Route::get('/profile', [ProfileController::class, 'index'])->name('cms.profile');
