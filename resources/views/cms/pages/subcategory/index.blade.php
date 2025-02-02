@@ -11,10 +11,29 @@
     </div>
 </div>
 
-<div class="card-body bg-white  mt-3 rounded mb-10">
+<div class="card-body bg-white mt-3 rounded mb-10">
+    <!-- Form Pencarian dan Dropdown Per Page -->
+    <form action="{{ route('cms.subcategory.index') }}" method="GET" class="mb-3">
+        <div class="d-flex justify-content-between">
+        <div class="col-md-2">
+                <select name="per_page" class="form-control" onchange="this.form.submit()">
+                    <option value="5" {{ request('per_page') == 5 ? 'selected' : '' }}>5</option>
+                    <option value="10" {{ request('per_page') == 10 ? 'selected' : '' }}>10</option>
+                    <option value="25" {{ request('per_page') == 25 ? 'selected' : '' }}>25</option>
+                    <option value="50" {{ request('per_page') == 50 ? 'selected' : '' }}>50</option>
+                </select>
+            </div>
+            <div class="col-md-4 d-flex">
+                <input type="text" name="search" value="{{ request('search') }}" class="form-control" placeholder="Search by title or description">
 
+                <button type="submit" class="btn btn-primary">Search</button>
+            </div>
 
-    <table class="table ">
+        </div>
+    </form>
+
+    <!-- Tabel Data -->
+    <table class="table table-striped">
         <thead>
             <tr>
                 <th class="col-1">No</th>
@@ -26,9 +45,9 @@
             </tr>
         </thead>
         <tbody>
-            @foreach($subcategories as $subcategory)
+            @foreach($subcategories as $index => $subcategory)
             <tr>
-                <td>{{ $loop->iteration }}</td>
+                <td>{{ $subcategories->firstItem() + $index }}</td> <!-- Update penomoran -->
                 <td>{{ $subcategory->title }}</td>
                 <td>{{ $subcategory->description }}</td>
                 <td>
@@ -56,5 +75,16 @@
         </tbody>
     </table>
 
+    <!-- Menampilkan Informasi Pagination -->
+    <div class="d-flex justify-content-between align-items-center">
+        <div>
+            <span>Showing {{ $subcategories->firstItem() }} to {{ $subcategories->lastItem() }} of {{ $subcategories->total() }} entries</span>
+        </div>
+
+        <!-- Pagination -->
+        <div>
+            {{ $subcategories->appends(request()->input())->links('pagination::bootstrap-4') }}
+        </div>
+    </div>
 </div>
 @stop

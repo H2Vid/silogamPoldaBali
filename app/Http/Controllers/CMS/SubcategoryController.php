@@ -9,12 +9,33 @@ use Illuminate\Support\Facades\Storage;
 
 class SubcategoryController extends Controller
 {
-    public function index()
+
+
+
+    public function index(Request $request)
     {
-        $subcategories = Subcategory::all();
-         // Kirim data ke view
-    return view('cms.pages.subcategory.index', compact('subcategories'));
+        // Membangun query untuk subcategory
+        $query = Subcategory::query();
+
+        // Jika ada parameter 'search' pada request, lakukan pencarian
+        if ($request->has('search') && !empty($request->search)) {
+            $query->where('title', 'like', '%' . $request->search . '%')
+                  ->orWhere('description', 'like', '%' . $request->search . '%');
+        }
+
+        // Tentukan jumlah data per halaman (default 5)
+        $perPage = $request->input('per_page', 5); // default 5
+
+        // Ambil data subcategory dengan pagination
+        $subcategories = $query->paginate($perPage);
+
+        // Kembalikan ke view dengan data subcategories
+        return view('cms.pages.subcategory.index', compact('subcategories'));
     }
+
+
+
+
     public function crud()
     {
 
