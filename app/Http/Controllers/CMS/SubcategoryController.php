@@ -10,10 +10,13 @@ class SubcategoryController extends Controller
 {
     public function index()
     {
-        return view('cms.pages.subcategory.index');
+        $subcategories = Subcategory::all();
+         // Kirim data ke view
+    return view('cms.pages.subcategory.index', compact('subcategories'));
     }
     public function crud()
     {
+
         // Menampilkan halaman create (crud)
         return view('cms.pages.subcategory.crud');
     }

@@ -1,66 +1,55 @@
 @extends (request()->ajax() ? 'cms.layouts.blank' : 'cms.layouts.master')
 
-@section ('content')
-<div class="card mb-3">
+@section('content')
+<div class="card mt-5">
     <div class="card-body">
-        <p class="float-left color-dark fw-500 fs-20 mb-0">{{ $title ?? 'Subcategory' }}</p>
+        <p class="float-left color-dark fw-500 fs-20 mb-0">Subcategories</p>
         <div class="float-right">
-            <a href="/cms/subcategory/create" class="btn btn-sm btn-primary ajax-priority">+ Add Subcategory</a>
+            <a href="{{ route('cms.subcategory.crud') }}" class="btn btn-sm btn-primary">+ Add Data</a>
         </div>
         <div class="clearfix"></div>
     </div>
 </div>
-<div class="card mb-3">
-    <div class="card-body">
-        <table class="table table-bordered" id="subcategoryTable">
-            <thead>
-                <tr>
-                    <th>#</th>
-                    <th>Subcategory Name</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody>
-                <!-- Data subcategory akan ditampilkan di sini -->
-            </tbody>
-        </table>
-    </div>
+
+<div class="card-body bg-white mt-3 rounded mb-10">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Image</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach ($subcategories as $subcategory)
+            <tr>
+                <td>{{ $loop->iteration }}</td>
+                <td>{{ $subcategory->title }}</td>
+                <td>{{ $subcategory->description }}</td>
+                <td>
+                    @if ($subcategory->image)
+                    <img src="{{ asset('storage/' . $subcategory->image) }}" alt="{{ $subcategory->title }}" width="100">
+                    @else
+                    No Image
+                    @endif
+                </td>
+                <td>
+                    @if ($subcategory->is_active)
+                    <span class="badge badge-success">Active</span>
+                    @else
+                    <span class="badge badge-danger">Inactive</span>
+                    @endif
+                </td>
+                <td>
+                    <a href="#" class="btn btn-sm btn-warning">Edit</a>
+                    <a href="#" class="btn btn-sm btn-danger">Delete</a>
+                </td>
+            </tr>
+            @endforeach
+        </tbody>
+    </table>
 </div>
 @stop
-
-@push ('script')
-<script>
-    let subcategories = [];
-
-    function renderTable() {
-        let tbody = document.querySelector("#subcategoryTable tbody");
-        tbody.innerHTML = "";
-
-        subcategories.forEach((subcategory, index) => {
-            let row = `<tr>
-                <td>${index + 1}</td>
-                <td>${subcategory}</td>
-                <td>
-                    <button class="btn btn-sm btn-danger" onclick="deleteSubcategory(${index})">Delete</button>
-                </td>
-            </tr>`;
-            tbody.innerHTML += row;
-        });
-    }
-
-    function addSubcategory() {
-        let subcategoryName = prompt("Enter subcategory name:");
-        if (subcategoryName) {
-            subcategories.push(subcategoryName);
-            renderTable();
-        }
-    }
-
-    function deleteSubcategory(index) {
-        if (confirm("Are you sure you want to delete this subcategory?")) {
-            subcategories.splice(index, 1);
-            renderTable();
-        }
-    }
-</script>
-@endpush
