@@ -3,31 +3,26 @@
 @section('content')
 <div class="card mt-5">
     <div class="card-body">
-        <p class="float-left color-dark fw-500 fs-20 mb-0">Subcategory List</p>
+        <p class="float-left color-dark fw-500 fs-20 mb-0">Subcategory Management</p>
         <div class="float-right">
-            <a href="{{ route('cms.subcategory.crud') }}" class="btn btn-sm btn-primary">Add New Subcategory</a>
+            <a href="{{ route('cms.subcategory.crud') }}" class="btn btn-sm btn-primary">+ Add Data</a>
         </div>
         <div class="clearfix"></div>
     </div>
 </div>
 
-<div class="card-body bg-white mt-3 rounded mb-10">
-    <!-- Menampilkan pesan sukses jika ada -->
-    @if (session('success'))
-        <div class="alert alert-success">
-            {{ session('success') }}
-        </div>
-    @endif
+<div class="card-body bg-white  mt-3 rounded mb-10">
 
-    <table class="table table-striped">
+
+    <table class="table ">
         <thead>
             <tr>
-                <th>No</th>
-                <th>Title</th>
-                <th>Description</th>
-                <th>Image</th>
-                <th>Status</th>
-                <th>Actions</th>
+                <th class="col-1">No</th>
+                <th class="col-2">Title</th>
+                <th class="col-3">Description</th>
+                <th class="col-2">Image</th>
+                <th class="col-1">Status</th>
+                <th class="col-2">Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -38,7 +33,7 @@
                 <td>{{ $subcategory->description }}</td>
                 <td>
                     @if ($subcategory->image)
-                    <img src="{{ asset('storage/' . $subcategory->image) }}" alt="{{ $subcategory->title }}" width="100">
+                    <img src="{{ asset('storage/' . $subcategory->image) }}" alt="{{ $subcategory->title }}" width="100" height="50">
                     @else
                     <p>No image</p>
                     @endif
@@ -48,8 +43,8 @@
                         {{ $subcategory->is_active ? 'Active' : 'Inactive' }}
                     </span>
                 </td>
-                <td>
-                    <a href="{{ route('cms.subcategory.edit', $subcategory->id) }}" class="btn btn-sm btn-warning">Edit</a>
+                <td class="d-flex">
+                    <a href="{{ route('cms.subcategory.edit', $subcategory->id) }}" class="btn mr-2 btn-sm btn-warning">Edit</a>
                     <form action="{{ route('cms.subcategory.delete', $subcategory->id) }}" method="POST" style="display: inline;">
                         @csrf
                         @method('POST')
@@ -60,5 +55,6 @@
             @endforeach
         </tbody>
     </table>
+
 </div>
 @stop

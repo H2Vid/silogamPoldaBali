@@ -18,18 +18,6 @@
             @method('PUT')
         @endif
 
-        <div class="mb-3">
-            <div class="input-group">
-                <div class="input-group-append d-none d-md-flex">
-                    <span class="input-group-text">https://birosdm-poldabali.com/subcategory</span>
-                </div>
-                <input type="text" name="slug_master" class="form-control form-control-lg" readonly value="{{ isset($subcategory) ? $subcategory->slug_master : '' }}" placeholder="your-slug-url">
-                <div class="input-group-prepend">
-                    <button type="button" class="btn btn-secondary">Change</button>
-                </div>
-            </div>
-            <small>Note: Slug akan otomatis ditambahkan angka jika sudah ada.</small>
-        </div>
 
         <div class="form-group">
             <label class="required">Title</label>
@@ -49,11 +37,14 @@
             @endif
             <small>Upload JPG/PNG maksimal 1MB</small>
         </div>
-
         <div class="form-group">
-            <label>Is Active</label>
-            <input type="checkbox" name="is_active" value="1" {{ isset($subcategory) && $subcategory->is_active ? 'checked' : '' }}>
-        </div>
+    <label for="switch-180e9770cbf6fd61e219cba26204d276b48b6e1e">Is Active</label>
+    <label class="switch switch-component">
+        <input type="checkbox" name="is_active" id="switch-180e9770cbf6fd61e219cba26204d276b48b6e1e" value="1"
+            {{ isset($subcategory) && $subcategory->is_active ? 'checked' : '' }}>
+        <span class="slider" data-yes="ACTIVE" data-no="INACTIVE"></span>
+    </label>
+</div>
 
         <button class="btn btn-primary" type="submit">{{ isset($subcategory) ? 'Update' : 'Save' }} Data</button>
     </form>
