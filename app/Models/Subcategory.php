@@ -7,6 +7,14 @@ use App\Base\Shared\Sluggable;
 
 class Subcategory extends BaseModel
 {
-    protected $fillable = ['title', 'description', 'image', 'is_active'];
+    protected $fillable =
+    [
+    'title',
+    'category_id',
+     'description',
+     'image',
+     'is_active'
+
+    ];
 
 }

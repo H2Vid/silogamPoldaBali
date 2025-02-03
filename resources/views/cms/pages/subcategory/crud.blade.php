@@ -18,11 +18,25 @@
             @method('PUT')
         @endif
 
-
         <div class="form-group">
             <label class="required">Title</label>
             <input type="text" name="title" class="form-control" required value="{{ isset($subcategory) ? $subcategory->title : '' }}">
         </div>
+
+        <!-- Pilih Kategori -->
+        <div class="form-group">
+             <label class="required">Pilih Kategori</label>
+            <select name="category_id" class="form-control" required>
+             <option value="">-- Pilih Kategori --</option>
+                @foreach ($categories as $category)
+            <option value="{{ $category->id }}"
+                {{ isset($subcategory) && $subcategory->category_id == $category->id ? 'selected' : '' }}>
+                {{ $category->title }}  <!-- Tampilkan title kategori -->
+            </option>
+                 @endforeach
+             </select>
+        </div>
+
 
         <div class="form-group">
             <label>Description</label>
@@ -37,6 +51,7 @@
             @endif
             <small>Upload JPG/PNG maksimal 1MB</small>
         </div>
+
         <div class="form-group">
     <label for="switch-180e9770cbf6fd61e219cba26204d276b48b6e1e">Is Active</label>
     <label class="switch switch-component">

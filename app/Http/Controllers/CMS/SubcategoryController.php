@@ -6,6 +6,7 @@ use App\Models\Subcategory;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
+use App\Modules\Category\Models\Category;
 
 class SubcategoryController extends Controller
 {
@@ -32,22 +33,24 @@ class SubcategoryController extends Controller
         // Kembalikan ke view dengan data subcategories
         return view('cms.pages.subcategory.index', compact('subcategories'));
     }
+            public function crud()
+            {
+                // Ambil semua kategori dari database
+                $categories = Category::all();  // Pastikan Anda memiliki model Category dan tabel categories
+
+                // Menampilkan halaman create (crud) dan mengirimkan data kategori
+                return view('cms.pages.subcategory.crud', compact('categories'));
+            }
 
 
 
-
-    public function crud()
-    {
-
-        // Menampilkan halaman create (crud)
-        return view('cms.pages.subcategory.crud');
-    }
 
     public function store(Request $request)
 {
     // Validasi input
     $validated = $request->validate([
         'title' => 'required|string|max:255',
+        'category_id' => 'required|integer',
         'description' => 'nullable|string',
         'image' => 'nullable|image|mimes:jpg,png,jpeg,gif,svg|max:1024',
         'is_active' => 'nullable|boolean',
@@ -62,6 +65,7 @@ class SubcategoryController extends Controller
     // Simpan data ke database
     $subcategory = new Subcategory();
     $subcategory->title = $request->input('title');
+    $subcategory->category_id = $request->input('category_id');
     $subcategory->description = $request->input('description');
     $subcategory->image = $imagePath; // Menyimpan path gambar
     $subcategory->is_active = $request->input('is_active') ? true : false;
@@ -85,6 +89,7 @@ public function update(Request $request, $id)
     // Validasi input
     $validated = $request->validate([
         'title' => 'required|string|max:255',
+        'category_id' => 'required|integer',
         'description' => 'nullable|string',
         'image' => 'nullable|image|mimes:jpg,png,jpeg,gif,svg|max:1024',
         'is_active' => 'nullable|boolean',
@@ -105,6 +110,7 @@ public function update(Request $request, $id)
 
     // Update data lainnya
     $subcategory->title = $request->input('title');
+    $subcategory->category_id = $request->input('category_id');
     $subcategory->description = $request->input('description');
     $subcategory->is_active = $request->input('is_active') ? true : false;
     $subcategory->save();
