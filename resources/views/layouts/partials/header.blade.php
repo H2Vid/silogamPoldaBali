@@ -1,13 +1,13 @@
-<nav class="sticky top-0 z-10 bg-yellow-300 border-gray-200">
-  <div class="mx-auto px-4 bg-transparent backdrop-filter backdrop-blur-3xl">
-    <div class="w-full flex items-center justify-between py-4">
-      <a class="flex items-center" href="{{ url('/') }}">
-        <img class="w-20 h-10 mr-2" alt="Logo" src="{{ asset('assets/images/Indonesia.jpg') }}">
+<nav class="sticky bg-cover bg-center h-24 bg-no-repeat top-0 z-10 py-4" style="background-image: url('{{ asset('assets/images/bgnav.png') }}');">
+  <div class="mx-auto px-4">
+    <div class="w-full flex items-top overflow-hidden justify-between ">
+      <a class="flex items-top" href="{{ url('/') }}">
+        <img class="w-20 h-10 mr-2 " alt="Logo" src="{{ asset('assets/images/Indonesia.jpg') }}">
       </a>
 
       <!-- Menu Navbar (Desktop) -->
-      <div class="hidden md:flex space-x-4 bg-red-500 p-2">
-        <a href="{{ url('/') }}" class="flex items-center {{ request()->is('/') ? 'bg-blue-500 text-white' : 'text-white hover:bg-blue-500' }} block py-2 px-3 rounded-sm">
+      <div class="hidden h-10 md:flex space-x-4">
+        <a href="{{ url('/') }}" class=" flex items-center {{ request()->is('/') ? 'bg-blue-500 text-white' : 'text-white hover:bg-blue-500' }} block py-2 px-3 rounded-sm">
           Beranda
         </a>
 
@@ -16,8 +16,8 @@
             $subcategories = App\Models\Subcategory::where('category_id', $category->id)->get();
           @endphp
           <div class="relative">
-            <div class="flex items-center space-x-2">
-              <a href="{{ route('category', ['slug' => $category->slug]) }}" class="{{ request()->is('category/'.$category->slug) ? 'bg-blue-500 text-white' : 'text-white hover:bg-blue-500' }} block py-2 px-3 rounded-sm">
+            <div class="flex items-center space-x-2 h-auto">
+              <a href="{{ route('category', ['slug' => $category->slug]) }}" class="{{ request()->is('category/'.$category->slug) ? 'bg-blue-500 text-white' : ' text-white hover:bg-blue-500' }} block py-2 px-3 rounded-sm  h-10">
                 {{ $category->title }}
               </a>
 
@@ -44,7 +44,7 @@
 
       <!-- Logo Kanan -->
       <div class="hidden md:flex items-center">
-        <img class="w-20 h-10 mr-2" alt="Logo" src="{{ asset('assets/images/Indonesia.jpg') }}">
+        <img alt="Logo" src="{{ asset('assets/images/contactUs.png') }}" style="width:140px; height: 160px;">
       </div>
 
       <!-- Tombol Hamburger (Mobile) -->
