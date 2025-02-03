@@ -6,6 +6,7 @@
 
 @section ('content')
 <!-- Main Wrapper -->
+ <section class="overflow-hidden bg-cover  bg-top bg-no-repeat" style="background-image: url('{{ asset('assets/images/bg-herosection.png') }}');">
 <div class="overflow-hidden flex flex-col lg:flex-row justify-between mt-10 mx-5 lg:mx-20 h-auto space-y-10 lg:space-y-0" data-aos-delay="300" data-aos="fade-down">
     <!-- Bagian Logo dan Informasi -->
     <div  class="w-full h-[80%] lg:w-1/2 flex flex-col items-center md:items-start lg:text-left md:ml-20">
@@ -22,6 +23,7 @@
         <img class="h-[100%]" src="{{ asset('assets/images/GARBHA 3D.png') }}" alt="maskot">
     </div>
 </div>
+</section>
 
 
 <section class="section-profile overflow-hidden">

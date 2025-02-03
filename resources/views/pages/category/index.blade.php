@@ -23,14 +23,18 @@ $per_page = 12;
 
 
 <div class="article my-5 mx-10 ">
-<div class="">
-    @foreach (Category::getAll() as $category)
-    @if (request()->slug === $category->slug)
-        <div class="text-white text-2xl md:w-[500px] font-bold mb-10 uppercase">
-          ARTIKEL TENTANG  {{ $category->title }}
+
+        <div class="w-full my-5">
+                @foreach (Category::getAll() as $category)
+                @if (request()->slug === $category->slug)
+                    <div class="w-full bg-green-400 flex justify-between text-white text-2xl  font-bold  uppercase">
+                    ARTIKEL TENTANG  {{ $category->title }}
+                        <p>Sub Kategori </p>
+                    </div>
+                    @endif
         </div>
-        @endif
-    </div>
+
+
      <?php
        $article_data = Article::getAllBuilder(Auth::guard('cms')->check(), $current_category->id ?? null, $keyword)->orderBy('id', 'DESC')->paginate($per_page);
      ?>
