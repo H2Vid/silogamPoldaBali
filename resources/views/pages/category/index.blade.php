@@ -7,7 +7,7 @@ $per_page = 12;
 ?>
 
     <div class="bg-[url('/public/assets/images/LOGO_SDM.png')] bg-no-repeat bg-center mt-10 w-full h-[400px] py-10">
-        <div class="bg-black/50 backdrop-filter backdrop-blur-lg w-full h-full  rounded-3xl drop-shadow-2xl shadow-2xl  flex flex-col justify-center items-center space-y-6">
+        <div class="bg-white/5 border backdrop-filter backdrop-blur-lg w-full h-full  rounded-3xl drop-shadow-2xl shadow-2xl  flex flex-col justify-center items-center space-y-6">
             <div class="flex flex-col justify-center items-center space-y-8 ">
                 <p class="text-white font-black text-2xl md:text-[40px]">SELAMAT DATANG DI WEBSITE RESMI</p>
                 <p class="text-white font-black text-2xl md:text-[40px]">BIRO SUMBER DAYA MANUSIA DAERAH BALI</p>

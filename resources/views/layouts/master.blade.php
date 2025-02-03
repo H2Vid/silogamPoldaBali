@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 @include ('layouts.partials.metadata')
-<body class="bg-black/90">
+<body class="bg-black">
     <div class="loading">
         <div class="loader"></div>
     </div>
