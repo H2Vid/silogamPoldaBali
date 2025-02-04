@@ -6,8 +6,8 @@
 
 @section ('content')
 <!-- Main Wrapper -->
- <section class="overflow-hidden bg-cover  bg-top bg-no-repeat" style="background-image: url('{{ asset('assets/images/bg-herosection.png') }}');">
-<div class="overflow-hidden flex flex-col lg:flex-row justify-between mt-10 mx-5 lg:mx-20 h-auto space-y-10 lg:space-y-0" data-aos-delay="300" data-aos="fade-down">
+<section <sectionp-10  class="overflow-hidden bg-cover  bg-top bg-no-repeat" style="background-image: url('{{ asset('assets/images/bg-herosection.png') }}');">
+<divbg-red-500 class="overflow-hidden flex flex-col lg:flex-row justify-between mt-10 mx-5 lg:mx-20 h-auto space-y-10 lg:space-y-0" data-aos-delay="300" data-aos="fade-down">
     <!-- Bagian Logo dan Informasi -->
     <div  class="w-full h-[80%] lg:w-1/2 flex flex-col items-center md:items-start lg:text-left md:ml-20">
         <img class="h-56 w-48 lg:h-[250px] lg:w-[200px]" src="{{ asset('assets/images/LOGO SDM.png') }}" alt="LOGO SDM">
@@ -22,14 +22,14 @@
     <div class="w-full h-[100%] md:h-[80%] lg:w-1/2 flex justify-center md:justify-end">
         <img class="h-[100%]" src="{{ asset('assets/images/GARBHA 3D.png') }}" alt="maskot">
     </div>
-</div>
+</divbg-red-500>
 </section>
 
 
 <section class="section-profile overflow-hidden">
 <div class="h-auto bg-cover rounded-xl w-full bg-center bg-no-repeat" style="background-image: url('{{ asset('assets/images/poldabali.jpg') }}');">
         <div class="inset-0 bg-black/90 h-full w-full py-5 px-10">
-            <div class="h-full w-full text-white">
+text-white">
                 <h1 class="text-4xl lg:text-6xl font-bold text-white">PROFILE BIRO SDM</h1>
                 <img data-aos-delay="500" data-aos="fade-down-right" class="mt-4 overflow-hidden w-full h-full md:w-full md:h-[50%]" src="{{ asset('assets/images/profilesdm.png') }}" alt="maskot">
             </div>

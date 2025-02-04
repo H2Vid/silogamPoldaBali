@@ -1,6 +1,6 @@
-<nav class="sticky bg-cover bg-center h-24 bg-no-repeat top-0 z-10 py-4" style="background-image: url('{{ asset('assets/images/bgnav.png') }}');">
-  <div class="mx-auto px-4">
-    <div class="w-full flex items-top overflow-hidden justify-between ">
+<nav class="sticky bg-cover bg-center h-0 md:h-24 bg-no-repeat top-0 z-10 py-4" style="background-image: url('{{ asset('assets/images/bgnav.png') }}');">
+  <div class="mx-auto px-4 ">
+    <div class="w-full flex items-top justify-between">
       <a class="flex items-top" href="{{ url('/') }}">
         <img class="w-20 h-10 mr-2 " alt="Logo" src="{{ asset('assets/images/Indonesia.jpg') }}">
       </a>
@@ -43,7 +43,7 @@
       </div>
 
       <!-- Logo Kanan -->
-      <div class="hidden md:flex items-center">
+      <div class="hidden md:flex md:-mt-7 items-center">
         <img alt="Logo" src="{{ asset('assets/images/contactUs.png') }}" style="width:140px; height: 160px;">
       </div>
 

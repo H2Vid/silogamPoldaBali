@@ -10,12 +10,9 @@
 
         @stack ('hero')
 
-        <div class="outer-wrapper clearfix" id="outer-wrapper">
-            <div class="container fbt-elastic-container">
-                <div class="row justify-content-center">
+                <div >
                     @yield ('content')
                 </div>
-            </div>
         </div>
 
 
