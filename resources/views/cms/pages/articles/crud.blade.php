@@ -81,11 +81,18 @@
 
                 <div class="col-md-7">
                     <div class="form-group">
-                        <label>PDF File</label>
-                        <input type="file" name="pdfs[]" multiple class="form-control" accept="application/pdf">
-                        <small>Please upload in PDF format.</small>
+                  <!-- Upload PDF (Default: hanya 1, disimpan ke `pdf`) -->
+                    <label for="pdf">Upload PDF:</label>
+                    <input type="file" name="pdf" accept="application/pdf" id="single-pdf"><br>
+
+                    <!-- Container untuk tambahan PDF (disimpan ke `pdfs`) -->
+                    <div id="pdf-container"></div>
+
+                    <button type="button" id="add-pdf-btn">Tambah PDF</button><br>
+
                     </div>
                 </div>
+
 
                 <div class="col-md-4">
                     <div class="form-group">
@@ -198,7 +205,27 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 });
+// akhir subkategori
 
+//add pdf file
+document.getElementById('add-pdf-btn').addEventListener('click', function() {
+        const singlePDF = document.getElementById('single-pdf');
+        const container = document.getElementById('pdf-container');
+
+        // Jika user pertama kali menekan "Tambah PDF"
+        if (singlePDF.name === 'pdf') {
+            singlePDF.name = 'pdfs[]'; // Ubah menjadi array
+            container.appendChild(singlePDF); // Pindahkan ke pdf-container
+        }
+
+        // Tambahkan input baru untuk PDF tambahan
+        const newInput = document.createElement('input');
+        newInput.type = 'file';
+        newInput.name = 'pdfs[]';
+        newInput.accept = 'application/pdf';
+        container.appendChild(document.createElement('br'));
+        container.appendChild(newInput);
+    });
 
 </script>
 

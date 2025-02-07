@@ -38,11 +38,9 @@ class ArticlesController extends Controller
         // Kirim data kategori dan subkategori ke view
         return view('cms.pages.articles.crud', compact('categories', 'subcategories'));
     }
-
-
     public function save(Request $request)
     {
-        // Validasi data yang diterima
+        // Validasi data
         $validated = $request->validate([
             'title' => 'required|string|max:255',
             'slug' => 'required|string|max:255|unique:articles,slug',
@@ -53,35 +51,41 @@ class ArticlesController extends Controller
             'image' => 'nullable|image|mimes:jpeg,png,jpg|max:1024',
             'is_active' => 'required|boolean',
             'is_limited' => 'required|boolean',
-            'pdfs' => 'nullable|array',
-            'pdfs.*' => 'mimes:pdf|max:10240', // Maksimal 10MB untuk setiap file PDF
+            'pdf' => 'nullable|mimes:pdf|max:10240', // Untuk 1 file PDF
+            'pdfs' => 'nullable', // Untuk banyak file PDF
+            'pdfs.*' => 'mimes:pdf|max:10240', // Maksimal 10MB per file PDF
         ]);
 
-
-        $imagePath = null;
-        if ($request->hasFile('image')) {
-            $imagePath = $request->file('image')->store('images/articles', 'public');
-        }
-        // Menyimpan file PDF jika ada
-        if ($request->hasFile('pdfs')) {
-            $pdfPaths = [];
-            foreach ($request->file('pdfs') as $pdf) {
-                $pdfPaths[] = $pdf->store('public/pdfs');
-            }
-            $article->pdfs = json_encode($pdfPaths); // Menyimpan file PDF dalam format JSON array
-        }
-
-        // Menyimpan data artikel baru
         $article = new Articles();
         $article->title = $validated['title'];
         $article->slug = $validated['slug'];
-        $article->excerpt = $validated['excerpt'];
-        $article->description = $validated['description'];
+        $article->excerpt = $validated['excerpt'] ?? null;
+        $article->description = $validated['description'] ?? null;
         $article->category_id = $validated['category_id'];
         $article->subcategory_id = $validated['subcategory_id'];
         $article->is_active = $validated['is_active'];
         $article->is_limited = $validated['is_limited'];
-        $article->image = $imagePath; // Menyimpan path gambar
+
+        // Simpan gambar jika ada
+        if ($request->hasFile('image')) {
+            $article->image = $request->file('image')->store('public/images');
+        }
+
+        // Simpan file PDF
+        $pdfPaths = [];
+
+        // Jika hanya ada 1 PDF (default input)
+        if ($request->hasFile('pdf') && !$request->hasFile('pdfs')) {
+            $article->pdf = $request->file('pdf')->store('public/pdfs');
+        }
+
+        // Jika ada banyak PDF (berarti sudah ditambahkan oleh user)
+        if ($request->hasFile('pdfs')) {
+            foreach ($request->file('pdfs') as $pdf) {
+                $pdfPaths[] = $pdf->store('public/pdfs');
+            }
+            $article->pdfs = json_encode($pdfPaths);
+        }
 
         // Simpan artikel ke database
         $article->save();

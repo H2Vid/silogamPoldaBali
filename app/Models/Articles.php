@@ -17,5 +17,10 @@ class Articles extends Model
         'description',
         'image',
         'is_active',
+        'pdf',
+        'pdfs'
+    ];
+    protected $casts = [
+        'pdfs' => 'array', // Agar otomatis dikonversi menjadi array saat diambil dari database
     ];
 }
