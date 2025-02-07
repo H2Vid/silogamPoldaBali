@@ -79,9 +79,10 @@ public function edit($id)
 {
     // Ambil data subcategory berdasarkan ID
     $subcategory = Subcategory::findOrFail($id);  // Pastikan $id benar ada
-
+   // Ambil semua kategori dari database
+   $categories = Category::all();  // Ambil data kategori untuk dropdown
     // Tampilkan halaman edit dengan membawa data subcategory
-    return view('cms.pages.subcategory.crud', compact('subcategory'));  // Pastikan view yang dimaksud adalah 'crud.blade.php'
+    return view('cms.pages.subcategory.crud', compact('subcategory','categories'));  // Pastikan view yang dimaksud adalah 'crud.blade.php'
 }
 
 public function update(Request $request, $id)
