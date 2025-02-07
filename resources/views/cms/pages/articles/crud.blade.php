@@ -14,7 +14,7 @@
 
 <div class="card mb-3">
     <div class="card-body">
-        <form action="{{ route('articles.save') }}" method="POST" enctype="multipart/form-data" class="ajax-form">
+        <form action="{{ route('articles.save') }}" method="POST" enctype="multipart/form-data" >
             @csrf
 
             <div class="row">

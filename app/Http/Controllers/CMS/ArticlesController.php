@@ -57,6 +57,20 @@ class ArticlesController extends Controller
             'pdfs.*' => 'mimes:pdf|max:10240', // Maksimal 10MB untuk setiap file PDF
         ]);
 
+
+        $imagePath = null;
+        if ($request->hasFile('image')) {
+            $imagePath = $request->file('image')->store('images/articles', 'public');
+        }
+        // Menyimpan file PDF jika ada
+        if ($request->hasFile('pdfs')) {
+            $pdfPaths = [];
+            foreach ($request->file('pdfs') as $pdf) {
+                $pdfPaths[] = $pdf->store('public/pdfs');
+            }
+            $article->pdfs = json_encode($pdfPaths); // Menyimpan file PDF dalam format JSON array
+        }
+
         // Menyimpan data artikel baru
         $article = new Articles();
         $article->title = $validated['title'];
@@ -67,27 +81,13 @@ class ArticlesController extends Controller
         $article->subcategory_id = $validated['subcategory_id'];
         $article->is_active = $validated['is_active'];
         $article->is_limited = $validated['is_limited'];
-
-        // Menyimpan gambar jika ada
-        if ($request->hasFile('image')) {
-            $imagePath = $request->file('image')->store('public/images');
-            $article->image = $imagePath;
-        }
-
-        // Menyimpan file PDF jika ada
-        if ($request->hasFile('pdfs')) {
-            $pdfPaths = [];
-            foreach ($request->file('pdfs') as $pdf) {
-                $pdfPaths[] = $pdf->store('public/pdfs');
-            }
-            $article->pdfs = json_encode($pdfPaths); // Menyimpan file PDF dalam format JSON array
-        }
+        $article->image = $imagePath; // Menyimpan path gambar
 
         // Simpan artikel ke database
         $article->save();
 
         // Redirect ke halaman yang sesuai setelah berhasil menyimpan
-        return response()->json(['success' => true, 'message' => 'Article created successfully!']);
+        return redirect()->route('cms.articles.index')->with('success', 'Artikel berhasil ditambahkan.');
     }
 
 
