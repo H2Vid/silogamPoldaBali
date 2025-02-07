@@ -14,6 +14,14 @@ return [
         'route' => 'cms.subcategory.index', // Pastikan nama route sesuai
         'sort' => 20, // Atur posisi menu dalam urutan
     ],
+    'Article' => [
+        'title' => 'Article',
+        'icon' => 'layers', // Sesuaikan dengan ikon yang diinginkan (pakai Feather Icons)
+        'route' => 'cms.articles.index', // Pastikan nama route sesuai
+        'sort' => 40, // Atur posisi menu dalam urutan
+    ],
+
+
     // 'example' => [
     //     'sort' => 5,
     //     'title' => 'Example Menu',

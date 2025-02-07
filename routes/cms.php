@@ -6,6 +6,7 @@ use App\Http\Controllers\CMS\UserController;
 use App\Http\Controllers\CMS\UploadController;
 use App\Http\Controllers\CMS\ProfileController;
 use App\Http\Controllers\CMS\SettingController;
+use App\Http\Controllers\CMS\ArticlesController;
 use App\Http\Controllers\CMS\PermissionController;
 use App\Http\Controllers\CMS\SubcategoryController;
 
@@ -18,12 +19,20 @@ Route::group([
     'middleware' => 'cmsauth:cms'
 ], function() {
     Route::get('/', [HomeController::class, 'index'])->name('cms.index');
+    Route::get('/articles', [ArticlesController::class, 'index'])->name('cms.articles.index');
+    Route::get('/articles/create', [ArticlesController::class, 'crud'])->name('cms.articles.crud');
+    Route::post('/articles/save', [ArticlesController::class, 'save'])->name('articles.save');
+    Route::get('/articles/edit/{id}', [ArticlesController::class, 'edit'])->name('cms.articles.edit');
+    Route::post('/articles/delete/{id}', [ArticlesController::class, 'destroy'])->name('cms.articles.delete');
+
+
+
+
     Route::get('/subcategory', [SubcategoryController::class, 'index'])->name('cms.subcategory.index');
     Route::get('/subcategory/create', [SubcategoryController::class, 'crud'])->name('cms.subcategory.crud');
     Route::post('/subcategory/store', [SubcategoryController::class, 'store'])->name('subcategory.store');
     Route::get('/subcategory/edit/{id}', [SubcategoryController::class, 'edit'])->name('cms.subcategory.edit');
     Route::put('/subcategory/update/{id}', [SubcategoryController::class, 'update'])->name('cms.subcategory.update');
-
     Route::post('/subcategory/delete/{id}', [SubcategoryController::class, 'destroy'])->name('cms.subcategory.delete');
 
 

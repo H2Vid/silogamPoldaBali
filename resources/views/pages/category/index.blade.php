@@ -24,23 +24,12 @@ $per_page = 12;
 
 <div class="article my-5 mx-10 ">
 
-        <div class="w-full my-5">
-                @foreach (Category::getAll() as $category)
-                @if (request()->slug === $category->slug)
-                    <div class="w-full bg-green-400 flex justify-between text-white text-2xl  font-bold  uppercase">
-                    ARTIKEL TENTANG  {{ $category->title }}
-                        <p>Sub Kategori </p>
-                    </div>
-                    @endif
-        </div>
-
 
      <?php
        $article_data = Article::getAllBuilder(Auth::guard('cms')->check(), $current_category->id ?? null, $keyword)->orderBy('id', 'DESC')->paginate($per_page);
      ?>
     <div data-aos="fade-up-right" class=" grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-3 mx-4">
 
-@endforeach
     @foreach ($article_data as $article)
             <div  class="p-3 bg-white/5 h-[480px] backdrop-filter backdrop-blur-3xl border border-gray-900 rounded-lg shadow-sm ">
                 <a href="{{ route('post', ['slug' => $article->slug]) }}">
