@@ -57,22 +57,24 @@
 
                 <div class="col-md-5">
                     <div class="form-group">
-                        <label class="required mandatory">Category</label>
-                        <select name="category_id" class="form-control">
-                            <option value="">-- Select Category --</option>
-                            <option value="1">Category 1</option>
-                            <option value="2">Category 2</option>
-                            <option value="3">Category 3</option>
-                        </select>
+                    <label class="required mandatory">Category</label>
+                            <select name="category_id" class="form-control" id="category-select">
+                                <option value="">-- Select Category --</option>
+                                @foreach($categories as $category)
+                                    <option value="{{ $category->id }}">{{ $category->title }}</option>
+                                @endforeach
+                            </select>
                     </div>
 
                     <div class="form-group">
-                        <label class="required mandatory">Sub Category</label>
-                        <select name="subcategory_id" class="form-control">
+                    <label class="required mandatory">Sub Category</label>
+                        <select name="subcategory_id" class="form-control" id="subcategory-select">
                             <option value="">-- Select Sub Category --</option>
-                            <option value="1">Sub Category 1</option>
-                            <option value="2">Sub Category 2</option>
-                            <option value="3">Sub Category 3</option>
+                            @foreach($subcategories as $subcategory)
+                                <option value="{{ $subcategory->id }}" data-category-id="{{ $subcategory->category_id }}">
+                                    {{ $subcategory->title }}
+                                </option>
+                            @endforeach
                         </select>
                     </div>
                 </div>
@@ -120,6 +122,7 @@
 </div>
 
 <script>
+    // slug
 document.addEventListener("DOMContentLoaded", function() {
     let slugInput = document.getElementById("slug");
     let titleInput = document.getElementById("title");
@@ -161,6 +164,42 @@ document.addEventListener("DOMContentLoaded", function() {
         setSlugBtn.classList.add("d-none"); // Sembunyikan tombol "Set as Slug"
     });
 });
+
+// akhir slug
+
+// memilih subkategori berdasarkan id yang diselect di kategori
+document.addEventListener("DOMContentLoaded", function() {
+    const categorySelect = document.getElementById('category-select');
+    const subcategorySelect = document.getElementById('subcategory-select');
+
+    // Dapatkan semua subkategori dari data yang sudah ada di halaman
+    const subcategories = @json($subcategories); // Mengirim semua subkategori dari server ke JavaScript
+
+    // Listen for category selection change
+    categorySelect.addEventListener('change', function() {
+        const categoryId = categorySelect.value;
+
+        // Kosongkan subkategori sebelumnya
+        subcategorySelect.innerHTML = '<option value="">-- Select Sub Category --</option>';
+
+        // Jika ada kategori yang dipilih
+        if (categoryId) {
+            // Filter subkategori berdasarkan category_id
+            const filteredSubcategories = subcategories.filter(subcategory => subcategory.category_id == categoryId);
+
+            // Tampilkan subkategori yang sesuai dengan kategori
+            filteredSubcategories.forEach(subcategory => {
+                const option = document.createElement('option');
+                option.value = subcategory.id;
+                option.textContent = subcategory.title;
+
+                subcategorySelect.appendChild(option); // Tambahkan subkategori ke dropdown
+            });
+        }
+    });
+});
+
+
 </script>
 
 @stop

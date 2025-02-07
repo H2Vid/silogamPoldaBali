@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\CMS;
 use App\Models\Articles;
+use App\Models\Subcategory;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Modules\Category\Models\Category;
 
 class ArticlesController extends Controller
 {
@@ -27,13 +29,16 @@ class ArticlesController extends Controller
         // Kembalikan ke view dengan data artikel
         return view('cms.pages.articles.index', compact('articles'));
     }
-
     public function crud()
     {
+        // Ambil data kategori
+        $categories = Category::all(); // Mendapatkan semua kategori
+        $subcategories = Subcategory::all(); // Mendapatkan semua subkategori
 
-        return view('cms.pages.articles.crud');
-
+        // Kirim data kategori dan subkategori ke view
+        return view('cms.pages.articles.crud', compact('categories', 'subcategories'));
     }
+
 
     public function save(Request $request)
     {

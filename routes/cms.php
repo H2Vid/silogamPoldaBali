@@ -24,6 +24,8 @@ Route::group([
     Route::post('/articles/save', [ArticlesController::class, 'save'])->name('articles.save');
     Route::get('/articles/edit/{id}', [ArticlesController::class, 'edit'])->name('cms.articles.edit');
     Route::post('/articles/delete/{id}', [ArticlesController::class, 'destroy'])->name('cms.articles.delete');
+    Route::get('/subcategories/{categoryId}', [ArticlesController::class, 'getSubcategories']);
+
 
 
 
