@@ -46,7 +46,7 @@ class ArticlesController extends Controller
             'excerpt' => 'nullable|string|max:300',
             'description' => 'nullable|string',
             'category_id' => 'required|integer',
-            'subcategory_id' => 'required|integer',
+            'subcategory_id' => 'nullable|integer',
             'image' => 'nullable|image|mimes:jpeg,png,jpg|max:1024',
             'is_active' => 'required|boolean',
             'is_limited' => 'required|boolean',

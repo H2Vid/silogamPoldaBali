@@ -67,7 +67,7 @@
                     </div>
 
                     <div class="form-group">
-                    <label class="required mandatory">Sub Category</label>
+                    <label class="">Sub Category</label>
                         <select name="subcategory_id" class="form-control" id="subcategory-select">
                             <option value="">-- Select Sub Category --</option>
                             @foreach($subcategories as $subcategory)
