@@ -1,12 +1,13 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\Auth;
-use App\Http\Requests\CMS\AuthLoginRequest;
-use App\Modules\Article\Models\Article;
-use App\Modules\Category\Models\Category;
 use App\Models\User;
 use App\Libraries\CMS;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
+use App\Modules\Article\Models\Article;
+use App\Http\Controllers\DataController;
+use App\Modules\Category\Models\Category;
+use App\Http\Requests\CMS\AuthLoginRequest;
 
 /*
 |--------------------------------------------------------------------------
@@ -89,3 +90,4 @@ Route::get('/post/{slug}', function($slug) {
     ]);
 })->name('post');
 
+Route::get('/category/{slug}', [DataController::class, 'index'])->name('category');

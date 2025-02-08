@@ -1,7 +1,7 @@
 @extends ('layouts.master')
 
 @section ('content')
-<div class="blog-posts fbt-item-post-wrap" style="max-width:90%">
+<div class="blog-posts fbt-item-post-wrap w-[90%] mx-auto">
     <div class="blog-post fbt-item-post">
         <div class="slider-container">
             <div class="row align-items-center slider-width">
