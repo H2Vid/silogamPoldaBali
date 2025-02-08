@@ -54,16 +54,18 @@
                             $pdfs = json_decode($article->pdfs, true) ?? [];
                         }
                         ?>
-                        @if (count($pdfs) > 0)
-                        <div class="my-4">
-                            @foreach ($pdfs as $pdf)
-                            <a href="{{ Storage::url($pdf) }}" class="btn btn-sm w-100 btn-light border shadow" target="_blank">
-                                <span class="iconify" data-icon="line-md:download-loop"></span>
-                                <span class="filename">{{ filename($pdf) }}</span>
-                            </a>
-                            @endforeach
-                        </div>
-                        @endif
+                        @if (is_array($article->pdfs) && count($article->pdfs) > 0)
+                                <div class="my-4">
+                                    @foreach ($article->pdfs as $pdf)
+                                        <a href="{{ Storage::url($pdf) }}" class="btn btn-sm w-100 btn-light border shadow" target="_blank">
+                                            <span class="iconify" data-icon="line-md:download-loop"></span>
+                                            <span class="filename">{{ filename($pdf) }}</span>
+                                        </a>
+                                    @endforeach
+                                </div>
+                            @endif
+
+
                     </div>
                 </div>
             </div>

@@ -8,6 +8,7 @@ use App\Modules\Category\Models\Category;
 
 class DataController extends Controller
 {
+
     public function index($slug, Request $request)
     {
         $keyword = $request->keyword ?? '';  // Mengambil keyword dari URL query
@@ -29,6 +30,23 @@ class DataController extends Controller
             ->where('title', 'like', '%' . $keyword . '%')
             ->orderBy('id', 'DESC')
             ->paginate(12);  // 12 artikel per halaman
+
+        // Proses PDF
+        foreach ($articles as $article) {
+            $pdfs = [];
+
+            // Cek apakah ada data di kolom pdf
+            if ($article->pdf) {
+                // Jika ada satu file PDF, masukkan ke dalam array
+                $pdfs = [$article->pdf];
+            } elseif ($article->pdfs) {
+                // Jika tidak ada, cek kolom pdfs yang bisa memiliki banyak file
+                $pdfs = json_decode($article->pdfs, true) ?? [];
+            }
+
+            // Menambahkan data pdfs ke artikel
+            $article->pdfs = $pdfs;
+        }
 
         // Mengirim data ke view
         return view('pages.category.index', [
