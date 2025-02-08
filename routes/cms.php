@@ -23,13 +23,13 @@ Route::group([
     Route::get('/articles/create', [ArticlesController::class, 'crud'])->name('cms.articles.crud');
     Route::post('/articles/save', [ArticlesController::class, 'save'])->name('articles.save');
     Route::get('/articles/edit/{id}', [ArticlesController::class, 'edit'])->name('cms.articles.edit');
+    Route::put('/cms/articles/{id}', [ArticlesController::class, 'update'])->name('cms.articles.update');
+
     Route::post('/articles/delete/{id}', [ArticlesController::class, 'destroy'])->name('cms.articles.delete');
+
+
+
     Route::get('/subcategories/{categoryId}', [ArticlesController::class, 'getSubcategories']);
-
-
-
-
-
     Route::get('/subcategory', [SubcategoryController::class, 'index'])->name('cms.subcategory.index');
     Route::get('/subcategory/create', [SubcategoryController::class, 'crud'])->name('cms.subcategory.crud');
     Route::post('/subcategory/store', [SubcategoryController::class, 'store'])->name('subcategory.store');

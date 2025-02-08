@@ -4,7 +4,9 @@
 
 <div class="card mb-3">
     <div class="card-body">
-        <h1 class="float-left color-dark fw-500 fs-20 mb-0">Create New Article</h1>
+        <h1 class="float-left color-dark fw-500 fs-20 mb-0">
+            {{ isset($article) ? 'Edit Article' : 'Create New Article' }}
+        </h1>
         <div class="float-right">
             <a href="/cms/articles" class="btn btn-sm btn-secondary ajax-priority">Back</a>
         </div>
@@ -14,8 +16,11 @@
 
 <div class="card mb-3">
     <div class="card-body">
-        <form action="{{ route('articles.save') }}" method="POST" enctype="multipart/form-data" >
+        <form action="{{ isset($article) ? route('cms.articles.update', $article->id) : route('articles.save') }}" method="POST" enctype="multipart/form-data">
             @csrf
+            @if(isset($article))
+                @method('PUT')
+            @endif
 
             <div class="row">
                 <div class="col-md-12 mb-3">
@@ -23,7 +28,7 @@
                         <div class="input-group-append d-none d-md-flex">
                             <span class="input-group-text">https://birosdm-poldabali.com/article/</span>
                         </div>
-                        <input type="text" name="slug" class="form-control form-control-lg" id="slug" placeholder="your-slug-url" readonly>
+                        <input type="text" name="slug" class="form-control form-control-lg" id="slug" placeholder="your-slug-url" value="{{ old('slug', $article->slug ?? '') }}" readonly>
                         <div class="input-group-prepend">
                             <button type="button" class="btn btn-secondary" id="change-slug">Change</button>
                         </div>
@@ -37,41 +42,43 @@
                 <div class="col-md-12">
                     <div class="form-group">
                         <label class="required mandatory">Title</label>
-                        <input type="text" name="title" class="form-control" id="title" placeholder="Enter title">
+                        <input type="text" name="title" class="form-control" id="title" placeholder="Enter title" value="{{ old('title', $article->title ?? '') }}">
                     </div>
                 </div>
 
                 <div class="col-md-12">
                     <div class="form-group">
                         <label>Short Description</label>
-                        <textarea name="excerpt" class="form-control" rows="2" maxlength="300" placeholder="Enter short description"></textarea>
+                        <textarea name="excerpt" class="form-control" rows="2" maxlength="300" placeholder="Enter short description">{{ old('excerpt', $article->excerpt ?? '') }}</textarea>
                     </div>
                 </div>
 
                 <div class="col-md-12">
                     <div class="form-group">
                         <label>Description</label>
-                        <textarea name="description" class="form-control" rows="10" placeholder="Enter description"></textarea>
+                        <textarea name="description" class="form-control" rows="10" placeholder="Enter description">{{ old('description', $article->description ?? '') }}</textarea>
                     </div>
                 </div>
 
                 <div class="col-md-5">
                     <div class="form-group">
-                    <label class="required mandatory">Category</label>
-                            <select name="category_id" class="form-control" id="category-select">
-                                <option value="">-- Select Category --</option>
-                                @foreach($categories as $category)
-                                    <option value="{{ $category->id }}">{{ $category->title }}</option>
-                                @endforeach
-                            </select>
+                        <label class="required mandatory">Category</label>
+                        <select name="category_id" class="form-control" id="category-select">
+                            <option value="">-- Select Category --</option>
+                            @foreach($categories as $category)
+                                <option value="{{ $category->id }}" {{ old('category_id', $article->category_id ?? '') == $category->id ? 'selected' : '' }}>
+                                    {{ $category->title }}
+                                </option>
+                            @endforeach
+                        </select>
                     </div>
 
                     <div class="form-group">
-                    <label class="">Sub Category</label>
+                        <label>Sub Category</label>
                         <select name="subcategory_id" class="form-control" id="subcategory-select">
                             <option value="">-- Select Sub Category --</option>
                             @foreach($subcategories as $subcategory)
-                                <option value="{{ $subcategory->id }}" data-category-id="{{ $subcategory->category_id }}">
+                                <option value="{{ $subcategory->id }}" data-category-id="{{ $subcategory->category_id }}" {{ old('subcategory_id', $article->subcategory_id ?? '') == $subcategory->id ? 'selected' : '' }}>
                                     {{ $subcategory->title }}
                                 </option>
                             @endforeach
@@ -81,23 +88,20 @@
 
                 <div class="col-md-7">
                     <div class="form-group">
-                  <!-- Upload PDF (Default: hanya 1, disimpan ke `pdf`) -->
-                    <label for="pdf">Upload PDF:</label>
-                    <input type="file" name="pdf" accept="application/pdf" id="single-pdf"><br>
-
-                    <!-- Container untuk tambahan PDF (disimpan ke `pdfs`) -->
-                    <div id="pdf-container"></div>
-
-                    <button type="button" id="add-pdf-btn">Tambah PDF</button><br>
-
+                        <label for="pdf">Upload PDF:</label>
+                        <input type="file" name="pdf" accept="application/pdf" id="single-pdf"><br>
+                        <div id="pdf-container"></div>
+                        <button type="button" id="add-pdf-btn">Tambah PDF</button><br>
                     </div>
                 </div>
-
 
                 <div class="col-md-4">
                     <div class="form-group">
                         <label>Image</label>
                         <input type="file" name="image" class="form-control" accept="image/jpeg,image/png">
+                        @if(isset($article) && $article->image)
+                            <p>Current Image: <a href="{{ Storage::url($article->image) }}" target="_blank">View</a></p>
+                        @endif
                         <small>Please upload in JPG/PNG format with a maximum size of 1MB.</small>
                     </div>
                 </div>
@@ -106,8 +110,8 @@
                     <div class="form-group">
                         <label>Is Active</label>
                         <select name="is_active" class="form-control">
-                            <option value="1">Yes</option>
-                            <option value="0">No</option>
+                            <option value="1" {{ old('is_active', $article->is_active ?? 1) == 1 ? 'selected' : '' }}>Yes</option>
+                            <option value="0" {{ old('is_active', $article->is_active ?? 1) == 0 ? 'selected' : '' }}>No</option>
                         </select>
                     </div>
                 </div>
@@ -116,18 +120,17 @@
                     <div class="form-group">
                         <label>Is Limited</label>
                         <select name="is_limited" class="form-control">
-                            <option value="1">Yes</option>
-                            <option value="0">No</option>
+                            <option value="1" {{ old('is_limited', $article->is_limited ?? 0) == 1 ? 'selected' : '' }}>Yes</option>
+                            <option value="0" {{ old('is_limited', $article->is_limited ?? 0) == 0 ? 'selected' : '' }}>No</option>
                         </select>
                     </div>
                 </div>
             </div>
 
-            <button class="btn btn-primary">Save Data</button>
+            <button class="btn btn-primary">{{ isset($article) ? 'Update Data' : 'Save Data' }}</button>
         </form>
     </div>
 </div>
-
 <script>
     // slug
 document.addEventListener("DOMContentLoaded", function() {

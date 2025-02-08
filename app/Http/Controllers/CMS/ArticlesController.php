@@ -92,6 +92,65 @@ class ArticlesController extends Controller
         // Redirect ke halaman yang sesuai setelah berhasil menyimpan
         return redirect()->route('cms.articles.index')->with('success', 'Artikel berhasil ditambahkan.');
     }
+    public function edit($id)
+    {
+        $article = Articles::findOrFail($id);
+        $categories = Category::all();
+        $subcategories = Subcategory::all();
+
+        return view('cms.pages.articles.crud', compact('article', 'categories', 'subcategories'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        // Validasi data
+        $validated = $request->validate([
+            'title' => 'required|string|max:255',
+            'slug' => 'required|string|max:255|unique:articles,slug,' . $id,
+            'excerpt' => 'nullable|string|max:300',
+            'description' => 'nullable|string',
+            'category_id' => 'required|integer',
+            'subcategory_id' => 'nullable|integer',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg|max:1024',
+            'is_active' => 'required|boolean',
+            'is_limited' => 'required|boolean',
+            'pdf' => 'nullable|mimes:pdf|max:10240',
+            'pdfs' => 'nullable',
+            'pdfs.*' => 'mimes:pdf|max:10240',
+        ]);
+
+        $article = Articles::findOrFail($id);
+        $article->fill($validated);
+
+        // Update gambar jika ada
+        if ($request->hasFile('image')) {
+            $article->image = $request->file('image')->store('public/images');
+        }
+
+        // Update file PDF
+        $pdfPaths = [];
+        if ($request->hasFile('pdf')) {
+            $article->pdf = $request->file('pdf')->store('public/pdfs');
+        }
+        if ($request->hasFile('pdfs')) {
+            foreach ($request->file('pdfs') as $pdf) {
+                $pdfPaths[] = $pdf->store('public/pdfs');
+            }
+            $article->pdfs = json_encode($pdfPaths);
+        }
+
+        $article->save();
+
+        return redirect()->route('cms.articles.index')->with('success', 'Artikel berhasil diperbarui.');
+    }
+
+    public function destroy($id)
+    {
+        $article = Articles::findOrFail($id);
+        $article->delete();
+
+        return redirect()->route('cms.articles.index')->with('success', 'Artikel berhasil dihapus.');
+    }
 
 
 }
