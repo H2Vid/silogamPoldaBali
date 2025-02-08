@@ -22,9 +22,15 @@
                         <div class="item-post-meta mt-4">
                             <div class="post-meta text-white">
                                 @if (isset($article->category->title))
-                                <span class="post-author text-white"><a class="text-white" href="{{ route('category', ['slug' => $article->category->slug]) }}" target="_blank" title="fbtemplates">{{ $article->category->title }}</a></span>
+                                <span class="post-author text-white">
+                                    <a class="text-white" href="{{ route('category', ['slug' => $article->category->slug]) }}" target="_blank">
+                                        {{ $article->category->title }}
+                                    </a>
+                                </span>
                                 @endif
-                                <span class="post-date published text-white">{{ date('d M Y', strtotime($article->created_at)) }}</span>
+                                <span class="post-date published text-white">
+                                    {{ date('d M Y', strtotime($article->created_at)) }}
+                                </span>
                             </div>
                             <div class="post-meta mb-4">
                                 <span>
@@ -35,7 +41,6 @@
 
                             @include ('components.sharer', ['data' => $article])
                         </div>
-
                     </div>
                 </div>
             </div>
@@ -43,28 +48,44 @@
 
         <div class="row justify-content-center">
             <div class="col-xl-8">
-                <div class="text-white"  data-aos="flip-right">
+                <div class="text-white" data-aos="flip-right">
                     <div class="post-body post-content text-white">
                         <span class="text-white">
                             {!! $article->description !!}
                         </span>
-                        <?php
-                        $pdfs = [];
-                        if ($article->pdfs) {
-                            $pdfs = json_decode($article->pdfs, true) ?? [];
-                        }
-                        ?>
-                        @if (is_array($article->pdfs) && count($article->pdfs) > 0)
-                                <div class="my-4">
-                                    @foreach ($article->pdfs as $pdf)
-                                        <a href="{{ Storage::url($pdf) }}" class="btn btn-sm w-100 btn-light border shadow" target="_blank">
-                                            <span class="iconify" data-icon="line-md:download-loop"></span>
-                                            <span class="filename">{{ filename($pdf) }}</span>
-                                        </a>
-                                    @endforeach
-                                </div>
-                            @endif
 
+                        <!-- MENAMPILKAN FILE PDF -->
+                        @php
+    // Ambil PDF utama (jika ada)
+    $singlePdf = !empty($article->pdf) ? [$article->pdf] : [];
+
+    // Ambil daftar PDF dari JSON atau string
+    $pdfs = [];
+    if (!empty($article->pdfs)) {
+        $decodedPdfs = json_decode($article->pdfs, true);
+        $pdfs = is_array($decodedPdfs) ? $decodedPdfs : explode(',', str_replace(['[', ']', '"'], '', $article->pdfs));
+    }
+
+    // Gabungkan semua PDF dalam satu array
+    $allPdfs = array_merge($singlePdf, array_map('trim', $pdfs));
+@endphp
+
+@if(count($allPdfs) > 0)
+    <div class="my-4 px-2 bg-white">
+        <ul class="text-black">
+            @foreach ($allPdfs as $pdf)
+                <li>
+                    <a href="{{ Storage::url($pdf) }}" target="_blank" class="flex items-center justify-start">
+                        <span class="iconify" data-icon="line-md:download-loop"></span>
+                        <span class="filename">{{ basename($pdf) }}</span>
+                    </a>
+                </li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+
+                            <!-- END MENAMPILKAN FILE PDF -->
 
                     </div>
                 </div>
@@ -74,19 +95,22 @@
                 <div class="my-4 text-white">
                     @foreach ($other_articles as $other_article)
                     <div class="flex justify-between items-center w-full space-x-4 space-y-4">
-                        <div  class="w-auto">
+                        <div class="w-auto">
                             <a href="{{ route('post', ['slug' => $other_article->slug]) }}">
                                 <img alt="{{ $other_article->title }}" class="w-16 h-16 lazyloaded"
-                                src="{{ Storage::url($other_article->image) }}"
-                             >
+                                    src="{{ Storage::url($other_article->image) }}">
                             </a>
                         </div>
                         <div class="w-full">
                             <a href="{{ route('post', ['slug' => $other_article->slug]) }}" class="text-dark">
-                                <h6 class="mb-0 text-white ">{{ $other_article->title }}</h6>
+                                <h6 class="mb-0 text-white">{{ $other_article->title }}</h6>
                             </a>
                             <div>
-                                <small class="text-white"><a href="{{ route('category', ['slug' => $other_article->category->slug]) }}" target="_blank" title="fbtemplates">{{ $other_article->category->title }}</a></small>
+                                <small class="text-white">
+                                    <a href="{{ route('category', ['slug' => $other_article->category->slug]) }}" target="_blank">
+                                        {{ $other_article->category->title }}
+                                    </a>
+                                </small>
                             </div>
                             <div>
                                 <small class="text-white">{{ date('d M Y', strtotime($other_article->created_at)) }}</small>
@@ -94,7 +118,9 @@
                         </div>
                     </div>
                     @endforeach
+
                 </div>
+
             </div>
         </div>
     </div>

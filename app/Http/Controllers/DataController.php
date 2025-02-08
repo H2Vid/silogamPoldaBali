@@ -33,20 +33,27 @@ class DataController extends Controller
 
         // Proses PDF
         foreach ($articles as $article) {
+
             $pdfs = [];
 
-            // Cek apakah ada data di kolom pdf
-            if ($article->pdf) {
-                // Jika ada satu file PDF, masukkan ke dalam array
-                $pdfs = [$article->pdf];
-            } elseif ($article->pdfs) {
-                // Jika tidak ada, cek kolom pdfs yang bisa memiliki banyak file
-                $pdfs = json_decode($article->pdfs, true) ?? [];
+            if (!empty($article->pdfs) && is_string($article->pdfs)) {
+                // Hapus karakter escape jika ada
+                $article->pdfs = str_replace('\\/', '/', $article->pdfs);
+
+                // Decode JSON
+                $decodedPdfs = json_decode($article->pdfs, true);
+
+                // Jika decoding berhasil, gunakan hasilnya
+                $pdfs = is_array($decodedPdfs) ? $decodedPdfs : [];
             }
 
-            // Menambahkan data pdfs ke artikel
-            $article->pdfs = $pdfs;
+            if (!empty($article->pdf)) {
+                $pdfs[] = $article->pdf;
+            }
+
+            $article->pdfs = $pdfs; // Pastikan array
         }
+
 
         // Mengirim data ke view
         return view('pages.category.index', [
