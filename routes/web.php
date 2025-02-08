@@ -91,3 +91,4 @@ Route::get('/post/{slug}', function($slug) {
 })->name('post');
 
 Route::get('/category/{slug}', [DataController::class, 'index'])->name('category');
+Route::get('subcategory/{slug}', [DataController::class, 'showSubcategory'])->name('subcategory.show');

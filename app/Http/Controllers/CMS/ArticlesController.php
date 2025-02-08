@@ -37,8 +37,7 @@ class ArticlesController extends Controller
 
         // Kirim data kategori dan subkategori ke view
         return view('cms.pages.articles.crud', compact('categories', 'subcategories'));
-    }
-    public function save(Request $request)
+    }public function save(Request $request)
     {
         // Validasi data
         $validated = $request->validate([

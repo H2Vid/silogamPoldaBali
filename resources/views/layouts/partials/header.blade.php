@@ -31,11 +31,16 @@
             @if ($subcategories->isNotEmpty())
               <div class="dropdown hidden absolute left-0 mt-2 w-48 bg-white text-black rounded-sm shadow-lg z-10"
                    onmouseleave="hideDropdown(this)">
-                @foreach ($subcategories as $subcategory)
-                  <a href="#" class="block py-2 px-4 hover:bg-blue-500 hover:text-white rounded-sm">
-                    {{ $subcategory->title }}
-                  </a>
-                @endforeach
+                   @foreach ($subcategories as $subcategory)
+                      @php
+                        // Mengubah title menjadi slug
+                        $slug = strtolower(str_replace(' ', '-', $subcategory->title));
+                      @endphp
+                      <a href="{{ url('subcategory/'.$slug) }}" class="block py-2 px-4 hover:bg-blue-500 hover:text-white rounded-sm">
+                        {{ $subcategory->title }}
+                      </a>
+                    @endforeach
+
               </div>
             @endif
           </div>
@@ -82,13 +87,16 @@
             </div>
             @if ($subcategories->isNotEmpty())
               <ul class="mobile-dropdown hidden pl-4 bg-gray-200 rounded-md mt-1">
-                @foreach ($subcategories as $subcategory)
-                  <li>
-                    <a href="#" class="block py-2 px-4 text-gray-900 hover:bg-blue-500 hover:text-white rounded-sm">
-                      {{ $subcategory->title }}
-                    </a>
-                  </li>
+              @foreach ($subcategories as $subcategory)
+                  @php
+                    // Mengubah title menjadi slug
+                    $slug = strtolower(str_replace(' ', '-', $subcategory->title));
+                  @endphp
+                  <a href="{{ url('subcategory/'.$slug) }}" class="block py-2 px-4 hover:bg-blue-500 hover:text-white rounded-sm">
+                    {{ $subcategory->title }}
+                  </a>
                 @endforeach
+
               </ul>
             @endif
           </li>
@@ -124,5 +132,5 @@
   function toggleMobileDropdown(button) {
     let dropdown = button.parentElement.nextElementSibling;
     dropdown.classList.toggle("hidden");
-  }
+  }
 </script>
