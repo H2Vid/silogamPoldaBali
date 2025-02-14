@@ -48,9 +48,9 @@
       </div>
 
       <!-- Logo Kanan -->
-      <div class="hidden md:flex md:-mt-7 items-center">
-        <img alt="Logo" src="{{ asset('assets/images/contactUs.png') }}" style="width:140px; height: 160px;">
-      </div>
+      <a href="https://linktr.ee/birosdmpoldabali" class="hidden md:flex md:-mt-7 items-center">
+        <img alt="Logo" src="{{ asset('assets/images/contactUS.png') }}" style="width:140px; height: 160px;">
+      </a>
 
       <!-- Tombol Hamburger (Mobile) -->
       <button id="menu-toggle" class="md:hidden p-2 w-10 h-10 text-gray-500 rounded-lg hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200">
@@ -132,5 +132,5 @@
   function toggleMobileDropdown(button) {
     let dropdown = button.parentElement.nextElementSibling;
     dropdown.classList.toggle("hidden");
-  }
+}
 </script>
