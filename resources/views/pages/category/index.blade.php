@@ -1,31 +1,42 @@
 @extends('layouts.master')
 
 @section('content')
-
 <section class="section-profile py-5 px-10 md:p-10">
-<div class="h-auto bg-cover rounded-xl w-full ">
-            <div class="h-full w-full text-white" data-aos="fade-down" data-aos-delay="1000">
-                <div class="flex flex-col md:flex-row w-full h-full space-y-10 md:space-y-0 items-center">
-                    <div class="h-full w-full md:w-[30%] flex justify-center items-center">
-                        <div class="bg-red-700 h-[400px]  w-[300px] border-[10px] border-white rounded-t-full flex items-center justify-center p-4">
-                        <img src="{{ asset('assets/images/kepalabirosdm.png') }}" alt="Kapolda Bali">
-                        </div>
-                    </div>
-
-
-                        <div class="h-full md:w-[70%] space-y-4">
-                            <h1 class="text-white h-32 text-sm px-5 md:h-20 pt-2 rounded-full border-[10px] border-white text-center lg:text-xl flex items-center justify-center 2xl:text-3xl bg-red-600">KOMBES POL TRI BISONO SOEMIHARSO, S.I.K., M.H.KARO SDM POLDA BALI</h1>
-
-                            <h1 class="text-black h-32 text-sm text-center lg:text-xl 2xl:text-3xl px-5 md:h-20 py-2 flex items-center justify-center bg-white  rounded-full border-[10px] border-red-700">KEPALA BIRO SUMBER DAYA MANUSIA POLDA BALI</h1>
-
-                            <div class="flex flex-col justify-center items-center space-y-8 text-center">
-                                <p class="text-white font-black text-2xl md:text-[36px] line">SELAMAT DATANG DI WEBSITE RESMI</p>
-                                <p class="text-white font-black text-2xl md:text-[36px]">BIRO SUMBER DAYA MANUSIA DAERAH BALI</p>
-                            </div>
-                        </div>
+    <!-- Menampilkan bagianATAS hanya jika kategori atau subkategori aktif -->
+    @if (request()->is('category/*') || request()->is('subcategory/*')) <!-- Menampilkan bagian atas untuk kategori/subkategori -->
+        <div class="bagianATAS bg-[url('/public/assets/images/LOGO_SDM.png')] bg-no-repeat bg-center mt-10 w-full h-[400px] py-10">
+            <div class="bg-white/5 border backdrop-filter backdrop-blur-lg w-full h-full rounded-3xl drop-shadow-2xl shadow-2xl flex flex-col justify-center items-center space-y-6">
+                <div class="flex flex-col justify-center items-center space-y-8">
+                    <p class="text-white font-black text-2xl md:text-[40px]">SELAMAT DATANG DI WEBSITE RESMI</p>
+                    <p class="text-white font-black text-2xl md:text-[40px]">BIRO SUMBER DAYA MANUSIA DAERAH BALI</p>
+                </div>
+                <div class="flex justify-center items-center space-x-6">
+                    <p class="text-white font-black text-[16px] border p-2 rounded-3xl drop-shadow-2xl">Melindungi</p>
+                    <p class="text-white font-black text-[16px] border p-2 rounded-3xl drop-shadow-2xl">Mengayomi</p>
+                    <p class="text-white font-black text-[16px] border p-2 rounded-3xl drop-shadow-2xl">Melayani</p>
                 </div>
             </div>
-</div>
+        </div>
+    @endif
+
+    <!-- Menampilkan bagianBAWAH jika kategori aktif -->
+    @if (request()->is('category/*'))
+        <div class="bagianBAWAH h-auto bg-cover rounded-xl w-full mt-20">
+            <div class="h-full w-full text-white" data-aos="fade-down">
+                <div class="flex flex-col md:flex-row w-full h-full space-y-10 md:space-y-0 items-center">
+                    <div class="h-full w-full md:w-[30%] flex justify-center items-center">
+                        <div class="bg-red-700 h-[400px] w-[300px] border-[10px] border-white rounded-t-full flex items-center justify-center p-4">
+                            <img src="{{ asset('assets/images/kepalabirosdm.png') }}" alt="Kapolda Bali">
+                        </div>
+                    </div>
+                    <div class="h-full md:w-[70%] space-y-4">
+                        <h1 class="text-white h-32 text-sm px-5 md:h-20 pt-2 rounded-full border-[10px] border-white text-center lg:text-xl flex items-center justify-center 2xl:text-3xl bg-red-600">KOMBES POL TRI BISONO SOEMIHARSO, S.I.K., M.H.KARO SDM POLDA BALI</h1>
+                        <h1 class="text-black h-32 text-sm text-center lg:text-xl 2xl:text-3xl px-5 md:h-20 py-2 flex items-center justify-center bg-white rounded-full border-[10px] border-red-700">KEPALA BIRO SUMBER DAYA MANUSIA POLDA BALI</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    @endif
 </section>
 
 <div class="article my-5 mx-10">

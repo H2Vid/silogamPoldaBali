@@ -42,7 +42,7 @@
 <section class="section-profile py-5 px-10 md:p-10">
 <div class="h-auto bg-cover rounded-xl w-full ">
             <div class="h-full w-full text-white" data-aos="fade-down" data-aos-delay="1000">
-                <h1 class="text-3xl lg:text-4xl font-bold text-white mb-10">PROFILE KEPALA BIRO SDM</h1>
+                <h1 class="text-3xl lg:text-4xl font-bold text-white mb-10 underline-offset-[20px] underline">PROFILE KEPALA BIRO SDM</h1>
                 <div class="flex flex-col md:flex-row w-full h-full space-y-10 md:space-y-0 items-center">
                     <div class="h-full w-full md:w-[30%] flex justify-center items-center">
                         <div class="bg-red-700 h-[400px]  w-[300px] border-[10px] border-white rounded-t-full flex items-center justify-center p-4">
@@ -64,15 +64,15 @@
 
 <!-- slider -->
 
-<div id="default-carousel" class="relative w-[90%] mx-auto my-32" data-carousel="static">
-    <h1 class="text-3xl lg:text-4xl font-bold text-white mb-10">PROFILE PERSONEL ANGGOTA BIRO SDM</h1>
+<div id="default-carousel" class="relative w-[90%] mx-auto my-32" data-carousel="slide"  data-carousel-interval="7000">
+    <h1 class="text-3xl lg:text-4xl font-bold text-white mb-10 underline-offset-[20px] underline">PROFILE KEPALA BAGIAN BIRO SDM</h1>
     <!-- Carousel wrapper -->
     <div class="relative h-[900px] overflow-hidden rounded-lg md:h-[420px]">
         <!-- Loop through each slider data -->
         @foreach($sliders as $index => $slider)
             <!-- Item -->
-            <div class="hidden duration-700 ease-in-out -z-10" data-carousel-item @class(['active' => $index === 0])>
-            <div class="md:px-20 flex flex-col md:flex-row w-full h-full space-y-10 space-x-0 md:space-x-10 md:space-y-0  items-center">
+            <div  class="hidden duration-790 ease-in-out -z-20" data-carousel-item @class(['active' => $index === 0])>
+            <div class="md:px-20 flex flex-col md:flex-row w-full h-full space-y-10 space-x-0 md:space-x-10 md:space-y-0  items-center" >
                     <div class="h-full w-full md:w-[30%] flex  justify-center items-center">
                         <div class="bg-red-700 h-[400px]  w-[300px] border-[10px] border-white rounded-t-full flex items-center justify-center p-4">
                         <img src="{{ asset('assets/images/'.$slider['image']) }}" alt="Kapolda Bali">
