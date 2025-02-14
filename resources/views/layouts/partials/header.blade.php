@@ -6,7 +6,7 @@
       </a>
 
       <!-- Menu Navbar (Desktop) -->
-      <div class="hidden h-10 md:flex space-x-4">
+      <div class="hidden h-10 lg:flex space-x-4">
         <a href="{{ url('/') }}" class=" flex items-center {{ request()->is('/') ? 'bg-blue-500 text-white' : 'text-white hover:bg-blue-500' }} block py-2 px-3 rounded-sm">
           Beranda
         </a>
@@ -53,7 +53,7 @@
       </a>
 
       <!-- Tombol Hamburger (Mobile) -->
-      <button id="menu-toggle" class="md:hidden p-2 w-10 h-10 text-gray-500 rounded-lg hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200">
+      <button id="menu-toggle" class="lg:hidden p-2 w-10 h-10 text-gray-500 rounded-lg hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200">
         <span class="sr-only">Open main menu</span>
         <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
           <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
@@ -62,7 +62,7 @@
     </div>
 
     <!-- Menu Navbar (Mobile) -->
-    <div class="hidden w-full md:hidden" id="mobile-menu">
+    <div class="hidden w-full lg:hidden" id="mobile-menu">
       <ul class="flex flex-col font-medium p-4 border border-gray-100 rounded-lg bg-gray-50 dark:bg-gray-800">
         <li>
           <a href="{{ url('/') }}" class="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 dark:text-white">
