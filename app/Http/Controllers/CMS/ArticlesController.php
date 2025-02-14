@@ -37,7 +37,8 @@ class ArticlesController extends Controller
 
         // Kirim data kategori dan subkategori ke view
         return view('cms.pages.articles.crud', compact('categories', 'subcategories'));
-    }public function save(Request $request)
+    }
+    public function save(Request $request)
     {
         // Validasi data
         $validated = $request->validate([
@@ -52,7 +53,7 @@ class ArticlesController extends Controller
             'is_limited' => 'required|boolean',
             'pdf' => 'nullable|mimes:pdf|max:10240', // Untuk 1 file PDF
             'pdfs' => 'nullable', // Untuk banyak file PDF
-            'pdfs.*' => 'mimes:pdf|max:10240', // Maksimal 10MB per file PDF
+            'pdfs.*' => 'nullable|mimes:pdf|max:10240', // Maksimal 10MB per file PDF
         ]);
 
         $article = new Articles();
