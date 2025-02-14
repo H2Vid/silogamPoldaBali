@@ -21,7 +21,37 @@ use App\Http\Requests\CMS\AuthLoginRequest;
 */
 
 Route::get('/', function () {
-    return view('pages.home.index');
+
+        $sliders = [
+            [
+                'image' => 'kepalabirosdm.png',
+                'title' => 'Kombes Pol Tri Bisono Soemiharso',
+                'subtitle' => 'Kepala Biro SDM Polda Bali',
+            ],
+            [
+                'image' => 'personel (1).png',
+                'title' => 'Personel (1)',
+                'subtitle' => 'ANGGOTA BIRO SDM POLDA BALI',
+            ],
+            [
+                'image' => 'personel (2).png',
+                'title' => 'Personel (1)',
+                'subtitle' => 'ANGGOTA BIRO SDM POLDA BALI',
+            ],
+            [
+                'image' => 'personel (3).png',
+                'title' => 'Personel (1)',
+                'subtitle' => 'ANGGOTA BIRO SDM POLDA BALI',
+            ],
+            [
+                'image' => 'personel (4).png',
+                'title' => 'Personel (1)',
+                'subtitle' => 'ANGGOTA BIRO SDM POLDA BALI',
+            ],
+        ];
+
+        return view('pages.home.index', compact('sliders')); // Mengirimkan data ke view
+
 });
 
 Route::post('/login', function(AuthLoginRequest $request) {
@@ -91,4 +121,5 @@ Route::get('/post/{slug}', function($slug) {
 })->name('post');
 
 Route::get('/category/{slug}', [DataController::class, 'index'])->name('category');
+
 Route::get('subcategory/{slug}', [DataController::class, 'showSubcategory'])->name('subcategory.show');
