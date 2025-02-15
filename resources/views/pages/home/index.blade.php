@@ -71,7 +71,7 @@
         <!-- Loop through each slider data -->
         @foreach($sliders as $index => $slider)
             <!-- Item -->
-            <div  class="hidden duration-790 ease-in-out -z-20" data-carousel-item @class(['active' => $index === 0])>
+            <div  class="hidden duration-790 ease-in-out -z-40" data-carousel-item @class(['active' => $index === 0])>
             <div class="md:px-20 flex flex-col md:flex-row w-full h-full space-y-10 space-x-0 md:space-x-10 md:space-y-0  items-center" >
                     <div class="h-full w-full md:w-[30%] flex  justify-center items-center">
                         <div class="bg-red-700 h-[400px]  w-[300px] border-[10px] border-white rounded-t-full flex items-center justify-center p-4">
@@ -106,6 +106,10 @@
             <span class="sr-only">Next</span>
         </span>
     </button>
+</div>
+<div class="px-10">
+<img src="{{ asset('assets/images/SPANDUK ZI FIX.png') }}" alt="Spanduk Bali">
+
 </div>
 
 @stop
