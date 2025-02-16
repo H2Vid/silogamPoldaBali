@@ -30,27 +30,43 @@ Route::get('/', function () {
             ],
             [
                 'image' => 'personel (1).png',
-                'title' => 'Personel (1)',
-                'subtitle' => 'ANGGOTA BIRO SDM POLDA BALI',
+                'title' => 'AKBP MICHAEL R. RISAKOTTA, S.H., S.I.K.',
+                'subtitle' => 'KABAGBINKAR RO SDM POLDA BALI',
             ],
             [
                 'image' => 'personel (2).png',
-                'title' => 'Personel (1)',
-                'subtitle' => 'ANGGOTA BIRO SDM POLDA BALI',
+                'title' => 'AKBP RICKO ABDILLAH ANDANG TARUNA, S.H., S.I.K., M.H., M.M.',
+                'subtitle' => 'KABAGDALPERS RO SDM POLDA BALI',
             ],
             [
                 'image' => 'personel (3).png',
-                'title' => 'Personel (1)',
-                'subtitle' => 'ANGGOTA BIRO SDM POLDA BALI',
+                'title' => 'AKBP I NYOMAN WIBAWA, S.Psi., M.Psi.',
+                'subtitle' => 'PS. KABAGPSI RO SDM POLDA BALI',
             ],
             [
                 'image' => 'personel (4).png',
-                'title' => 'Personel (1)',
-                'subtitle' => 'ANGGOTA BIRO SDM POLDA BALI',
+                'title' => 'KOMPOL ANAK AGUNG GEDE ARKA, S.H., M.H.',
+                'subtitle' => 'PLT. KABAGWATPERS RO SDM POLDA BALI',
             ],
         ];
 
-        return view('pages.home.index', compact('sliders')); // Mengirimkan data ke view
+        $banners = [
+
+            [
+                'image' => 'SPANDUK ZI FIX.png',
+            ],
+            [
+                'image' => 'SPANDUK ZI FIX.png',
+            ],
+            [
+                'image' => 'SPANDUK ZI FIX.png',
+            ],
+            [
+                'image' => 'SPANDUK ZI FIX.png',
+            ],
+        ];
+
+        return view('pages.home.index', compact('sliders','banners')); // Mengirimkan data ke view
 
 });
 
