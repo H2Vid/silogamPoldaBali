@@ -71,10 +71,10 @@
         <!-- Loop through each slider data -->
         @foreach($sliders as $index => $slider)
             <!-- Item -->
-            <div  class="hidden duration-790 ease-in-out -z-40" data-carousel-item @class(['active' => $index === 0])>
+            <div  class="hidden duration-790 ease-in-out -z-20" data-carousel-item @class(['active' => $index === 0])>
             <div class="md:px-20 flex flex-col md:flex-row w-full h-full space-y-10 space-x-0 md:space-x-10 md:space-y-0  items-center" >
                     <div class="h-full w-full md:w-[30%] flex  justify-center items-center">
-                        <div class="bg-red-700 h-[400px]  w-[300px] border-[10px] border-white rounded-t-full flex items-center justify-center p-4">
+                        <div class="bg-red-700 h-[400px] w-[300px] border-[10px] border-white rounded-t-full flex items-center justify-center p-4">
                         <img src="{{ asset('assets/images/'.$slider['image']) }}" alt="Kapolda Bali">
                         </div>
                     </div>
@@ -86,9 +86,6 @@
             </div>
         @endforeach
     </div>
-
-    <!-- Slider indicators -->
-
     <!-- Slider controls -->
     <button type="button" class="absolute top-0 start-0 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-prev>
         <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
@@ -107,9 +104,40 @@
         </span>
     </button>
 </div>
+<!-- akhir sliders -->
 <div class="px-10">
-<img src="{{ asset('assets/images/SPANDUK ZI FIX.png') }}" alt="Spanduk Bali">
 
+<!-- Banner -->
+
+<div id="default-carousel" class="relative" data-carousel="slide"  data-carousel-interval="7000">
+    <!-- Carousel wrapper -->
+    <div class="relative h-[900px] overflow-hidden rounded-lg md:h-[500px]">
+        <!-- Loop through each banners data -->
+        @foreach($banners as $index => $banner)
+            <!-- Item -->
+            <div class="bg-red-500 hidden duration-790 ease-in-out -z-20" data-carousel-item @class(['active' => $index === 0])>
+                        <img class="w-full h-full" src="{{ asset('assets/images/'.$banner['image']) }}" alt="Banner">
+            </div>
+        @endforeach
+    </div>
+    <!-- banner controls -->
+    <button type="button" class="absolute top-0 start-0 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-prev>
+        <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-red-500 group-hover:bg-yellow-500/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white group-focus:outline-none">
+            <svg class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 1 1 5l4 4"/>
+            </svg>
+            <span class="sr-only">Previous</span>
+        </span>
+    </button>
+    <button type="button" class="absolute top-0 end-0 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-next>
+        <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-red-500 group-hover:bg-yellow-500/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white group-focus:outline-none">
+            <svg class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
+            </svg>
+            <span class="sr-only">Next</span>
+        </span>
+    </button>
 </div>
-
+<!-- akhir banners -->
+</div>
 @stop
