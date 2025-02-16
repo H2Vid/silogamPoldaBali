@@ -9,11 +9,11 @@
 
 <div id="default-carousel" class="relative" data-carousel="slide"  data-carousel-interval="7000">
     <!-- Carousel wrapper -->
-    <div class="relative h-[900px] -z-10 overflow-hidden rounded-lg md:h-[500px]">
+    <div class="relative h-[900px] z-0 overflow-hidden rounded-lg md:h-[500px]">
         <!-- Loop through each banners data -->
         @foreach($banners as $index => $banner)
             <!-- Item -->
-            <div class="bg-red-500 hidden duration-790 ease-in-out -z-40" data-carousel-item @class(['active' => $index === 0])>
+            <div class="bg-red-500 hidden duration-790 ease-in-out z-0" data-carousel-item @class(['active' => $index === 0])>
                         <img class="w-full h-full" src="{{ asset('assets/images/'.$banner['image']) }}" alt="Banner">
             </div>
         @endforeach

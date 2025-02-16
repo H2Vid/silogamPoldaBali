@@ -1,4 +1,4 @@
-<nav class="sticky bg-cover bg-center h-0 md:h-24 bg-no-repeat top-0 z-10 py-4" style="background-image: url('{{ asset('assets/images/bgnav.png') }}');">
+<nav class="sticky bg-cover bg-center h-0 md:h-24 bg-no-repeat top-0 z-20 py-4" style="background-image: url('{{ asset('assets/images/bgnav.png') }}');">
   <div class="mx-auto px-4 ">
     <div class="w-full flex items-top justify-between">
       <a class="flex items-top" href="{{ url('/') }}">
