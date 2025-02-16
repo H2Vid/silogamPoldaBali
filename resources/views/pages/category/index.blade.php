@@ -1,31 +1,70 @@
 @extends('layouts.master')
 
 @section('content')
-<section class="">
+<section class="mt-10">
     <!-- Menampilkan bagianATAS hanya jika kategori atau subkategori aktif -->
     @if (request()->is('category/*') || request()->is('subcategory/*')) <!-- Menampilkan bagian atas untuk kategori/subkategori -->
-        <div class="">
-            <img src="{{ asset('assets/images/SPANDUK ZI FIX.png') }}" alt="Spanduk Bali">
-        </div>
+
+<!-- Banner -->
+
+<div id="default-carousel" class="relative" data-carousel="slide"  data-carousel-interval="7000">
+    <!-- Carousel wrapper -->
+    <div class="relative h-[900px] -z-10 overflow-hidden rounded-lg md:h-[500px]">
+        <!-- Loop through each banners data -->
+        @foreach($banners as $index => $banner)
+            <!-- Item -->
+            <div class="bg-red-500 hidden duration-790 ease-in-out -z-40" data-carousel-item @class(['active' => $index === 0])>
+                        <img class="w-full h-full" src="{{ asset('assets/images/'.$banner['image']) }}" alt="Banner">
+            </div>
+        @endforeach
+    </div>
+    <!-- banner controls -->
+    <button type="button" class="absolute top-0 start-0 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-prev>
+        <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-red-500 group-hover:bg-yellow-500/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white group-focus:outline-none">
+            <svg class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 1 1 5l4 4"/>
+            </svg>
+            <span class="sr-only">Previous</span>
+        </span>
+    </button>
+    <button type="button" class="absolute top-0 end-0 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-next>
+        <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-red-500 group-hover:bg-yellow-500/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white group-focus:outline-none">
+            <svg class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
+            </svg>
+            <span class="sr-only">Next</span>
+        </span>
+    </button>
+</div>
+<!-- akhir banners -->
     @endif
 
     <!-- Menampilkan bagianBAWAH jika kategori aktif -->
     @if (request()->is('category/*'))
-        <div class="h-auto bg-cover rounded-xl w-full mt-20">
-            <div class="h-full w-full text-white" data-aos="fade-down">
-                <div class="flex flex-col md:flex-row w-full h-full space-y-10 md:space-y-0 items-center">
-                    <div class="h-full w-full md:w-[30%] flex justify-center items-center">
-                        <div class="bg-red-700 h-[400px] w-[300px] border-[10px] border-white rounded-t-full flex items-center justify-center p-4">
-                            <img src="{{ asset('assets/images/kepalabirosdm.png') }}" alt="Kapolda Bali">
-                        </div>
+    @php
+        // Cek apakah kategori aktif ada dalam dataKabag
+        $activeKabag = collect($dataKabag)->firstWhere('slug', $slug);
+    @endphp
+    <div class="bagianBAWAH h-auto bg-cover rounded-xl w-full mt-20">
+        <div class="h-full w-full text-white" data-aos="fade-down">
+            <div class="flex flex-col md:flex-row w-full h-full space-y-10 md:space-y-0 items-center">
+                <div class="h-full w-full md:w-[30%] flex justify-center items-center">
+                    <div class="bg-red-700 h-[400px] w-[300px] border-[10px] border-white rounded-t-full flex items-center justify-center p-4">
+                        <img src="{{ asset('assets/images/' . ($activeKabag ? $activeKabag['image'] : 'kepalabirosdm.png')) }}" alt="Kapolda Bali">
                     </div>
-                    <div class="h-full md:w-[70%] space-y-4">
-                        <h1 class="text-white h-32 text-sm px-5 md:h-20 pt-2 rounded-full border-[10px] border-white text-center lg:text-xl flex items-center justify-center 2xl:text-3xl bg-red-600">KOMBES POL TRI BISONO SOEMIHARSO, S.I.K., M.H.KARO SDM POLDA BALI</h1>
-                        <h1 class="text-black h-32 text-sm text-center lg:text-xl 2xl:text-3xl px-5 md:h-20 py-2 flex items-center justify-center bg-white rounded-full border-[10px] border-red-700">KEPALA BIRO SUMBER DAYA MANUSIA POLDA BALI</h1>
-                    </div>
+                </div>
+                <div class="h-full md:w-[70%] space-y-4 px-5">
+                    <h1 class="text-white h-32 text-sm px-5 md:h-20 pt-2 rounded-full border-[10px] border-white text-center lg:text-xl flex items-center justify-center 2xl:text-3xl bg-red-600">
+                    {{ $activeKabag ? $activeKabag['title'] : 'KOMBES POL TRI BISONO SOEMIHARSO, S.I.K., M.H. KARO SDM POLDA BALI' }}
+
+                    </h1>
+                    <h1 class="text-black h-32 text-sm text-center lg:text-xl 2xl:text-3xl px-5 md:h-20 py-2 flex items-center justify-center bg-white rounded-full border-[10px] border-red-700">
+                    {{ $activeKabag ? $activeKabag['subtitle'] : 'KEPALA BIRO SUMBER DAYA MANUSIA POLDA BALI' }}
+                    </h1>
                 </div>
             </div>
         </div>
+    </div>
     @endif
 </section>
 
