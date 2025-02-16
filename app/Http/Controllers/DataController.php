@@ -56,13 +56,66 @@ class DataController extends Controller
         }
 
 
+        $banners = [
+
+            [
+                'image' => 'SPANDUK ZI FIX.png',
+            ],
+            [
+                'image' => 'SPANDUK ZI FIX.png',
+            ],
+            [
+                'image' => 'SPANDUK ZI FIX.png',
+            ],
+            [
+                'image' => 'SPANDUK ZI FIX.png',
+            ],
+        ];
+
+        $dataKabag = [
+
+            [
+                'image' => 'kepalabirosdm.png',
+                'title' => 'Kombes Pol Tri Bisono Soemiharso',
+                'subtitle' => 'Kepala Biro SDM Polda Bali',
+            ],
+            [
+                'slug' => 'bag-binkar',
+                'image' => 'personel (1).png',
+                'title' => 'AKBP MICHAEL R. RISAKOTTA, S.H., S.I.K.',
+                'subtitle' => 'KABAGBINKAR RO SDM POLDA BALI',
+            ],
+            [
+                'slug' => 'bag-dalpers',
+                'image' => 'personel (2).png',
+                'title' => 'AKBP RICKO ABDILLAH ANDANG TARUNA, S.H., S.I.K., M.H., M.M.',
+                'subtitle' => 'KABAGDALPERS RO SDM POLDA BALI',
+            ],
+            [
+                'slug' => 'bag-psik',
+                'image' => 'personel (3).png',
+                'title' => 'AKBP I NYOMAN WIBAWA, S.Psi., M.Psi.',
+                'subtitle' => 'PS. KABAGPSI RO SDM POLDA BALI',
+            ],
+            [
+                'slug' => 'bag-watpers',
+                'image' => 'personel (4).png',
+                'title' => 'KOMPOL ANAK AGUNG GEDE ARKA, S.H., M.H.',
+                'subtitle' => 'PLT. KABAGWATPERS RO SDM POLDA BALI',
+            ],
+
+
+        ];
+
         // Mengirim data ke view
         return view('pages.category.index', [
             'title' => $current_category ? $current_category->title : 'All Categories',
             'slug' => $slug,
             'keyword' => $keyword,
             'current_category' => $current_category,
-            'articles' => $articles
+            'articles' => $articles,
+            'banners' => $banners,
+            'dataKabag' => $dataKabag,
         ]);
     }
     public function showSubcategory($slug, Request $request)
@@ -106,14 +159,29 @@ class DataController extends Controller
 
             $article->pdfs = $pdfs; // Pastikan array
         }
+        $banners = [
 
+            [
+                'image' => 'SPANDUK ZI FIX.png',
+            ],
+            [
+                'image' => 'SPANDUK ZI FIX.png',
+            ],
+            [
+                'image' => 'SPANDUK ZI FIX.png',
+            ],
+            [
+                'image' => 'SPANDUK ZI FIX.png',
+            ],
+        ];
         // Mengirim data ke view
         return view('pages.category.index', [
             'title' => $subcategory->title,
             'slug' => $slug,
             'keyword' => $keyword,
             'subcategory' => $subcategory,
-            'articles' => $articles
+            'articles' => $articles,
+            'banners' => $banners
     ]);
 }
 
