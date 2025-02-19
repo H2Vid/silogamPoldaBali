@@ -24,27 +24,27 @@ Route::get('/', function () {
 
         $sliders = [
             [
-                'image' => 'kepalabirosdm.png',
+                'image' => 'KARO.png',
                 'title' => 'Kombes Pol Tri Bisono Soemiharso',
                 'subtitle' => 'Kepala Biro SDM Polda Bali',
             ],
             [
-                'image' => 'personel (1).png',
+                'image' => 'KABAGBINKAR.png',
                 'title' => 'AKBP MICHAEL R. RISAKOTTA, S.H., S.I.K.',
                 'subtitle' => 'KABAGBINKAR RO SDM POLDA BALI',
             ],
             [
-                'image' => 'personel (2).png',
+                'image' => 'KABAGDALPERS.png',
                 'title' => 'AKBP RICKO ABDILLAH ANDANG TARUNA, S.H., S.I.K., M.H., M.M.',
                 'subtitle' => 'KABAGDALPERS RO SDM POLDA BALI',
             ],
             [
-                'image' => 'personel (3).png',
+                'image' => 'KABAGPSI.png',
                 'title' => 'AKBP I NYOMAN WIBAWA, S.Psi., M.Psi.',
                 'subtitle' => 'PS. KABAGPSI RO SDM POLDA BALI',
             ],
             [
-                'image' => 'personel (4).png',
+                'image' => 'PLT_KABAGWATPERS.png',
                 'title' => 'KOMPOL ANAK AGUNG GEDE ARKA, S.H., M.H.',
                 'subtitle' => 'PLT. KABAGWATPERS RO SDM POLDA BALI',
             ],

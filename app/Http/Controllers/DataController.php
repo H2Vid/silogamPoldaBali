@@ -75,31 +75,31 @@ class DataController extends Controller
         $dataKabag = [
 
             [
-                'image' => 'kepalabirosdm.png',
+                'image' => 'KARO.png',
                 'title' => 'Kombes Pol Tri Bisono Soemiharso',
                 'subtitle' => 'Kepala Biro SDM Polda Bali',
             ],
             [
                 'slug' => 'bag-binkar',
-                'image' => 'personel (1).png',
+                'image' => 'KABAGBINKAR.png',
                 'title' => 'AKBP MICHAEL R. RISAKOTTA, S.H., S.I.K.',
                 'subtitle' => 'KABAGBINKAR RO SDM POLDA BALI',
             ],
             [
                 'slug' => 'bag-dalpers',
-                'image' => 'personel (2).png',
+                'image' => 'KABAGDALPERS.png',
                 'title' => 'AKBP RICKO ABDILLAH ANDANG TARUNA, S.H., S.I.K., M.H., M.M.',
                 'subtitle' => 'KABAGDALPERS RO SDM POLDA BALI',
             ],
             [
                 'slug' => 'bag-psik',
-                'image' => 'personel (3).png',
+                'image' => 'KABAGPSI.png',
                 'title' => 'AKBP I NYOMAN WIBAWA, S.Psi., M.Psi.',
                 'subtitle' => 'PS. KABAGPSI RO SDM POLDA BALI',
             ],
             [
                 'slug' => 'bag-watpers',
-                'image' => 'personel (4).png',
+                'image' => 'PLT_KABAGWATPERS.png',
                 'title' => 'KOMPOL ANAK AGUNG GEDE ARKA, S.H., M.H.',
                 'subtitle' => 'PLT. KABAGWATPERS RO SDM POLDA BALI',
             ],
@@ -174,6 +174,77 @@ class DataController extends Controller
                 'image' => 'SPANDUK ZI FIX.png',
             ],
         ];
+
+        $dataKabag = [
+
+            [
+                'image' => 'KARO.png',
+                'title' => 'Kombes Pol Tri Bisono Soemiharso',
+                'subtitle' => 'Kepala Biro SDM Polda Bali',
+            ],
+            [
+                'slug' => 'subbagdiapers',
+                'image' => 'KASUBBAGDIAPERS.png',
+                'title' => 'AKBP MICHAEL R. RISAKOTTA, S.H., S.I.K.',
+                'subtitle' => 'KABAGBINKAR RO SDM POLDA BALI',
+            ],
+            [
+                'slug' => 'subbagselek',
+                'image' => 'KASUBBAG SELEKSI.png',
+                'title' => 'AKBP RICKO ABDILLAH ANDANG TARUNA, S.H., S.I.K., M.H., M.M.',
+                'subtitle' => 'KABAGDALPERS RO SDM POLDA BALI',
+            ],
+            [
+                'slug' => 'subbagpns',
+                'image' => 'KASUBBAGPNS.png',
+                'title' => 'AKBP I NYOMAN WIBAWA, S.Psi., M.Psi.',
+                'subtitle' => 'PS. KABAGPSI RO SDM POLDA BALI',
+            ],
+            [
+                'slug' => 'subbagmutjab',
+                'image' => 'KASUBBAGMUTJAB.png',
+                'title' => 'KOMPOL ANAK AGUNG GEDE ARKA, S.H., M.H.',
+                'subtitle' => 'PLT. KABAGWATPERS RO SDM POLDA BALI',
+            ],
+            [
+                'slug' => 'subbagpangkat',
+                'image' => 'KASUBBAGPANGKAT.png',
+                'title' => 'KOMPOL ANAK AGUNG GEDE ARKA, S.H., M.H.',
+                'subtitle' => 'PLT. KABAGWATPERS RO SDM POLDA BALI',
+            ],
+            [
+                'slug' => 'subbagkompeten',
+                'image' => 'KASUBBAGKOMPETEN.png',
+                'title' => 'KOMPOL ANAK AGUNG GEDE ARKA, S.H., M.H.',
+                'subtitle' => 'PLT. KABAGWATPERS RO SDM POLDA BALI',
+            ],
+            [
+                'slug' => 'subbagrohjashor',
+                'image' => 'KASUBBAGRENMIN.png',
+                'title' => 'KOMPOL ANAK AGUNG GEDE ARKA, S.H., M.H.',
+                'subtitle' => 'PLT. KABAGWATPERS RO SDM POLDA BALI',
+            ],
+            [
+                'slug' => 'subbagkhirdinlur',
+                'image' => 'KASUBBAG KHIRIDNLUR.png',
+                'title' => 'KOMPOL ANAK AGUNG GEDE ARKA, S.H., M.H.',
+                'subtitle' => 'PLT. KABAGWATPERS RO SDM POLDA BALI',
+            ],
+            [
+                'slug' => 'subbagpsipol',
+                'image' => 'KASUBBAGPSIPOL.png',
+                'title' => 'KOMPOL ANAK AGUNG GEDE ARKA, S.H., M.H.',
+                'subtitle' => 'PLT. KABAGWATPERS RO SDM POLDA BALI',
+            ],
+            [
+                'slug' => 'subbagpsipers',
+                'image' => 'KASUBBAGPSIPERS.png',
+                'title' => 'KOMPOL ANAK AGUNG GEDE ARKA, S.H., M.H.',
+                'subtitle' => 'PLT. KABAGWATPERS RO SDM POLDA BALI',
+            ],
+
+
+        ];
         // Mengirim data ke view
         return view('pages.category.index', [
             'title' => $subcategory->title,
@@ -181,7 +252,9 @@ class DataController extends Controller
             'keyword' => $keyword,
             'subcategory' => $subcategory,
             'articles' => $articles,
-            'banners' => $banners
+            'banners' => $banners,
+            'dataKabag' => $dataKabag,
+
     ]);
 }
 
