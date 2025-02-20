@@ -4,7 +4,7 @@
 <section class="mt-10">
     <!-- Bagian ATAS (selalu tampil) -->
     <div id="default-carousel" class="bagianATAS relative" data-carousel="slide"  data-carousel-interval="7000">
-        <div class="relative h-[900px] z-0 overflow-hidden rounded-lg md:h-[500px]">
+        <div class="relative  h-60 z-0 overflow-hidden rounded-lg md:h-[500px]">
             @foreach($banners as $index => $banner)
                 <div class="bg-red-500 hidden duration-790 ease-in-out z-0" data-carousel-item @class(['active' => $index === 0])>
                     <img class="w-full h-full" src="{{ asset('assets/images/'.$banner['image']) }}" alt="Banner">
@@ -38,7 +38,7 @@
         <div class="h-full w-full text-white" data-aos="fade-down">
             <div class="flex flex-col md:flex-row w-full h-full space-y-10 md:space-y-0 items-center">
                 <div class="h-full w-full md:w-[30%] flex justify-center items-center">
-                <div class="{{ request()->is('subcategory/*') ? 'bg-blue-700' : 'bg-red-700' }} h-[400px] w-[300px] border-[10px] border-white rounded-t-full flex items-end justify-center">
+                <div class="{{ $activeKabag && isset($activeKabag['bg']) && $activeKabag['bg'] === 'biru' ? 'bg-blue-700' : 'bg-red-700' }} h-[400px] w-[300px] border-[10px] border-white rounded-t-full flex items-end justify-center">
                     <img src="{{ asset('assets/images/' . ($activeKabag ? $activeKabag['image'] : 'kepalabirosdm.png')) }}" alt="Kapolda Bali">
                 </div>
                 </div>
