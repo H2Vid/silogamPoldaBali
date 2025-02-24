@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
-<section class="mt-10">
+<section class="mt-10 px-10">
     <!-- Bagian ATAS (selalu tampil) -->
     <div id="default-carousel" class="bagianATAS relative" data-carousel="slide"  data-carousel-interval="7000">
         <div class="relative  h-60 z-0 overflow-hidden rounded-lg md:h-[500px]">

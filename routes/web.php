@@ -65,8 +65,14 @@ Route::get('/', function () {
                 'image' => 'SPANDUK ZI FIX.png',
             ],
         ];
+            // Ambil artikel terbaru atau artikel aktif dari database
+    $articles = Article::where('is_active', true)
+    ->latest() // Mengambil artikel terbaru
+    ->limit(8) // Ambil 5 artikel
+    ->get();
 
-        return view('pages.home.index', compact('sliders','banners')); // Mengirimkan data ke view
+return view('pages.home.index', compact('sliders', 'banners', 'articles'));
+
 
 });
 

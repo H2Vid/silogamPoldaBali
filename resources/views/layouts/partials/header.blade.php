@@ -45,12 +45,14 @@
             @endif
           </div>
         @endforeach
+        <div>
+      <!-- Logo Kanan -->
+      <a href="https://linktr.ee/birosdmpoldabali" class=" flex items-center {{ request()->is('https://linktr.ee/birosdmpoldabali') ? 'bg-blue-500 text-white' : 'text-white hover:bg-blue-500' }} block py-2 px-3 rounded-sm">
+        CONTACT US
+        </a>
+        </div>
       </div>
 
-      <!-- Logo Kanan -->
-      <a href="https://linktr.ee/birosdmpoldabali" class="hidden md:flex md:-mt-7 items-center">
-        <img alt="Logo" src="{{ asset('assets/images/contactUS.png') }}" style="width:140px; height: 160px;">
-      </a>
 
       <!-- Tombol Hamburger (Mobile) -->
       <button id="menu-toggle" class="lg:hidden p-2 w-10 h-10 text-gray-500 rounded-lg hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200">
@@ -101,6 +103,15 @@
             @endif
           </li>
         @endforeach
+        <li>
+      <!-- Logo Kanan -->
+
+      <li>
+          <a href="https://linktr.ee/birosdmpoldabali"  class="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 dark:text-white">
+       Contact Us
+          </a>
+        </li>
+    </li>
       </ul>
     </div>
   </div>
