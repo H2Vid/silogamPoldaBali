@@ -31,7 +31,7 @@
 <h1 class="text-3xl lg:text-4xl font-bold text-white mb-10 underline">PROFILE BIRO SDM</h1>
 <div id="default-carousel" class="relative w-full " data-carousel="slide" data-aos="fade-down" data-aos-delay="1000" data-aos-easing="linear" data-aos-duration="700">
     <!-- Carousel wrapper -->
-    <div class="relative -z-30 h-56 overflow-hidden rounded-lg md:h-[500px] xl:h-[700px] 2xl:h-[900px]">
+    <div class="relative -z-30 h-56 overflow-hidden rounded-lg md:h-[500px] xl:h-[800px] 2xl:h-[900px]">
          <!-- Item 1 -->
         <div class="hidden duration-700 ease-in-out" data-carousel-item>
                 <img class="mt-4 overflow-hidden w-full h-full md:w-full md:h-[100%]" src="{{ asset('assets/images/profilesdm.png') }}" alt="maskot">
@@ -86,7 +86,7 @@
                 <h1 class="text-3xl lg:text-4xl font-bold text-white mb-10 underline">PROFILE KEPALA BIRO SDM</h1>
                 <div class="flex flex-col md:flex-row w-full h-full space-y-10 md:space-y-0 items-center">
                     <div class="h-full w-full md:w-[30%] flex justify-center items-center">
-                    <div class="bg-red-700 h-[400px] lg:h-[480px] xl:h-[400px] w-[300px] border-[10px] border-white rounded-t-full flex items-end justify-center">
+                    <div class="bg-red-700 h-[400px] md:h-[370px] 2xl:h-[420px] w-[300px] border-[10px] border-white rounded-t-full flex items-end justify-center">
                         <img src="{{ asset('assets/images/kepalabirosdm.png') }}" alt="Kapolda Bali">
                         </div>
                     </div>
@@ -106,9 +106,9 @@
 <!-- slider -->
 <section class="slider">
 <div class="h-auto bg-cover rounded-xl w-full bg-center bg-no-repeat" style="background-image: url('{{ asset('assets/images/bgSlider.jpg') }}');">
-<div class="inset-0 bg-black/80 h-full w-full py-5 px-10">
-<div id="default-carousel" class="relative w-[90%] mx-auto my-32" data-carousel="slide"  data-carousel-interval="7000" data-aos="fade-down" data-aos-delay="1000" data-aos-easing="linear" data-aos-duration="700">
-    <h1 class="text-3xl lg:text-4xl font-bold text-white mb-10 underline">PROFILE KEPALA BAGIAN BIRO SDM</h1>
+<div class="inset-0 bg-black/80 h-full w-full py-5">
+<div id="default-carousel" class="relative w-full mx-auto my-32" data-carousel="slide"  data-carousel-interval="7000" data-aos="fade-down" data-aos-delay="1000" data-aos-easing="linear" data-aos-duration="700">
+    <h1 class="text-3xl lg:text-4xl font-bold text-white mb-10 underline px-10">PROFILE KEPALA BAGIAN BIRO SDM</h1>
     <!-- Carousel wrapper -->
     <div class="relative h-[900px] -z-30 overflow-hidden rounded-lg md:h-[420px]">
         <!-- Loop through each slider data -->
@@ -117,7 +117,7 @@
             <div  class="hidden " data-carousel-item @class(['active' => $index === 0])>
             <div class="md:px-20 flex flex-col md:flex-row w-full h-full space-y-10 space-x-0 md:space-x-10 md:space-y-0  items-center" >
                     <div class="h-full w-full md:w-[30%] flex  justify-center items-center">
-                    <div class="bg-red-700 h-[400px] md:h-[270px] lg:h-[390px] w-[300px] border-[10px] border-white rounded-t-full flex items-end justify-center">
+                    <div class="bg-red-700 h-[400px] md:h-[310px] lg:h-[390px] w-[300px] border-[10px] border-white rounded-t-full flex items-end justify-center">
                         <img  src="{{ asset('assets/images/'.$slider['image']) }}" alt="Kapolda Bali">
                         </div>
                     </div>

@@ -48,7 +48,7 @@
         <div>
       <!-- Logo Kanan -->
       <a href="https://linktr.ee/birosdmpoldabali" class=" flex items-center {{ request()->is('https://linktr.ee/birosdmpoldabali') ? 'bg-blue-500 text-white' : 'text-white hover:bg-blue-500' }} block py-2 px-3 rounded-sm">
-        CONTACT US
+        CONTACT
         </a>
         </div>
       </div>
@@ -108,7 +108,7 @@
 
       <li>
           <a href="https://linktr.ee/birosdmpoldabali"  class="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 dark:text-white">
-       Contact Us
+       Contact
           </a>
         </li>
     </li>
