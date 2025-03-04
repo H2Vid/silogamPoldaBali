@@ -50,9 +50,10 @@
             <div class="col-xl-8">
                 <div class="text-white" data-aos="flip-right">
                     <div class="post-body post-content text-white">
-                        <span class="text-white">
-                            {!! $article->description !!}
-                        </span>
+                    <div class="text-white [&_h1]:!text-white [&_h2]:!text-white [&_h3]:!text-white [&_h4]:!text-white [&_h5]:!text-white [&_h6]:!text-white">
+    {!! $article->description !!}
+</div>
+
 
                         <!-- MENAMPILKAN FILE PDF -->
                         @php

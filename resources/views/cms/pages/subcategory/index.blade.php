@@ -49,7 +49,7 @@
             <tr>
                 <td>{{ $subcategories->firstItem() + $index }}</td> <!-- Update penomoran -->
                 <td>{{ $subcategory->title }}</td>
-                <td>{{ $subcategory->description }}</td>
+                <td>{!! $subcategory->description !!}</td>
                 <td>
                     @if ($subcategory->image)
                     <img src="{{ asset('storage/' . $subcategory->image) }}" alt="{{ $subcategory->title }}" width="100" height="50">

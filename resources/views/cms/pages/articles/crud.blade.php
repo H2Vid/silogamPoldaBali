@@ -56,7 +56,7 @@
                 <div class="col-md-12">
                     <div class="form-group">
                         <label>Description</label>
-                        <textarea name="description" class="form-control" rows="10" placeholder="Enter description">{{ old('description', $article->description ?? '') }}</textarea>
+                        <textarea name="description" class="tinymce-editor form-control" rows="10" placeholder="Enter description">{{ old('description', $article->description ?? '') }}</textarea>
                     </div>
                 </div>
 
@@ -132,6 +132,18 @@
     </div>
 </div>
 <script>
+
+    // tinymce
+    document.addEventListener("DOMContentLoaded", function () {
+    tinymce.init({
+        selector: ".tinymce-editor",
+        plugins: "advlist autolink lists link image charmap preview anchor",
+        toolbar: "undo redo | formatselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image",
+        height: 300
+    });
+});
+
+
     // slug
 document.addEventListener("DOMContentLoaded", function() {
     let slugInput = document.getElementById("slug");

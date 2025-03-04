@@ -40,7 +40,7 @@
 
         <div class="form-group">
             <label>Description</label>
-            <textarea class="form-control" rows="10" name="description">{{ isset($subcategory) ? $subcategory->description : '' }}</textarea>
+            <textarea class="tinymce-editorSUbcategory form-control" rows="10" name="description">{{ isset($subcategory) ? $subcategory->description : '' }}</textarea>
         </div>
 
         <div class="form-group">
@@ -64,4 +64,16 @@
         <button class="btn btn-primary" type="submit">{{ isset($subcategory) ? 'Update' : 'Save' }} Data</button>
     </form>
 </div>
+<script>
+ //tinymce
+    document.addEventListener("DOMContentLoaded", function () {
+    tinymce.init({
+        selector: ".tinymce-editorSUbcategory",
+        plugins: "advlist autolink lists link image charmap preview anchor",
+        toolbar: "undo redo | formatselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image",
+        height: 300
+    });
+});
+
+</script>
 @stop
