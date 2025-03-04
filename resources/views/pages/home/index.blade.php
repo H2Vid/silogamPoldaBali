@@ -7,20 +7,21 @@
 @section ('content')
 <!-- Main Wrapper -->
 <section class="overflow-hidden bg-cover bg-top bg-no-repeat" style="background-image: url('{{ asset('assets/images/bg-herosection.png') }}');">
-<div class="overflow-hidden flex flex-col lg:flex-row justify-between mt-10 mx-5 lg:mx-20 h-auto space-y-10 lg:space-y-0" data-aos-delay="300" data-aos="fade-down">
-    <!-- Bagian Logo dan Informasi -->
-    <div  class="w-full h-[80%] lg:w-1/2 flex flex-col items-center md:items-start lg:text-left md:ml-20">
-        <img class="h-56 w-48 lg:h-[250px] lg:w-[200px]" src="{{ asset('assets/images/LOGO SDM.png') }}" alt="LOGO SDM">
-        <h3 class="mt-5 lg:mt-10 font-extrabold text-4xl lg:text-6xl text-white">BIRO</h3>
-        <h3 class="font-extrabold text-start text-4xl lg:text-6xl text-white">SDM POLDA BALI</h3>
-        <p class="mt-3 lg:mt-5 font-bold text-base lg:text-xl text-white">
+<div class="overflow-hidden flex flex-col lg:flex-row justify-between mt-10 mx-2 md:mx-5 lg:mx-10h-auto space-y-10 lg:space-y-0" data-aos-delay="300" data-aos="fade-down">
+    <div class="h-auto w-full lg:w-[60%] md:pl-5">
+    <img class="h-56 w-48 lg:h-[250px] lg:w-[200px]" src="{{ asset('assets/images/LOGO SDM.png') }}" alt="LOGO SDM">
+    <h3 class="mt-5 lg:mt-10 font-extrabold text-4xl lg:text-5xl text-white">BIRO</h3>
+        <h3 class="font-extrabold text-start text-4xl lg:text-5xl text-white">SDM POLDA BALI</h3>
+        <p class="mt-3 lg:mt-5 font-bold text-base lg:text-lg text-white w-full">
            JL. WR SUPRATMAN NO. 7, SUMERTA KAUH, KEC. DENPASAR TIMUR, KOTA DENPASAR, BALI 80236
         </p>
+        <div class="w-full flex">
+        <img class="h-56 lg:h-[250px] w-[30%]" src="{{ asset('assets/images/DHARMA-01.png') }}" alt="DHARMA">
+        <img class="h-56 lg:h-[250px] w-[70%]" src="{{ asset('assets/images/logo-presisi-png-3.png') }}" alt="PRESISI">
+        </div>
     </div>
-
-    <!-- Bagian Maskot -->
-    <div class="w-full h-[100%] md:h-[80%] lg:w-1/2 flex justify-center md:justify-end">
-        <img class="h-[100%]" src="{{ asset('assets/images/GARBHA 3D.png') }}" alt="maskot">
+    <div class="h-auto w-full lg:w-[40%]">
+    <img src="{{ asset('assets/images/GARBHA 3D.png') }}" alt="maskot">
     </div>
 </div>
 </section>
