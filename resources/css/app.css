@@ -1,3 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@font-face {
+    font-family: 'Horta';
+    src: url('/resources/fonts/Hortademo.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+

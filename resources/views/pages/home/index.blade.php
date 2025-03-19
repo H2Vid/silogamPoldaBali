@@ -10,14 +10,16 @@
 <div class="overflow-hidden flex flex-col lg:flex-row justify-between mt-10 mx-2 md:mx-5 lg:mx-10h-auto space-y-10 lg:space-y-0" data-aos-delay="300" data-aos="fade-down">
     <div class="h-auto w-full lg:w-[60%] md:pl-5">
     <img class="h-56 w-48 lg:h-[250px] lg:w-[200px]" src="{{ asset('assets/images/LOGO SDM.png') }}" alt="LOGO SDM">
-    <h3 class="mt-5 lg:mt-10 font-extrabold text-4xl lg:text-5xl text-white">BIRO</h3>
-        <h3 class="font-extrabold text-start text-4xl lg:text-5xl text-white">SDM POLDA BALI</h3>
-        <p class="mt-3 lg:mt-5 font-bold text-base lg:text-lg text-white w-full">
-           JL. WR SUPRATMAN NO. 7, SUMERTA KAUH, KEC. DENPASAR TIMUR, KOTA DENPASAR, BALI 80236
-        </p>
-        <div class="w-full flex">
-        <img class="h-56 lg:h-[250px] w-[30%]" src="{{ asset('assets/images/DHARMA-01.png') }}" alt="DHARMA">
-        <img class="h-56 lg:h-[250px] w-[70%]" src="{{ asset('assets/images/logo-presisi-png-3.png') }}" alt="PRESISI">
+    <div class="w-auto inline-block">
+            <h3 class="mt-5 lg:mt-10 font-extrabold text-4xl lg:text-5xl text-white font-horta">BIRO</h3>
+            <h3 class="font-extrabold text-start text-4xl lg:text-5xl text-white font-horta">SDM POLDA BALI</h3>
+            <p class="mt-3 lg:mt-5 font-bold text-base lg:text-lg text-white">
+                JL. WR SUPRATMAN NO. 7, SUMERTA KAUH, KEC. DENPASAR TIMUR, KOTA DENPASAR, BALI 80236
+            </p>
+            <div class="h-32 w-[100%] lg:h-48 md:w-[105%] lg:w-[105%] xl:w-[100%] custom:w-[107%] flex items-center justify-end">
+                <img class="h-full w-[30%]" src="{{ asset('assets/images/DHARMA-01.png') }}" alt="DHARMA">
+                <img class="h-full w-[70%] flex justify-end items-end" src="{{ asset('assets/images/logo-presisi-png-3.png') }}" alt="PRESISI">
+            </div>
         </div>
     </div>
     <div class="h-auto w-full lg:w-[40%]">
